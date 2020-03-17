@@ -2,217 +2,495 @@
 
 \label{Chapter2}
 
-%----------------------------------------------------------------------------------------
-%	SECTION 1
-%----------------------------------------------------------------------------------------
-Todos los capítulos deben comenzar con un breve párrafo introductorio que indique cuál es el contenido que se encontrará al leerlo.  La redacción sobre el contenido de la memoria debe hacerse en presente y todo lo referido al proyecto en pasado, siempre de modo impersonal.
+En el presente capitulo se presentan en mayor profundidad las distintas tecnologías utilizadas en el equipo. A continuación se detallan los requisitos y casos de uso relevados, junto a las pruebas de aceptación definidas para validar el correcto funcionamiento del prototipo. Finalmente se presenta brevemente la planificación del proyecto efectuada oportunamente.
 
-\section{Estilo y convenciones}
-\label{sec:ejemplo}
+\section{Tarjetas de proximidad}
+\label{sec:tarjetas}
 
-\subsection{Uso de mayúscula inicial para los título de secciones}
+La identificación por radiofrecuencia o \emph{Radio Frecuency Identification (RFID)} es una tecnología que permite el intercambio de información sin contacto entre un equipo lector y un dispositivo de almacenamiento denominado transpondedor. También denominadas etiquetas RFID, estos dispositivos pueden ser activos si cuentan con alimentación propia, o pasivos si se alimentan del campo electromagnético generado por el equipo lector. 
 
-Si en el texto se hace alusión a diferentes partes del trabajo referirse a ellas como capítulo, sección o subsección según corresponda. Por ejemplo: ``En el capítulo \ref{Chapter1} se explica tal cosa'', o ``En la sección \ref{sec:ejemplo} se presenta lo que sea'', o ``En la subsección \ref{subsec:ejemplo} se discute otra cosa''.
-
-Cuando se quiere poner una lista tabulada, se hace así:
+En el ámbito de las sistemas para el control de accesos la mayoría de las etiquetas RFID son pasivas y adoptan la forma de una tarjeta plástica, un llavero o una etiqueta autoadhesiva que contiene el chip electrónico junto con la bobina que cumple la función de antena receptora y transmisora. Las distancias de lectura generalmente son del orden de los 10 cm pero pueden extenderse hasta las 15 metros en los sistemas desarrollados para control de vehículos. En el mercado actual de Argentina podemos encontrar, principalmente, cuatro tipos de tarjetas de proximidad:
 
 \begin{itemize}
-	\item Este es el primer elemento de la lista.
-	\item Este es el segundo elemento de la lista.
+	\item Tarjetas EM4100: son las más económicas y muy difundidas en el control de accesos. Desarrolladas originalmente por la empresa E\&M Marine fueron ampliamente copiadas por los fabricantes chinos. Estas tarjetas operan con una portadora de 125 KHz, la que modulan en amplitud para transmitir una trama fija de 64 bits, que transmite un número de serie prefijado en el fabricación de 24 bits.
+	
+	\item Tarjetas HID: son el grupo menos difundido en nuestro país, principalmente por el costo y dificultad para adquirir las mismas. Estas tarjetas operan también con una portadora de 125 KHz, pero la modulan en frecuencia. Existen tres variantes en las tramas transmitidas que  serie prefijado en el fabricación de 24 o de 36 bits según la versión de tarjeta.
+	
+	\item Tarjetas MIFARE: son las utilizadas por los sistemas de monederos electrónicos y pagos de pasajes en el transporte público de pasajeros. Fueron desarrolladas originalmente por la empresa Philips Semiconductors y hoy son mantenidas por NXP Semiconductors. Estas tarjetas tienen la capacidad de proteger la memoria en base a un par de claves criptográficas para impedir la lectura o escritura por parte de equipos no autorizados. Se encuentran comprendidas dentro de la norma emitida por la Organización Internacional de Normalización (ISO) para regular la operación de tarjetas de proximidad (ISO 14443).
+	
+	\item Tarjetas UHF: son las utilizadas en los sistema de telepeaje y sistemas para control vehiculares, porque pueden alcanzar distancias de lecturas de hasta 15 metros. Estas tarjetas también tienen la capacidad de proteger la memoria utilizando criptografía para impedir la lectura o escritura por parte de equipos no autorizados. Se encuentran normalizadas por la Organización Internacional de Normalización (ISO) para regular la operación de tarjetas de sin contacto de largo alcance (ISO 18000-6C).
 \end{itemize}
 
-Notar el uso de las mayúsculas y el punto al final de cada elemento.
+En la tabla \ref{tab:TarjetasUsadas} se puede observar un cuadro comparativo entre los distintos tipos de tarjetas de proximidad utilizadas en los sistemas para control de accesos. De estas opciones de decidió que el nuevo opere con el estándar MIFARE, lo que permite utilizar todas las tarjetas de pago electrónico para el transporte publico como medio de identificación y acceso, disminuyendo de esta forma la inversión inicial de la instalación.
 
-Si se desea poner una lista numerada el formato es este:
-
-\begin{enumerate}
-	\item Este es el primer elemento de la lista.
-	\item Este es el segundo elemento de la lista.
-\end{enumerate}
-
-Notar el uso de las mayúsculas y el punto al final de cada elemento.
-
-\subsection{Este es el título de una subsección}
-\label{subsec:ejemplo}
-
-Se recomienda no utilizar \textbf{texto en negritas} en ningún párrafo, ni tampoco texto \underline{subrayado}. En cambio sí se debe utilizar \textit{texto en cursiva} para palabras en un idioma extranjero, al menos la primera vez que aparecen en el texto. En el caso de palabras que estamos inventando se deben utilizar ``comillas''. Por ejemplo, un \textit{digital filter} es una especie de ``selector'' que permite separar ciertos componentes armónicos en partícular..
-
-La escritura debe ser impersonal. Por ejemplo, no utilizar ``el diseño del firmware lo hice de acuerdo con tal principio'', sino ``el firmware fue diseñado utilizando tal principio''. 
-
-El trabajo es algo que al momento de escribir la memoria se supone que ya está concluido, entonces todo lo que se refiera a hacer el trabajo se narra en tiempo pasado, porque es algo que ya ocurrió. Por ejemplo, "se diseñó el firmware empleando la técnica de test driven development".
-
-En cambio la memoria es algo que está vivo cada vez que el lector la lee. Por eso transcurre siempre en tiempo presente, como por ejemplo "En el presente capítulo se da una visión global sobre las distintas pruebas realizadas y los resultados obtenidos. Se explica el modo en que fueron llevados a cabo los test unitarios y las pruebas del sistema"
-
-Se recomienda no utilizar una sección de glosario sino colocar la descripción de las abreviaturas como parte del mismo cuerpo del texto. Por ejemplo, RTOS (\textit{Real Time Operating System}, Sistema Operativo de Tiempo Real) o en caso de considerarlo apropiado mediante notas a pie de página.
-
-Si se desea indicar alguna página web utilizar el siguiente formato de referencias bibliográficas, dónde las referencias se detallan en la sección de bibliografía de la memoria, utilizado el formato establecido por IEEE en \citep{IEEE:citation}. Por ejemplo, ``el presente trabajo se basa en la plataforma EDU-CIAA-NXP \citep{CIAA}, la cual...''.
-
-\subsection{Figuras} 
-
-Al insertar figuras en la memoria se deben considerar determinadas pautas. Para empezar, usar siempre tipografía claramente legible. Luego, tener claro que es incorrecto escribir por ejemplo esto: ``El diseño elegido es un cuadrado, como se ve en la siguiente figura:''
-
-\begin{figure}[h]
-\centering
-\includegraphics[scale=.3]{./Figures/cuadradoAzul.png}
-\end{figure}
-
-La forma correcta de utilizar una figura es la siguiente: ``Se eligió utilizar un cuadrado azul para el logo, como puede observarse en la figura \ref{fig:cuadradoAzul}''.
-
-\begin{figure}[ht]
+\begin{table}[ht]
 	\centering
-	\includegraphics[scale=.3]{./Figures/cuadradoAzul.png}
-	\caption{Ilustración del cuadrado azul que se eligió para el diseño del logo.}
-	\label{fig:cuadradoAzul}
-\end{figure}
-
-El texto de las figuras debe estar siempre en español, excepto que se decida reproducir una figura original tomada de alguna referencia. En ese caso la referencia de la cual se tomó la figura debe ser indicada en el epígrafe de la figura e incluida como una nota al pie, como se ilustra en la figura \ref{fig:palabraIngles}.
-
-\begin{figure}[htpb]
-	\centering
-	\includegraphics[scale=.25]{./Figures/word.jpeg}
-	\caption{Imagen tomada de la página oficial del procesador\protect\footnotemark.}
-	\label{fig:palabraIngles}
-\end{figure}
-
-\footnotetext{\url{https://goo.gl/images/i7C70w}}
-
-
-La figura y el epígrafe deben conformar una unidad cuyo significado principal pueda ser comprendido por el lector sin necesidad de leer el cuerpo central de la memoria. Para eso es necesario que el epígrafe sea todo lo detallado que corresponda y si en la figura se utilizan abreviaturas entonces aclarar su significado en el epígrafe o en la misma figura.
-
-\begin{figure}[ht]
-	\centering
-	\includegraphics[scale=.37]{./Figures/questionMark.png}
-	\caption{Por qué de pronto aparece esta figura?.}
-	\label{fig:questionMark}
-\end{figure}
-
-Nunca colocar una figura en el documento antes de hacer la primera referencia a ella, como se ilustra con la figura \ref{fig:questionMark}, porque sino el lector no comprenderá por qué de pronto aparece la figura en el documento, lo que distraerá su atención.
-
-En la figura \ref{fig:izquierda} y \ref{fig:derecha} se presenta un ejemplo de cómo incluir más de una figura utilizando un entorno \textit{minipage}.
-
-\begin{figure}[htbp]
-  \centering
-  \begin{minipage}[b]{0.47\textwidth}
-    \centering
-     \includegraphics[width=.47\textwidth]{./Figures/questionMark.png}
-	\caption{\protect\raggedright Una imagen a la izquierda.}
-	\label{fig:izquierda}
-  \end{minipage}
-  \hfill
-  \begin{minipage}[b]{0.47\textwidth}
-    \centering
-     \includegraphics[width=.47\textwidth]{./Figures/questionMark.png}
-	\caption{\protect\raggedright Una imagen a la derecha.}
-	\label{fig:derecha}
-  \end{minipage}
-\end{figure}
-
-Otra posibilidad es utilizar el entorno \textit{subfigure} para incluir más de una figura, como se puede ver en la figura \ref{fig:three graphs}. Notar que se pueden referenciar también las figuras internas individualmente de esta manera: \ref{fig:1de3}, \ref{fig:2de3} y \ref{fig:3de3}.
- 
-\begin{figure}[!htpb]
-     \centering
-     \begin{subfigure}[b]{0.3\textwidth}
-         \centering
-         \includegraphics[width=.65\textwidth]{./Figures/questionMark}
-         \caption{Un caption.}
-         \label{fig:1de3}
-     \end{subfigure}
-     \hfill
-     \begin{subfigure}[b]{0.3\textwidth}
-         \centering
-         \includegraphics[width=.65\textwidth]{./Figures/questionMark}
-         \caption{Otro.}
-         \label{fig:2de3}
-     \end{subfigure}
-     \hfill
-     \begin{subfigure}[b]{0.3\textwidth}
-         \centering
-         \includegraphics[width=.65\textwidth]{./Figures/questionMark}
-         \caption{Y otro más.}
-         \label{fig:3de3}
-     \end{subfigure}
-        \caption{Tres gráficos simples}
-        \label{fig:three graphs}
-\end{figure}
-
-El código para generar las imágenes se encuentra disponible para su reutilización en el archivo \file{Chapter2.tex}.
-
-\subsection{Tablas}
-
-Para las tablas utilizar el mismo formato que para las figuras, sólo que el epígrafe se debe colocar arriba de la tabla, como se ilustra en la tabla \ref{tab:peces}. Observar que sólo algunas filas van con líneas visibles y notar el uso de las negritas para los encabezados.  La referencia se logra utilizando el comando \verb|\ref{<label>}| donde label debe estar definida dentro del entorno de la tabla.
-
-\begin{verbatim}
-\begin{table}[h]
-	\centering
-	\caption[caption corto]{caption largo más descriptivo}
-	\begin{tabular}{l c c}    
+	\caption[Tarjetas de proximidad más utilizadas en el control de accesos]{Cuadro comparativo con las tarjetas de proximidad más utilizadas para el control de accesos}
+	\begin{tabular}{C{15mm} C{40mm} C{25mm} C{35mm}}
 		\toprule
-		\textbf{Especie}     & \textbf{Tamaño} & \textbf{Valor}\\
+		\textbf{Nombre} 	
+			& \textbf{Frecuencia}
+			& \textbf{Distancia}	
+			& \textbf{Capacidades}
+			\\
 		\midrule
-		Amphiprion Ocellaris & 10 cm           & \$ 6.000 \\		
-		Hepatus Blue Tang    & 15 cm           & \$ 7.000 \\
-		Zebrasoma Xanthurus  & 12 cm           & \$ 6.800 \\
+			EM4100 			
+			& 125 KHz / ASK
+			& 10 a 15 cm	
+			& Solo lectura
+			\\
+			HID 			
+			& 125 KHz / FSK
+			& 10 a 15 cm	
+			& Solo lectura
+			\\
+			MIFARE 			
+			& 15.56 KHz /ASK
+			& 10 a 30 cm	
+			& Lectura/Escritura
+			\\
+			UHF 			
+			& 850 a 915 MHz /ASK
+			& Hasta 15 m	
+			& Lectura/Escritura
+			\\
 		\bottomrule
 		\hline
 	\end{tabular}
-	\label{tab:peces}
+	\label{tab:TarjetasUsadas}
 \end{table}
-\end{verbatim}
 
+\section{Protocolos inalámbricas}
 
-\begin{table}[h]
+El aumento del uso de dispositivos móviles con un poder de computo cada vez mayor por parte del publico en general abre la puerta a nuevas aplicaciones para estos equipos. En particular para el trabajo desarrollado, la intención es utilizar un dispositivo móvil como un teléfono inteligente o una tableta, para gestionar y configurar el equipo para control de accesos. Para esto es necesario que la interfaz de comunicaciones implementada sea del tipo inalámbrica, ya que si bien es técnicamente posible utilizar una interfaz USB cableada para conectarse a la mayoría de teléfono o tabletas, esta opción no resultaría cómoda ni comercialmente atractiva. En la actualidad dos protocolos de comunicación inalámbricos dominan el mercado:
+
+\begin{itemize}
+	\item Bluetooth: es un protocolo diseñado para una red de área personal, con un alcance típico de 10 metros, con bajas tasas de transferencias y optimizado para extender la duración de las baterías. Existen dos versiones principales de este protocolo: la versión 2 y la 4, las cuales no son compatibles entre si. La mayoría de los dispositivos móviles actuales soportan ambas versiones del protocolo, excepto todos los equipos móviles de la firma Apple, que solo soportan la versión 4 de bajo consumo. En este protocolo la conexión se realiza entre un maestro y un esclavo, y si bien teóricamente se pueden generar redes de dispositivos en la practica esto nunca se implementa.
+	
+	\item WiFi: es un protocolo diseñado para una red de área local, con un alcance típico de 100 metros y altas tasas de transferencias. Existen varias versiones de este protocolo, las cuales se pueden agrupar en dos familias: las que utilizan una portadora de 2.4 GHz y las de 5 GHz. Las versiones mas nuevas pueden utilizar ambas frecuencias simultáneamente para aumentar aun más el ancho de banda. En este protocolo la conexión se realiza generalmente entre un dispositivo y un punto de acceso, que normalmente brinda conexión con una red mayor y eventualmente con Internet.
+\end{itemize}
+
+En la tabla \ref{tab:WifiBluetooth} se puede ver un resumen con las características mas importantes de las diferentes variantes de ambos protocolos de comunicación. Para el desarrollo del equipo se decidió utilizar WiFi, de esta forma resulta igual de sencillo establecer una conexión punto a punto entre dispositivo móvil y el equipo que se quiere gestionar, como conectarlo a la red existente en el lugar y gestionarlo desde cualquier ubicación que tenga conexión con dicha red. Incluso permite en un futuro el acceso a Internet del equipo, lo que permitiría la gestión del mismo desde cualquier lugar del mundo.
+
+\begin{table}[ht]
 	\centering
-	\caption[caption corto]{caption largo más descriptivo}
-	\begin{tabular}{l c c}    
+	\caption[Comparación entre los protocolos Bluetooth y Wifi]{Cuadro comparativo entre las diferentes variantes de los protocolos Wifi y Bluetooth}
+	\begin{tabular}{c c c c}
 		\toprule
-		\textbf{Especie} 	 & \textbf{Tamaño} 		& \textbf{Valor}  \\
+		\textbf{Nombre}	
+		& \textbf{Alcance}
+		& \textbf{Frecuencia}
+		& \textbf{Velocidad}
+		\\
 		\midrule
-		Amphiprion Ocellaris & 10 cm 				& \$ 6.000 \\		
-		Hepatus Blue Tang	 & 15 cm				& \$ 7.000 \\
-		Zebrasoma Xanthurus	 & 12 cm				& \$ 6.800 \\
+		Bluetooth 2.0
+		& 10 metros
+		& 2,4 GHz
+		& 2 MBits/s
+		\\
+		BLE
+		& 10 metros
+		& 2,4 GHz
+		& 2 MBits/s
+		\\
+		Wifi 802.11a
+		& 100 metros
+		& 5 GHz
+		& 54 MBits/s
+		\\
+		Wifi 802.11b
+		& 100 metros
+		& 2,4 GHz
+		& 11 MBits/s
+		\\
+		Wifi 802.11g
+		& 100 metros
+		& 2,4 GHz
+		& 54 MBits/s
+		\\
+		Wifi 802.11n
+		& 100 metros
+		& 2,4 y 5 GHz
+		& 600 MBits/s
+		\\
 		\bottomrule
 		\hline
 	\end{tabular}
-	\label{tab:peces}
+	\label{tab:WifiBluetooth}
 \end{table}
 
-En cada capítulo se debe reiniciar el número de conteo de las figuras y las tablas, por ejemplo, Fig. 2.1 o Tabla 2.1, pero no se debe reiniciar el conteo en cada sección. Por suerte la plantilla se encarga de esto por nosotros.
+La utilización de la interfaz WiFi implica casi inevitablemente el uso del conjunto de protocolos TPC/IP, lo que permite disponer de una serie de opciones estandarizadas para la capa de aplicación del protocolo de gestión y configuración del equipo. De estas opciones disponibles se decidió implementar una interfaz Full REST Api utilizando el protocolo HTTP. El motivo de esta elección fue simplificar la comunicación con aplicaciones híbridas para celulares, como se explica en la sección \ref{sec:AplicacionesMoviles} y paginas WEB, lo que también permitirá en un futuro la gestión del equipo desde Internet
 
-\subsection{Ecuaciones}
-\label{sec:Ecuaciones}
+\section{Aplicaciones para dispositivos móviles}
+\label{sec:AplicacionesMoviles}
 
-Al insertar ecuaciones en la memoria dentro de un entorno \textit{equation}, éstas se numeran en forma automática  y se pueden referir al igual que como se hace con las figuras y tablas, por ejemplo ver la ecuación \ref{eq:metric}.
+El mercado de los dispositivos móviles se encuentra polarizado en dos sistemas operativos: Android e iOS. Lamentablemente las herramientas de desarrollo e incluso los lenguajes utilizados por cada plataforma son totalmente incompatibles, esto significa que para desarrollar una aplicación que se encuentre disponible para ambas plataformas requiere el doble de esfuerzo. 
 
-\begin{equation}
-	\label{eq:metric}
-	ds^2 = c^2 dt^2 \left( \frac{d\sigma^2}{1-k\sigma^2} + \sigma^2\left[ d\theta^2 + \sin^2\theta d\phi^2 \right] \right)
-\end{equation}
-                                                        
-Es importante tener presente que si bien las ecuaciones pueden ser referidas por su número, también es correcto utilizar los dos puntos, como por ejemplo ``la expresión matemática que describe este comportamiento es la siguiente:''
+Una solución a este problema son las denominada aplicaciones híbridas, las cuales en realidad son paginas WEB encapsuladas en una con el correspondiente navegador de cada plataforma en una aplicación nativa. Estas aplicaciones se desarrollan entonces en JavaScript y uno de los entornos de desarrollo más difundidos para este tipo de aplicaciones es el conjunto Ionic Cordoba, el cual permite desarrollar una aplicación para móviles utilizando exclusivamente tecnología web. 
 
-\begin{equation}
-	\label{eq:schrodinger}
-	\frac{\hbar^2}{2m}\nabla^2\Psi + V(\mathbf{r})\Psi = -i\hbar \frac{\partial\Psi}{\partial t}
-\end{equation}
+Dado que en realidad estas aplicaciones son paginas web tienen una serie de restricciones, principalmente en las comunicaciones que pueden realizar y en la interacción con los dispositivos del equipo móvil como la cámara o el GPS. Algunas de estas restricciones son resueltas utilizando \emph{plugins}, fragmentos de código nativo escrito para cada plataforma que funcionan a modo de adaptador para que la pagina web pueda acceder a estos servicios.
 
-Para generar la ecuación \ref{eq:metric} se utilizó el siguiente código:
+La forma más natural de comunicación para este tipo de aplicaciones es utilizando conexiones HTTP para enviar o recuperar objetos codificados según el estándar JSON. Por esta razón, y aun cuando el desarrollo de la aplicación de gestión para el dispositivo móvil esta fuera de los alcances del trabajo, se decidió implementar toda la gestión del equipo utilizando esta tecnología.
 
-\begin{verbatim}
-\begin{equation}
-	\label{eq:metric}
-	ds^2 = c^2 dt^2 \left( \frac{d\sigma^2}{1-k\sigma^2} + 
-	\sigma^2\left[ d\theta^2 + 
-	\sin^2\theta d\phi^2 \right] \right)
-\end{equation}
-\end{verbatim}
+\section{Características del equipo}
+\label{sec:Caracteristicas}
 
-Y para la ecuación \ref{eq:schrodinger}:
+Dado que el objetivo del trabajo fue el diseño de un equipo comercial se planteó la necesidad de permitir que el mismo pueda adaptarse a diferentes instalaciones. La primera de las opciones de instalación corresponde al tipo de dispositivo que se utiliza para impedir la apertura de la puerta. En este apartado podemos encontrar dos opciones:
 
-\begin{verbatim}
-\begin{equation}
-	\label{eq:schrodinger}
-	\frac{\hbar^2}{2m}\nabla^2\Psi + V(\mathbf{r})\Psi = 
-	-i\hbar \frac{\partial\Psi}{\partial t}
-\end{equation}
+\begin{itemize}
+	\item Destraba pestillo eléctrico: es un sistema mecánico que actúa como traba para el pestillo de la puerta. Este se libera al energizar una bobina y que por la acción de un resorte vuelve a bloquearse automáticamente cuando se retira la energía eléctrica. De esta forma mientras el mismo permanece energizado es posible abrir la puerta.
+	
+	\item Cerradura electromagnética: es simplemente un electroimán que cuando permanece alimentado ejerce una fuerza que impide la apertura de la puerta. En este caso la puerta puede abrirse únicamente cuando la cerradura permanece sin alimentación
+	
+	\item Cerradura motorizada: en este caso el sistema mecánico de bloqueo es accionado por un motor en lugar de por una bobina. Para liberar la puerta es necesario alimentar el motor con una determinada polaridad por un tiempo determinado, o hasta que acciona un sensor que detecta el final del recorrido del mecanismo. En este caso la puerta permanece liberada hasta que se alimenta el motor con la polaridad contraria durante un tiempo determinado, o hasta que se acciona un nuevo sensor que detecta el final del recorrido en el sentido contrario al inicial
+\end{itemize}
 
-\end{verbatim}
+Como se puede deducir de la descripción anterior cada tipo de cerradura requiere una señal de control diferente. En particular la mayor diferencia esta dada entre los sistemas electromecánicos y los motorizados, debido a la necesidad de una inversión en la alimentación para efectuar el bloque de la puerta. 
+
+La otra opción de instalación que podrá definir el usuario final corresponde al uso de un sensor para detectar la apertura de la puerta. En el diseño del equipo se contempla la posibilidad de utilizar este sensor para poder determinar si una persona autorizada ingresa al espacio controlado, y para ademas informar mediante una señal de alarma cuando la puerta permanece abierta por mas tiempo del adecuado. De una análisis rápido resulta claro que el comportamiento del equipo debe ser diferente cuando el usuario decide no instalar el sensor para determinar la apertura de la puerta.  
+
+La combinación de las dos opciones antes analizadas determina cuatro modos de funcionamiento principales, los cuales se resumen en la tabla \ref{tab:ModosOperacion}.
+
+\begin{table}[ht]
+	\centering
+	\caption[Resumen de los modos de funcionamiento del equipo]{Resumen de los modos de funcionamiento del equipo en función la cerradura y la  instalación del sensor de puerta.}
+	\begin{tabular}{c c L{80mm}}
+		\toprule
+		\textbf{Cerradura} 	& 
+		\textbf{Sensor}	&
+		\textbf{Forma de operación} \\
+		\midrule
+		Electromagnética &
+		Sin instalar &
+		Se libera la cerradura, cambiando el estado de la alimentación, por un tiempo predefinido. Al finalizar el mismo se bloquea la cerradura volviendo la alimentación al estado inicial. \\
+		Electromagnética &
+		Instalado &
+		Se libera la cerradura, cambiando el estado de la alimentación, hasta detectar la apertura de la puerta sin exceder un tiempo máximo predefinido. Se supervisa que la puerta no permanezca abierta por mas de tiempo máximo \\
+		Motorizada &
+		Sin instalar &
+		Se libera la cerradura alimentando el motor por un tiempo predefinido. Al finalizar el mismo la puerta permanece liberada por un tiempo máximo. Al terminar el mismo se bloquea la cerradura alimentando el motor con polaridad inversa durante el mismo tiempo que al inicio. \\
+		Motorizada &
+		Instalado &
+		Se libera la cerradura alimentando el motor por un tiempo predefinido. Al finalizar se supervisa la apertura y cierre de la puerta. Al detectar la apertura de la puerta, o exceder un tiempo máximo, se bloquea la cerradura alimentando el motor con polaridad inversa durante el mismo tiempo que al inicio. \\
+		\bottomrule
+		\hline
+	\end{tabular}
+	\label{tab:ModosOperacion}
+\end{table}
+
+\subsection{Requisitos del equipo}
+
+Uno de los primeros puntos que detalla el estándar IEE-830 para especificación de requisitos son las interfaces externas de la aplicación. Dado que el desarrollo analizado corresponde al firmware de un sistema embebido las interfaces del software tienen relación directa con las entradas y salidas de la placa electrónica. En la tabla \ref{tab:ListaInterfaces} se detallan las interfaces de entradas y salidas que debe implementar el nuevo equipo, y que por lo tanto constituyen las interfaces de firmware del mismo.
+
+\begin{table}[ht]
+	\centering
+	\caption{Lista de entradas y salidas del requeridas en el equipo}
+	\begin{tabular}{l C{40mm} L{65mm}}    
+		\toprule
+		\textbf{Nombre} & 
+		\textbf{Tipo} & 
+		\textbf{Descripción} \\
+		\midrule
+		PNK-ES001 & 
+		Puerto SPI &
+		Circuito integrado del lector RFID \\
+		PNK-ES002 & 
+		Entrada digital opto-aislada &
+		Sensor de puerta abierta \\
+		PNK-ES003 & 
+		Salida digital con inversión de polaridad &
+		Actuador de la cerradura de puerta \\
+		PNK-ES004 & 
+		Entrada digital sin aislación &
+		Sensor de cerradura liberada \\
+		PNK-ES005 & 
+		Entrada digital sin aislación &
+		Sensor de cerradura bloqueada \\
+		PNK-ES006 & 
+		Entrada digital opto-aislada &
+		Pulsador para apertura manual \\
+		PNK-ES007 & 
+		Salida digital de contacto seco &
+		Salida de alarma \\
+		PNK-ES008 & 
+		Salida modulada en frecuencia &
+		Indicador sonoro para el usuario \\
+		PNK-ES009 & 
+		Salida digital con inversión de polaridad &		
+		Indicador luminoso para el usuario \\
+		\bottomrule
+		\hline
+	\end{tabular}
+	\label{tab:ListaInterfaces}
+\end{table}
+
+Como se explicó en el inicio de la sección \ref{sec:Caracteristicas} uno de los requerimientos importantes del equipo es poder configurar el comportamiento del mismo para adaptarlo a diferentes tipos de instalaciones. Por esta razón se decidió identificar cada uno los parámetros de configuración requeridos para lograr la capacidad de personalización desea. La lista de parámetros definidos puede verse en la tabla \ref{tab:ListaParametros}.
+
+\begin{table}[ht]
+	\centering
+	\caption[Lista de parámetros para configuración del equipo]{Lista de parámetros para configurar el comportamiento del equipo según las opciones de instalación}
+	\begin{tabular}{c c L{70mm}}    
+		\toprule
+		\textbf{Nombre} &
+		\textbf{Tipo y Rango} &
+		\textbf{Descripción} \\
+		\midrule
+		PNK-PO001 &
+		Númerico \newline100ms a 2.500ms &
+		Tiempo de accionamiento del indicador luminoso PNK-ES009 cuando se produce la lectura de una tarjeta \\
+		PNK-PO002 &
+		100ms a 2.500ms &
+		Tiempo de accionamiento del indicador sonoro PNK-ES008 cuando se concede el acceso a una tarjeta \\
+		PNK-PO003 &
+		100ms a 2.500ms &
+		Tiempo de accionamiento del indicador sonoro PNK-ES008 cuando se deniega el acceso a una tarjeta \\
+		PNK-PO004 &
+		1s a 10s &
+		Tiempo máximo que la puerta permanece liberara para permitir la apertura de la misma \\
+		PNK-PO005 &
+		100ms a 2.500ms &
+		Tiempo máximo de accionamiento del motor en cerraduras motorizadas\\
+		PNK-PO006 &
+		1s a 60s &
+		Tiempo máximo que la puerta puede permanece abierta antes de generar una señal de alarma\\
+		PNK-PO007 &
+		0 ó 1 &
+		El sensor de puerta abierta se encuentra conectado\\
+		PNK-PO008 &
+		0 ó 1 &
+		El sistema de liberación de la puerta requiere inversión de polaridad \\
+		PNK-PO009 &
+		0 ó 1 &
+		El sistema de liberación de la puerta dispone de sensor para indicar el estado del mismo \\
+		\bottomrule
+		\hline
+	\end{tabular}
+	\label{tab:ListaParametros}
+\end{table}
+
+
+
+\begin{table}[ht]
+	\centering
+	\caption{Requisitos funcionales para el control de accesos}
+	\begin{tabular}{l c}    
+		\toprule
+		\textbf{Nombre} 	& \textbf{Característica}	\\
+		\midrule
+		Elemento 			& Valor	\\
+		\bottomrule
+		\hline
+	\end{tabular}
+	\label{tab:RequisitosAcceso}
+\end{table}
+
+\begin{table}[ht]
+	\centering
+	\caption{Requisitos funcionales para el accionamiento de los actuadores}
+	\begin{tabular}{l c}    
+		\toprule
+		\textbf{Nombre} 	& \textbf{Característica}	\\
+		\midrule
+		Elemento 			& Valor	\\
+		\bottomrule
+		\hline
+	\end{tabular}
+	\label{tab:RequisitosActuadores}
+\end{table}
+
+\begin{table}[ht]
+	\centering
+	\caption{Requisitos funcionales para la gestión del equipo}
+	\begin{tabular}{l c}    
+		\toprule
+		\textbf{Nombre} 	& \textbf{Característica}	\\
+		\midrule
+		Elemento 			& Valor	\\
+		\bottomrule
+		\hline
+	\end{tabular}
+	\label{tab:RequisitosGestion}
+\end{table}
+
+Se detallan las restricciones impuestas por el cliente el proceso de desarrollo, materiales y características del equipo a desarrollar
+
+\begin{table}[ht]
+	\centering
+	\caption{Restricciones impuestas por el cliente en el desarrollo de hardware}
+	\begin{tabular}{l c}    
+		\toprule
+		\textbf{Nombre} 	& \textbf{Característica}	\\
+		\midrule
+		Elemento 			& Valor	\\
+		\bottomrule
+		\hline
+	\end{tabular}
+	\label{tab:RestriccionesHardware}
+\end{table}
+
+\begin{table}[ht]
+	\centering
+	\caption{Restricciones impuestas por el cliente en el desarrollo de firmware}
+	\begin{tabular}{l c}    
+		\toprule
+		\textbf{Nombre} 	& \textbf{Característica}	\\
+		\midrule
+		Elemento 			& Valor	\\
+		\bottomrule
+		\hline
+	\end{tabular}
+	\label{tab:RestriccionesFirmware}
+\end{table}
+
+\subsection{Casos de uso}
+
+Se describen los casos de uso principales del equipo
+
+\begin{table}[ht]
+	\centering
+	\caption{Caso de uso Acceso por pulsador}
+	\begin{tabular}{l c}    
+		\toprule
+		\textbf{Nombre} 	& \textbf{Característica}	\\
+		\midrule
+		Elemento 			& Valor	\\
+		\bottomrule
+		\hline
+	\end{tabular}
+	\label{tab:CasoPulsador}
+\end{table}
+
+\begin{table}[ht]
+	\centering
+	\caption{Caso de uso Acceso por tarjeta de proximidad}
+	\begin{tabular}{l c}    
+		\toprule
+		\textbf{Nombre} 	& \textbf{Característica}	\\
+		\midrule
+		Elemento 			& Valor	\\
+		\bottomrule
+		\hline
+	\end{tabular}
+	\label{tab:CasoTarjeta}
+\end{table}
+
+\begin{table}[ht]
+	\centering
+	\caption{Caso de uso Configuración del equipo}
+	\begin{tabular}{l c}    
+		\toprule
+		\textbf{Nombre} 	& \textbf{Característica}	\\
+		\midrule
+		Elemento 			& Valor	\\
+		\bottomrule
+		\hline
+	\end{tabular}
+	\label{tab:CasoConfiguracion}
+\end{table}
+
+\begin{table}[ht]
+	\centering
+	\caption{Caso de uso Gestión de las personas autorizadas}
+	\begin{tabular}{l c}    
+		\toprule
+		\textbf{Nombre} 	& \textbf{Característica}	\\
+		\midrule
+		Elemento 			& Valor	\\
+		\bottomrule
+		\hline
+	\end{tabular}
+	\label{tab:CasoAutorizacion}
+\end{table}
+
+\begin{table}[ht]
+	\centering
+	\caption{Caso de uso Consulta de la bitácora de accesos}
+	\begin{tabular}{l c}    
+		\toprule
+		\textbf{Nombre} 	& \textbf{Característica}	\\
+		\midrule
+		Elemento 			& Valor	\\
+		\bottomrule
+		\hline
+	\end{tabular}
+	\label{tab:CasoBitacora}
+\end{table}
+
+\subsection{Pruebas de aceptación del equipo}
+
+Se detallan las pruebas a ejecutar una vez terminado el equipo para considerar el desarrollo del mismo como completo
+
+\section{Planificación}
+
+Análisis inicial del proyecto
+
+Se listan las tareas que se deben desarrollar para completar el proyecto con una breve descripción para cada una
+
+\begin{table}[ht]
+	\centering
+	\caption{Lista del desglose de tareas del proyecto}
+	\begin{tabular}{l c}    
+		\toprule
+		\textbf{Nombre} 	& \textbf{Característica}	\\
+		\midrule
+		Elemento 			& Valor	\\
+		\bottomrule
+		\hline
+	\end{tabular}
+	\label{tab:ListaTareas}
+\end{table}
+
+Se listan los recursos necesarios y los periodos de tiempo en los cuales los mismos deberán estar disponibles para el desarrollo del equipo
+
+\begin{table}[ht]
+	\centering
+	\caption{Lista de recursos requeridos por el proyecto}
+	\begin{tabular}{l c}    
+		\toprule
+		\textbf{Nombre} 	& \textbf{Característica}	\\
+		\midrule
+		Elemento 			& Valor	\\
+		\bottomrule
+		\hline
+	\end{tabular}
+	\label{tab:ListaRecursos}
+\end{table}
+
+Se presenta el análisis de riesgos efectuado al iniciar el proyecto
+
+\begin{table}[ht]
+	\centering
+	\caption{Tabla de riesgos mitigados del proyecto}
+	\begin{tabular}{l c}    
+		\toprule
+		\textbf{Nombre} 	& \textbf{Característica}	\\
+		\midrule
+		Elemento 			& Valor	\\
+		\bottomrule
+		\hline
+	\end{tabular}
+	\label{tab:ListaRiesgos}
+\end{table}
+
+Se presenta la planificación realizada al iniciar el desarrollo del equipo
+
+\begin{figure}[ht]
+	\centering
+	%	\includegraphics[scale=.3]{./Figures/cuadradoAzul.png}
+	\caption{Fotografía del equipo actual}
+	\label{fig:DiagramaAON}
+\end{figure}
+
+\begin{figure}[ht]
+	\centering
+	%	\includegraphics[scale=.3]{./Figures/cuadradoAzul.png}
+	\caption{Fotografía del equipo actual}
+	\label{fig:DiagramaGantt}
+\end{figure}
+
+
+% ---------------------------------- Aviso fin de avance ------------------------------------
+\begin{center}
+	{\Large\color{red} De aquí en adelante solo esta la estructura del documento}
+\end{center}
+% -------------------------------------------------------------------------------------------

@@ -1,92 +1,150 @@
 \chapter{Diseño e Implementación} % Main chapter title
+\label{Chapter3} 
 
-\label{Chapter3} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
+Párrafo introductorio.
 
-\definecolor{mygreen}{rgb}{0,0.6,0}
-\definecolor{mygray}{rgb}{0.5,0.5,0.5}
-\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\section{Diseño del hardware}
+\label{sec:hardware}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% parámetros para configurar el formato del código en los entornos lstlisting
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\lstset{ %
-  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
-  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
-  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
-  breaklines=true,                 % sets automatic line breaking
-  captionpos=b,                    % sets the caption-position to bottom
-  commentstyle=\color{mygreen},    % comment style
-  deletekeywords={...},            % if you want to delete keywords from the given language
-  %escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
-  %extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
-  %frame=single,	                % adds a frame around the code
-  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
-  keywordstyle=\color{blue},       % keyword style
-  language=[ANSI]C,                % the language of the code
-  %otherkeywords={*,...},           % if you want to add more keywords to the set
-  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
-  numbersep=5pt,                   % how far the line-numbers are from the code
-  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
-  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
-  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
-  showstringspaces=false,          % underline spaces within strings only
-  showtabs=false,                  % show tabs within strings adding particular underscores
-  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
-  stringstyle=\color{mymauve},     % string literal style
-  tabsize=2,	                   % sets default tabsize to 2 spaces
-  title=\lstname,                  % show the filename of files included with \lstinputlisting; also try caption instead of title
-  morecomment=[s]{/*}{*/}
-}
+Bloques constructivos del hardware, se presenta el diagrama de bloques y se describen los mismos
 
+\begin{figure}[ht]
+	\centering
+	%	\includegraphics[scale=.3]{./Figures/cuadradoAzul.png}
+	\caption{Diagrama de bloques del equipo desarrollado}
+	\label{fig:DiagramaBloques}
+\end{figure}
 
-%----------------------------------------------------------------------------------------
-%	SECTION 1
-%----------------------------------------------------------------------------------------
-\section{Análisis del software}
- 
-La idea de esta sección es resaltar los problemas encontrados, los criterios utilizados y la justificación de las decisiones que se hayan tomado.
+Selección de los componentes, se presentan los criterios utilizados para en la selección de los componentes.
 
-Se puede agregar código o pseudocódigo dentro de un entorno lstlisting con el siguiente código:
+\section{Prototipo del hardware}
+\label{sec:prototipo}
 
-\begin{verbatim}
-\begin{lstlisting}[caption= "un epígrafe descriptivo"]
-	las líneas de código irían aquí...
-\end{lstlisting}
-\end{verbatim}
+Diseño y construcción de la placa electrónica, se presentan los criterios y el proceso utilizado para el diseño y construcción de la placa electrónica del prototipo.
 
-A modo de ejemplo:
+Montaje del prototipo, se detallan los problemas de construcciones del primer prototipo y se mencionan las correcciones en el diseño de la placa electrónica efectuadas a partir de los problemas de montaje de los componentes.
 
-\begin{lstlisting}[label=cod:vControl,caption=Pseudocódigo del lazo principal de control.]  % Start your code-block
+\begin{figure}[ht]
+	\centering
+	%	\includegraphics[scale=.3]{./Figures/cuadradoAzul.png}
+	\caption{Errores encontrados durante el montaje del primer prototipo}
+	\label{fig:ErroresMontaje}
+\end{figure}
 
-#define MAX_SENSOR_NUMBER 3
-#define MAX_ALARM_NUMBER  6
-#define MAX_ACTUATOR_NUMBER 6
+\section{Diseño del firmware}
+\label{sec:firmware}
 
-uint32_t sensorValue[MAX_SENSOR_NUMBER];		
-FunctionalState alarmControl[MAX_ALARM_NUMBER];	//ENABLE or DISABLE
-state_t alarmState[MAX_ALARM_NUMBER];						//ON or OFF
-state_t actuatorState[MAX_ACTUATOR_NUMBER];			//ON or OFF
+\subsection{Arquitectura del firmware}
 
-void vControl() {
+Se presenta la arquitectura seleccionara para el firmware del equipo, se presenta el diagrama de componentes de software del mismo y se describen brevemente las capas del mismo
 
-	initGlobalVariables();
-	
-	period = 500 ms;
-		
-	while(1) {
+\begin{figure}[ht]
+	\centering
+	%	\includegraphics[scale=.3]{./Figures/cuadradoAzul.png}
+	\caption{Diagrama de componentes del firmware del equipo}
+	\label{fig:DiagramaComponentes}
+\end{figure}
 
-		ticks = xTaskGetTickCount();
-		
-		updateSensors();
-		
-		updateAlarms();
-		
-		controlActuators();
-		
-		vTaskDelayUntil(&ticks, period);
-	}
-}
-\end{lstlisting}
+\begin{figure}[ht]
+	\centering
+	%	\includegraphics[scale=.3]{./Figures/cuadradoAzul.png}
+	\caption{Diagrama de clases del firmware del equipo}
+	\label{fig:DiagramaClases}
+\end{figure}
 
+\subsection{Capa de abstracción del hardware}
 
+Se describen las clases que componen la capa de abstracción de hardware
 
+\subsection{Capa de controladores}
+
+Se describen las clases que componen la capa de controladores
+
+\begin{figure}[ht]
+	\centering
+	%	\includegraphics[scale=.3]{./Figures/cuadradoAzul.png}
+	\caption{Diagrama de estado para el control de una puerta, sin sensor de apertura y con liberación electromagnética}
+	\label{fig:ControlSinSin}
+\end{figure}
+
+\begin{figure}[ht]
+	\centering
+	%	\includegraphics[scale=.3]{./Figures/cuadradoAzul.png}
+	\caption{Diagrama de estado para el control de una puerta, con sensor de apertura y con liberación electromagnética}
+	\label{fig:ControlSinCon}
+\end{figure}
+
+\begin{figure}[ht]
+	\centering
+	%	\includegraphics[scale=.3]{./Figures/cuadradoAzul.png}
+	\caption{Diagrama de estado para el control de una puerta, sin sensor de apertura y con liberación motorizada}
+	\label{fig:ControlConSin}
+\end{figure}
+
+\begin{figure}[ht]
+	\centering
+	%	\includegraphics[scale=.3]{./Figures/cuadradoAzul.png}
+	\caption{Diagrama de estado para el control de una puerta, con sensor de apertura y con liberación motorizada}
+	\label{fig:ControlConCon}
+\end{figure}
+
+\subsection{Tareas del sistema}
+
+Se describen las tareas del sistema operativo de tiempo real y las interacciones entre las mismas.
+
+\begin{figure}[ht]
+	\centering
+	%	\includegraphics[scale=.3]{./Figures/cuadradoAzul.png}
+	\caption{Diagrama de secuencia para la liberación por pulsador de una puerta, sin sensor de apertura y con liberación electromagnética}
+	\label{fig:SecuanciaPulsador}
+\end{figure}
+
+\begin{figure}[ht]
+	\centering
+	%	\includegraphics[scale=.3]{./Figures/cuadradoAzul.png}
+	\caption{Diagrama de secuencia para la apertura y cierre por tarjeta de proximidad, con sensor de apertura y con liberación electromagnética}
+	\label{fig:SecuenciaTarjeta}
+\end{figure}
+
+\begin{figure}[ht]
+	\centering
+	%	\includegraphics[scale=.3]{./Figures/cuadradoAzul.png}
+	\caption{Diagrama de secuencia para la activación de alarma por apertura forzada de la puerta}
+	\label{fig:SecuenciaForzada}
+\end{figure}
+
+\begin{figure}[ht]
+	\centering
+	%	\includegraphics[scale=.3]{./Figures/cuadradoAzul.png}
+	\caption{Diagrama de secuencia para el cambio de configuración del equipo}
+	\label{fig:SecuenciaConfiguracion}
+\end{figure}
+
+\section{Desarrollo del firmware}
+\label{sec:desarrollo}
+
+\subsection{Entorno de desarrollo}
+
+Se describen las herramientas utilizadas para el desarrollo del software
+
+\begin{table}[ht]
+	\centering
+	\caption{Lista de las herramientas utilizadas para el desarrollo del firmware}
+	\begin{tabular}{l c}    
+		\toprule
+		\textbf{Nombre} 	& \textbf{Característica}	\\
+		\midrule
+		Elemento 			& Valor	\\
+		\bottomrule
+		\hline
+	\end{tabular}
+	\label{tab:HerramientasDesarrollo}
+\end{table}
+
+\subsection{Uso del tipo de abstracto de datos}
+
+Se presenta el patrón de programación denominado tipo abstracto de datos y se explica su uso en la implementación del firmware del equipo
+
+\subsection{Pruebas de integración en las tareas del sistema}
+
+Se presenta la problemática de implementar pruebas automatizadas en tareas del sistema operativo FreeRTOS y se explica la herramienta desarrollada para resolver este problema

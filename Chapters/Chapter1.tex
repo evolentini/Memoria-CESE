@@ -1,294 +1,139 @@
+% !TeX encoding = UTF-8
+% !TeX spellcheck = es_ES
 % Chapter 1
+
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
 \chapter{Introducción General} % Main chapter title
 
-\label{Chapter1} % For referencing the chapter elsewhere, use \ref{Chapter1} 
+\label{Chapter1}
 \label{IntroGeneral}
 
-%----------------------------------------------------------------------------------------
+En el presente capitulo se presentan los aspectos generales del trabajo desarrollado y una breve introducción a las tecnologías utilizadas en el mismo.
 
-% Define some commands to keep the formatting separated from the content 
-\newcommand{\keyword}[1]{\textbf{#1}}
-\newcommand{\tabhead}[1]{\textbf{#1}}
-\newcommand{\code}[1]{\texttt{#1}}
-\newcommand{\file}[1]{\texttt{\bfseries#1}}
-\newcommand{\option}[1]{\texttt{\itshape#1}}
-\newcommand{\grados}{$^{\circ}$}
+\section{Descripción del problema}
+\label{sec:descripcion}
 
-%----------------------------------------------------------------------------------------
-
-%\section{Introducción}
-
-%----------------------------------------------------------------------------------------
-\section{Aprendiendo \LaTeX{}}
-
-\LaTeX{} no es \textsc{WYSIWYG} (What You See is What You Get), a diferencia de los procesadores de texto como Microsoft Word o Pages de Apple o incluso LibreOffice en el mundo open-source. En lugar de ello, un documento escrito para \LaTeX{} es en realidad un archivo de texto simple, llano que \emph{no contiene formato} . Nosotros le decimos a \LaTeX{} cómo deseamos que se aplique el formato en el documento final escribiendo comandos simples entre el texto, por ejemplo, si quiero usar \emph{texto en cursiva para dar énfasis}, escribo \verb|\emph{texto}| y pongo el texto en cursiva que quiero entre medio de las llaves. Esto significa que \LaTeX{} es un lenguaje del tipo \enquote{mark-up}, muy parecido a HTML.
-
-\subsection{Una introducción (no tan corta) a \LaTeX{}}
-
-Si usted es nuevo a \LaTeX{}, hay un muy buen libro electrónico - disponible gratuitamente en Internet como un archivo PDF - llamado, \enquote{A (not so short) Introduction to \LaTeX{}}. El título del libro es generalmente acortado a simplemente \emph{lshort}. Puede descargar la versión más reciente en inglés (ya que se actualiza de vez en cuando) desde aquí:
-\url{http://www.ctan.org/tex-archive/info/lshort/english/lshort.pdf}
-
-Está disponible en varios idiomas además del inglés. Se puede encontrar la versión en español en la lista en esta página: \url{http://www.ctan.org/tex-archive/info/lshort/}
-
-
-\subsection{Guía matemática rápida para \LaTeX{}}
-
-Si usted está escribiendo un documento con mucho contenido matemático, entonces es posible que desee leer el documento de la AMS (American Mathematical Society) llamado, \enquote{A Short Math Guide for \LaTeX{}}. Se puede encontrar en línea en el siguiente link: \url{http://www.ams.org/tex/amslatex.html} en la sección \enquote{Additional Documentation} hacia la parte inferior de la página.
-
-
-%----------------------------------------------------------------------------------------
-
-\section{Utilizando esta plantilla}
-
-Si usted está familiarizado con \LaTeX{}, entonces puede explorar la estructura de directorios de esta plantilla y proceder a personalizarla agregando su información en el bloque \emph{INFORMACIÓN DE LA PORTADA} en el archivo \file{memoria.tex}.  
-
-Se puede continuar luego modificando el resto de los archivos siguiendo los lineamientos que se describen en la sección \ref{sec:FillingFile} en la página \pageref{sec:FillingFile}.
-
-Asegúrese de leer el capítulo \ref{Chapter2} acerca de las convenciones utilizadas para las Memoria de los Trabajos Finales de la Carrera de Especialización en Sistemas Embebidos de FIUBA.
-
-Si es nuevo en \LaTeX{} se recomienda que continue leyendo el documento ya que contiene información básica para aprovechar el potencial de esta herramienta.
-
-
-\subsection{Acerca de esta plantilla}
-
-Esta plantilla \LaTeX{} está basada originalmente en torno a un archivo de estilo \LaTeX{} creado por Steve R.\ Gunn de la  University of Southampton (UK), department of Electronics and Computer Science. Se puede encontrar su trabajo original en el siguiente sitio de internet:
-\url{http://www.ecs.soton.ac.uk/~srg/softwaretools/document/templates/}
-
-El archivo de Gunn, \file{ecsthesis.cls} fue posteriormente modificado por Sunil Patel quien creó una plantilla esqueleto con la estructura de carpetas. El template resultante se puede encontrar en el sitio web de Sunil Patel:
-\url{http://www.sunilpatel.co.uk/thesis-template}
-
-El template de Patel se publicó a través de  \url{http://www.LaTeXTemplates.com} desde donde fue modificado muchas veces en base a solicitudes de usuarios. La versión 2.0 y subsiguientes representan cambios significativos respecto a la versión de la plantilla modificada por Patel, que es de hecho, dificilmente reconocible. El trabajo en la version 2.0 fue realizado por Vel Gayevskiy y Johannes Böttcher.
-
-Para la Carrera de Especialización en Sistemas Embebidos de FIUBA, la versión versión 2.3 fue modificada por el Ing. \href{mailto:pbos@fi.uba.ar}{Patricio Bos} para crear una plantilla fuertemente adaptada a la carrera de especialización.
-
-%----------------------------------------------------------------------------------------
-
-\section{Qué incluye esta plantilla}
-
-\subsection{Carpetas}
-
-Esta plantilla se distribuye como una único archivo .zip que se puede descomprimir en varios archivos y carpetas. Los nombres de las carpetas son (o pretender ser) auto-explicativos.
-
-\keyword{Appendices} -- Esta es la carpeta donde se deben poner los apéndices. Cada apéndice debe ir en su propio archivo \file{.tex}. Se incluye un ejemplo y una plantilla en la carpeta.
-
-\keyword{Chapters} -- Esta es la carpeta donde se deben poner los capítulos de la memoria. Cada capítulo debe ir un su propio archivo \file{.tex} por separado.  Se ofrece por defecto, la siguiente estructura de capítulos y se recomienda su utilización dentro de lo posible:
+El control de las personas que acceden a un ambiente es una de las aplicaciones que se benefician desde hace largo tiempo con los avances de la electrónica. El reemplazo de las cerraduras mecánicas y sus correspondientes llaves por sistemas electrónicos lleva mas de 30 años, y continua en plena expansión. Actualmente existe en el mercado una oferta de equipos muy amplia y variada, que utilizan diferente medios para identificar a las personas que intentan acceder. Los métodos de identificación mas difundidos en la actualidad son:
 
 \begin{itemize}
-\item Capítulo 1: Introducción general	
-\item Capítulo 2: Introducción específica
-\item Capítulo 3: Diseño e implementación
-\item Capítulo 4: Ensayos y resultados
-\item Capítulo 5: Conclusiones
-
+	\item Clave numérica: para la identificación del usuario se le asigna una clave numérica que se ingresa mediante un teclado que forma parte del equipo. Este esquema es el mas económico pero también el más inseguro ya que la clave puede fácilmente darse a conocer a personas no autorizadas. 
+	\item Tarjetas de proximidad: para la identificación se utilizan unos sistemas electrónicos que se alimentan al aproximarlos a un lector y transmiten información que permite identificar al portador. Las tarjetas en realidad pueden adoptar otros formatos como llaveros o etiquetas autoadhesivas. Este esquema resulta más costoso pero también más seguro que el anterior ya que las tarjetas no pueden replicarse fácilmente, aunque si es posible prestarlas a personas no autorizadas.
+	\item Reconocimiento de huella digital: para la identificación se toma una imagen de un dedo del usuario y se reconoce la geometría de las huellas digitales del mismo. Este esquema es el mas costos y seguro de todos, ya que duplicar una huella digital es una tarea realmente compleja.
 \end{itemize}
 
-Esta estructura de capítulos es la que se recomienda para las memorias de la especialización.
-
-\keyword{Figures} -- Esta carpeta contiene todas las figuras de la memoria.  Estas son las versiones finales de las imágenes que van a ser incluidas en la memoria.  Pueden ser imágenes en formato \textit{raster}\footnote{\url{https://en.wikipedia.org/wiki/Raster_graphics}} como \file{.png}, \file{.jpg} o en formato vectoriales\footnote{\url{https://en.wikipedia.org/wiki/Vector_graphics}} como \file{.pdf}, \file{.ps}.  Se debe notar que utilizar imágenes vectoriales disminuye notablemente el peso del documento final y acelera el tiempo de compilación por lo que es recomendable su utilización siempre que sea posible.
-
-\subsection{Archivos}
-
-También están incluidos varios archivos, la mayoría de ellos son de texto plano y se puede ver su contenido en un editor de texto. Después de la compilación inicial, se verá que más archivos auxiliares son creados por \ LaTeX{} o BibTeX, pero son de uso interno y que no es necesario eliminarlos o hacer nada con ellos.  Toda la información necesaria para complilar el documento se encuentra en los archivos \file{.tex} y en las imágenes de la carpeta Figures.
-
-\keyword{referencias.bib} - este es un archivo importante que contiene toda la información de referencias bibliográficas que se utilizarán para las citas en la memoria en conjunto con BibTeX. Usted puede escribir las entradas bibliográficas en forma manual, aunque existen también programas de gestión de referencias que facilitan la creación y gestión de las referencias y permiten exportarlas en formato BibTeX.  También hay disponibles sitios web como \url{books.google.com} que permiten obtener toda la información necesaria para una cita en formato BibTeX. Ver sección \ref{sec:biblio}
-
-\keyword{MastersDoctoralThesis.cls} -- este es un archivo importante. Es el archivos con la clase que le informa a \LaTeX{} cómo debe dar formato a la memoria. El usuario de la plantilla no debería necesitar modificar nada de este archivo.
-
-\keyword{memoria.pdf} -- esta es su memoria con una tipografía bellamente compuesta (en formato de archivo PDF) creado por \LaTeX{}. Se distribuye con la plantilla y después de compilar por primera vez sin hacer ningún cambio se debería obtener una versión idéntica a este documento.
-
-\keyword{memoria.tex} -- este es un archivo importante. Este es el archivo que tiene que compilar \LaTeX{} para producir la memoria como un archivo PDF. Contiene un marco de trabajo y estructuras que le indican a \LaTeX{} cómo diagramar la memoria.  Está altamente comentado para que se pueda entender qué es lo que realiza cada línea de código y por qué está incluida en ese lugar.  En este archivo se debe completar la información personalizada de las primeras sección según se indica en la sección \ref{sec:FillingFile}.
-
-Archivos que \emph{no} forman parte de la distribución de la plantilla pero que son generados por \LaTeX{} como archivos auxiliares necesarios para la producción de la memoria.pdf son:
-
-\keyword{memoria.aux} -- este es un archivo auxiliar generado por \LaTeX{}, si se borra \LaTeX{} simplemente lo regenera cuando se compila el archivo principal \file{memoria.tex}.
-
-\keyword{memoria.bbl} -- este es un archivo auxiliar generado por BibTeX, si se borra BibTeX simplemente lo regenera cuando se compila el archivo principal \file{memoria.tex}. Mientras que el archivo \file{.bib} contiene todas las referencias que hay, este archivo \file{.bbl} contine sólo las referencias que han sido citadas y se utiliza para la construcción de la bibiografía.
-
-\keyword{memoria.blg} -- este es un archivo auxiliar generado por BibTeX, si se borra BibTeX simplemente lo regenera cuando se compila el archivo principal \file{memoria.tex}.
-
-\keyword{memoria.lof} -- este es un archivo auxiliar generado por \LaTeX{}, si se borra \LaTeX{} simplemente lo regenera cuando se compila el archivo principal \file{memoria.tex}.  Le indica a \LaTeX{} cómo construir la sección \emph{Lista de Figuras}.
- 
-\keyword{memoria.log} --  este es un archivo auxiliar generado por \LaTeX{}, si se borra \LaTeX{} simplemente lo regenera cuando se compila el archivo principal \file{memoria.tex}. Contiene mensajes de \LaTeX{}. Si se reciben errores o advertencias durante la compilación, se guardan en este archivo \file{.log}.
-
-\keyword{memoria.lot} -- este es un archivo auxiliar generado por \LaTeX{}, si se borra \LaTeX{} simplemente lo regenera cuando se compila el archivo principal \file{memoria.tex}.  Le indica a \LaTeX{} cómo construir la sección \emph{Lista de Tablas}.
-
-\keyword{memoria.out} -- este es un archivo auxiliar generado por \LaTeX{}, si se borra \LaTeX{} simplemente lo regenera cuando se compila el archivo principal \file{memoria.tex}.
-
-De esta larga lista de archivos, sólo aquellos con la extensión \file{.bib}, \file{.cls} y \file{.tex} son importantes.  Los otros archivos auxiliares pueden ser ignorados o borrados ya que \LaTeX{} y BibTeX los regenerarán durante la compilación.
-
-%----------------------------------------------------------------------------------------
-
-\section{Entorno de trabajo}
-
-Ante de comenzar a editar la plantilla debemos tener un editor \LaTeX{} instalado en nuestra computadora.  En forma análoga a lo que sucede en lenguaje C, que se puede crear y editar código con casi cualquier editor, exiten ciertos entornos de trabajo que nos pueden simplificar mucho la tarea.  En este sentido, se recomienda, sobre todo para los principiantes en \LaTeX{} la utilización de TexMaker, un programa gratuito y multi-plantaforma que está disponible tanto para windows como para sistemas GNU/linux.
-
-La versión más reciente de TexMaker es la 4.5 y se puede descargar del siguiente link: \url{http://www.xm1math.net/texmaker/download.html}. Se puede consultar el manual de usuario en el siguiente link: \url{http://www.xm1math.net/texmaker/doc.html}.
- 
-
-\subsection{Paquetes adicionales}
-
-Si bien durante el proceso de instalación de TexMaker, o cualquier otro editor que se haya elegido, se instalarán en el sistema los paquetes básicos necesarios para trabajar con \LaTeX{}, la plantilla de los trabajos de Especialización y Maestría requieren de paquete adicionales.
-
-Se indican a continuación los comandos que se deben introducir en la consola de Ubuntu (ctrl + alt + t) para instalarlos:
-
-\begin{lstlisting}[language=bash]
-  $ sudo apt install texlive-lang-spanish texlive-science 
-  $ sudo apt install texlive-bibtex-extra biber
-  $ sudo apt install texlive texlive-fonts-recommended
-\end{lstlisting}
-
-
-\subsection{Configurando TexMaker}
-
-
-Una vez instalado el programa y los paquetes adicionales se debe abrir el archivo memoria.tex con el editor para ver una pantalla similar a la que se puede apreciar en la figura \ref{fig:texmaker}. 
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{./Figures/texmaker.png}
-	\caption{Entorno de trabajo de texMaker.}
-	\label{fig:texmaker}
-\end{figure}
-
-Notar que existe una vista llamada Estructura a la izquierda de la interface que nos permite abrir desde dentro del programa los archivos individuales de los capítulos.  A la derecha se encuentra una vista con el archivo propiamente dicho para su edición. Hacia la parte inferior se encuentra una vista del log con información de los resultados de la compilación.  En esta última vista pueden aparecen advertencias o \textit{warning}, que normalmente pueden ser ignorados, y los errores que se indican en color rojo y deben resolverse para que se genere el PDF de salida.
-
-Recordar que el archivo que se debe compilar con PDFLaTeX es \file{memoria.tex}, si se tratara de compilar alguno de los capítulos saldría un error.  Para salvar la molestia de tener que cambiar de archivo para compilar cada vez que se realice una modificación en un capítulo, se puede definir el archivo \file{memoria.tex} como ``documento maestro'' yendo al menú opciones -> ``definir documento actual como documento maestro'', lo que permite compilar con PDFLaTeX memoria.tex directamente desde cualquier archivo que se esté modificando . Se muestra esta opción en la figura \ref{fig:docMaestro}.
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{./Figures/docMaestro.png}
-	\caption{Definir memoria.tex como documento maestro.}
-	\label{fig:docMaestro}
-\end{figure}
-
-En el menú herramientas se encuentran las opciones de compilación.  Para producir un archivo PDF a partir de un archivo .tex se debe ejecutar PDFLaTeX (el shortcut es F6). Para incorporar nueva bibliografía se debe utilizar la opción BibTeX del mismo menú herramientas (el shortcut es F11).
-
-Notar que para actualizar las tablas de contenidos se debe ejecutar PDFLaTeX dos veces.  Esto se debe a que es necesario actualizar algunos archivos auxiliares antes de obtener el resultado final.  En forma similar, para actualizar las referecias se debe ejecutar primero PDFLaTeX, después BibTeX y finalmente PDFLaTeX dos veces por idénticos motivos.
-
-\section{Personalizando la plantilla, el archivo \file{memoria.tex}}
-\label{sec:FillingFile}
-
-Para personalizar la plantilla se debe incorporar la información propia en los distintos archivos \file{.tex}. 
-
-Primero abrir \file{memoria.tex} con TexMaker (o el editor de su preferencia). Se debe ubicar dentro del archivo el bloque de código titulado \emph{INFORMACIÓN DE LA PORTADA} donde se deben incorporar los primeros datos personales con los que se constuirá automáticamente la portada.
-
-
-%----------------------------------------------------------------------------------------
-
-\section{El código del archivo \file{memoria.tex} explicado}
-
-El archivo \file{memoria.tex} contiene la estructura del documento y es el archivo de mayor jeraquía de la memoria.  Podría ser equiparable a la función \emph{main()} de un programa en C, o mejor dicho al archivo fuente .c donde se encuentra definida la función main().
-
-La estructura básica de cualquier documento de \LaTeX{} comienza con la definición de clase del documento, es seguida por un preámbulo donde se pueden agregar funcionalidades con el uso de \texttt{paquetes} (equiparables a bibliotecas de C), y finalmente, termina con el cuerpo del documento, donde irá el contenido de la memoria.
-
-\lstset{%
-  basicstyle=\small\ttfamily,
-  language=[LaTeX]{TeX}
-}
-
-\begin{lstlisting}
-\documentclass{article}  <- Definicion de clase
-\usepackage{listings}	 <- Preambulo
-
-\begin{document}	 <- Comienzo del contenido propio 
-	Hello world!
-\end{document}
-\end{lstlisting}
-
-
-El archivo \file{memoria.tex} se encuentra densamente comentado para explicar qué páginas, secciones y elementos de formato está creando el código \LaTeX{} en cada línea. El código está dividido en bloques con nombres en mayúsculas para que resulte evidente qué es lo que hace esa porción de código en particular. Inicialmente puede parecer que hay mucho código \LaTeX{}, pero es principalmente código para dar formato a la memoria por lo que no requiere intervención del usuario de la plantilla.  Sí se deben personalizar con su información los bloques indicados como:
+Independientemente del medio utilizado para la identificación del usuario, todos los equipos tienen una forma de operación y configuración similar, la que puede ser clasificada en tres grandes grupos:
 
 \begin{itemize}
-	\item Informacion de la memoria
-	\item Carátula
-	\item Resumen
-	\item Agradecimientos
-	\item Dedicatoria
+	\item Equipos autónomos: son los más económicos y fáciles de instalar, ya que solo requieren alimentación y la conexión con el mecanismo que libera la puerta para permitir el acceso. Dentro de este grupo podemos encontrar incluso equipos que se integran dentro de una cerradura tradicional y se alimentan con baterías, lo que simplifica al máximo la instalación de los mismos. La principal desventaja de este tipo de equipos es la gestión de las personas autorizadas a ingresar. En general estos equipos integran unos teclados muy básicos con los que se pueden agregar y borrar las personas autorizadas mediante secuencias de códigos numéricos bastante poco amigables con los usuarios finales.
+	\item Equipos en linea: son los mas seguros pero también los mas costos y complejos de instalar. Estos equipos incorporan una interfaz de comunicaciones para validar cada operación de acceso con un servidor central en tiempo real. De esta forma la gestión de las personas autorizadas se realiza en forma centralizada sobre dicho servidor mediante un programa informático mucho mas simple de utilizar. Este esquema puede ademas incorporar mayor complejidad en las validaciones efectuadas para autorizar el ingreso de una persona. La principal desventaja de este esquema es que resulta muy sensible a una falla en la red de comunicaciones o en el servidor de autorizaciones.
+	\item Equipos gestionados: son equipos autónomos que incorporan una interfaz de comunicaciones para permitir la gestión de los mismos en una forma más simple. En muchos casos son equipos que pueden ademas operar en linea. Podría pensarse que estos equipo combinan las desventajas de los dos anteriores, pero esto no es verdad. Si bien el costo es mayor que el de un equipo autónomo,  no requiere toda la infraestructura de los equipos que operan en linea, lo que disminuye significativamente el costo total de la solución. A cambio de ese aumento en el costo permiten una gestión mas simple ya que es posible utilizar una computadora con un software amigable.
 \end{itemize}
 
-El índice de contenidos, las listas de figura de tablas se generan en forma automática y no requieren intervención ni edición manual por parte del usuario de la plantilla. 
+Como se desprende del análisis anterior resulta muy difícil encontrar un equipo adecuado para el mercado hogareño o de pequeñas oficinas. A pesar de que la oferta del mercado es muy amplia no existen mucho equipos que combinen adecuadamente las características de precio con la facilidad de instalación y gestión necesarias en un ambiente donde el usuario final posee conocimientos técnicos muy limitados. Por estas razones la mayoría de los equipos destinados a este mercado corresponden al grupo de los equipos gestionados. Sin embargo la mayoría de los mismos utilizan interfaces de comunicaciones cableadas, las que complican la instalación y permiten la gestión unicamente desde una computadora.
 
-En la parte final del documento se encuentran los capítulos y los apéndices.  Por defecto se incluyen los 5 capítulos propuestos que se encuentran en la carpeta /Chapters. Cada capítulo se debe escribir en un archivo .tex separado y se debe poner en la carpeta \emph{Chapters} con el nombre \file{Chapter1}, \file{Chapter2}, etc\ldots El código para incluir capítulos desde archivos externos se muestra a continuación.
+Punku nace como una propuesta de la firma EQUISER para resolver el problema del control de accesos en hogares, pequeñas oficinas, consorcios de departamentos y cocheras. Las características mas importantes de este mercado son la poca cantidad de puertas controladas, falta de personal técnico para la gestión del equipo, y en el caso de los consorcios y cocheras, frecuentes cambios en la lista de personas autorizadas. Para lograr la mejor relación entre seguridad, precio y facilidad de gestión, el equipo puede funcionar con tarjetas de proximidad o con controles remotos. Ademas utiliza una interfaz \emph{Bluetooth} que permite gestionarlo desde un dispositivo móvil, que puede ser una computadora portátil, un teléfono celular inteligente o una tableta. También incorpora una entrada para un sensor que permite detectar la apertura de la puerta, y una salida de alarma para informar cuando la misma permanece abierta por más tiempo del adecuado. En la figura \ref{fig:EquipoActual} se puede ver una imagen del equipo actual con su correspondiente lectora de proximidad.
 
-\begin{verbatim}
-	\include{Chapters/Chapter1}
-	\include{Chapters/Chapter2} 
-	\include{Chapters/Chapter3}
-	\include{Chapters/Chapter4} 
-	\include{Chapters/Chapter5} 
-\end{verbatim}
+\begin{figure}[ht]
+	\centering
+	\vspace{3mm}
+	\includegraphics[scale=.5]{./Figures/EquipoActual.png}
+	\caption{Fotografía del equipo actual}
+	\label{fig:EquipoActual}
+\end{figure}
 
-Los apéndices también deben escribirse en archivos .tex separados, que se deben ubicar dentro de la carpeta \emph{Appendices}. Los apéndices vienen comentados por defecto con el caracter \code{\%} y para incluirlos simplemente se debe eliminar dicho caracter.
+En la tabla \ref{tab:ComparacionActual} se puede ver un cuadro comparativo del producto actual con otros equipos existentes en el mercado. Como se puede observar la oferta se polariza en dos tipos de equipos: totalmente autónomos gestionados mediante un teclado numérico muy limitado o equipos con conexiones cableadas (ethernet o usb) que solo pueden ser gestionados desde computadoras de escritorio o portátiles. En el mercado internacional si existen equipos que se pueden gestionar desde un dispositivo móvil, pero tampoco en este escenario la oferta es abundante. Por estas razones Punku constituye una solución atractiva que busca imponerse principalmente por la facilidad de manejo por parte del usuario final. 
 
-Finalmente, se encuentra el código para incluir la bibliografía en el documento final.  Este código tampoco debe modificarse. La metodología para trabajar las referencias bibliográficas se desarrolla en la sección \ref{sec:biblio}.
-%----------------------------------------------------------------------------------------
+\begin{table}[ht]
+	\centering
+	\caption{Cuadro comparativo con otros equipos del mercado}
+	\begin{tabular}{C{25mm} C{25mm} C{50mm} C{20mm}}    
+		\toprule
+		\textbf{Equipo}  
+			& \textbf{Tecnología} 
+			& \textbf{Forma de gestión}
+			& \textbf{Valor}  \\
+		\midrule
+		EQUISER \newline Punku 
+			& Proximidad y remotos RF
+			& Gestionado desde un \newline celular usando bluetoth
+			& \$ 3.000\\
+		Tebas \newline 208NW \cite{TEBAS}
+			& Proximidad
+			& Teclado numérico \newline integrado en el equipo
+			& \$ 4.000\\
+		ZK \newline MA300IS \cite{ZK}
+			& Proximidad \newline y huellas
+			& Computadora conectada \newline mediante Ethernet
+			& \$ 10.000\\
+		ANVIZ \newline T5 Pro \cite{ANVIZ}
+			& Proximidad \newline y huellas
+			& Computadora conectada \newline mediante Ethernet o USB
+			& \$ 8.000\\
+		\bottomrule
+		
+		\hline
+	\end{tabular}
+	\label{tab:ComparacionActual}
+\end{table}
 
-\section{Bibliografía}
-\label{sec:biblio}
+\section{Motivación}
+\label{sec:motivacion}
 
-Las opciones de formato de la bibliografía se controlan a través del paquete de latex \option{biblatex} que se incluye en la memoria en el archivo memoria.tex.  Estas opciones determinan cómo se generan las citas bibliográficas en el cuerpo del documento y cómo se genera la biblografía al final de la memoria.
+En la figura \ref{fig:BloquesActual} se puede observar un diagrama de bloques del equipo que se produce actualmente. En el mismo encontramos dos unidades funcionales: 
 
-En el preámbulo se puede encontrar el código que incluye el paquete biblatex, que no requiere ninguna modificación del usuario de la plantilla, y que contiene las siguientes opciones:
+\begin{itemize}
+	\item La lectora de proximidad: es la responsable de generar la el campo magnético que alimenta a las tarjetas y decodificar la información enviada por estas.
+	\item El procesador: que es el responsable de determinar si la tarjeta leída puede o no acceder, registrar los movimientos de acceso, accionar las salidas para autorizar el ingreso, supervisar el estado de la puerta y comunicarse con el equipo móvil para permitir gestionar la configuración del mismo.
+\end{itemize}
 
-\begin{lstlisting}
-\usepackage[backend=bibtex,
-	natbib=true, 
-	style=numeric, 
-	sorting=none]
-{biblatex}
-\end{lstlisting}
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\textwidth]{./Figures/BloquesActual.pdf}
+	\caption{Diagrama de bloques del equipo actual}
+	\label{fig:BloquesActual}
+\end{figure}
 
-En el archivo \file{reference.bib} se encuentran las referencias bibliográficas que se pueden citar en el documento.  Para incorporar una nueva cita al documento lo primero es agregarla en este archivo con todos los campos necesario.  Todas las entradas bibliográficas comienzan con $@$ y una palabra que define el formato de la entrada.  Para cada formato existen campos obligatorios que deben completarse. No importa el orden en que las entradas estén definidas en el archivo .bib.  Tampoco es importante el orden en que estén definidos los campos de una entrada bibliográfica. A continuación se muestran algunos ejemplos:
+La versión en producción del equipo fue diseñada en el año 2013 y los cambios de tecnologías de estos últimos seis años demandaban las siguientes actualizaciones en el diseño del mismo:
 
-\begin{lstlisting}
-@ARTICLE{ARTICLE:1,
-    AUTHOR="John Doe",
-    TITLE="Title",
-    JOURNAL="Journal",
-    YEAR="2017",
-}
-\end{lstlisting}
+\begin{itemize}
+	\item Cambio del procesador principal: para el desarrollo original se utilizó un microcontrolador de la familia \emph{ColdFire} producidos por la empresa \emph{Freescale}. Con el avance de los procesadores \emph{Cortex} el fabricante fue dejando de lado el desarrollo de esta gama de productos, por lo que en este momento el microcontrolador utilizado resulta más costoso que un procesador más nuevo con mayores prestaciones. Lamentablemente no existe una oferta por parte del fabricante de un microcontrolador con una disposición de terminales pensada para efectuar un reemplazo directo del utilizado actualmente.
+	
+	\item Cambio de la interfaz de comunicaciones: el equipo actual utiliza para la comunicación una interfaz \emph{Bluetoth} 2. Poco tiempo después del desarrollo se aprobó la versión 4 de este protocolo, la cual fue adoptado rápidamente por la firma \emph{Apple}. Esta nueva versión del protocolo no es compatible con la anterior, y si bien algunos equipos pueden funcionar en ambos modos de trabajo, este no es el caso de los equipos \emph{iPhone}, donde para privilegiar la duración de la batería solo pueden operar con \emph{Bluetooth} 4.
+	
+	\item Incorporación de un reloj: al comercializar las primeras unidades surgió el requerimiento de algunos clientes para disponer de un registro de acceso con fecha y hora de cada evento. El equipo actual no dispone de un \emph{Real Time Clock} (RTC) que le permita mantener la fecha y hora cuando el mismo no dispone de alimentación eléctrica. De esta forma si bien el equipo registra los eventos con fecha y hora, la misma vuelve a una fecha inicial preestablecida cada vez que se reinicia el mismo, y es necesaria una comunicación desde el celular para reajustar el reloj interno. El resultado es que la mayoría de los registros de accesos no tienen una fecha y hora validas.
+	
+	\item Soporte para cerraduras motorizadas: uno de los principales obstáculos para la instalación de equipos para el control de accesos en el mercado al cual esta destinado Punku son los cortes de alimentación eléctrica. Según el tipo de cerradura que se utilice, ante una falla de energía la puerta quedará cerrada y no se podrá acceder, o peor aun quedará abierta en forma permanente. Una solución a este problema es combinar una cerradura con llave y un sistema motorizado que permita la liberación y el bloqueo de la puerta por cualquiera de los medios. Para esto el equipo debe poder invertir la alimentación en la salida que controla al motor, y de esta forma poder liberar o bloquear el mecanismo en función del sentido de giro del mismo.
+	
+	\item Gestión desde la nube: con el avance en la conectividad a Internet se volvió más común disponer de equipos que pueden ser gestionados en forma remota. En el caso de un control de accesos siempre resulta atractiva la posibilidad de cambiar el permiso de acceso de una persona en forma inmediata sin necesidad de estar cerca del equipo. El uso de \emph{Bluetooth} como interfaz de comunicaciones resulta un obstáculo para esta funcionalidad por su corto alcance y porque nunca se popularizaron equipos equivalente a los \emph{routers} de \emph{WiFi} que permitan el acceso a Internet utilizando Bluetooth.
+\end{itemize}
 
+\section{Objetivos y alcance}
+\label{sec:objetivos}
 
-\begin{lstlisting}
-@BOOK{BOOK:1,
-    AUTHOR="John Doe",
-    TITLE="The Book without Title",
-    PUBLISHER="Dummy Publisher",
-    YEAR="2100",
-}
-\end{lstlisting}
+El objetivo general del trabajo desarrollado fue el diseño y la implementación de un prototipo de una nueva versión del equipo para control de accesos Punku que resuelva los problemas mencionados en la sección \ref{sec:motivacion}. Los objetivos particulares definidos para el mismo fueron:
 
+\begin{enumerate}
+	\item Diseñar el nuevo equipo utilizando un módulo de la familia ESP-32 del fabricante Espressif, el cual incorpora interfaces de comunicación \emph{Wifi} y \emph{Bluetooth} en las versiones 2 y 4.
+	
+	\item Agregar al nuevo equipo un circuito integrado RTC con respaldo de batería que le permita mantener la fecha y hora validos cuando se producen interrupciones en el suministro de energía eléctrica.
+	
+	\item Agregar al nuevo equipo la posibilidad de invertir la polaridad de alimentación en la salida que libera la cerradura de forma tal que se pueda utilizar un sistema motorizado para destrabar la puerta.
+	
+	\item Mantener las características generales del equipo actual en el nuevo diseño, tratando en lo posible de mejorar aun mas la facilidad de gestión del equipo y de disminuir el costo del mismo.
+	
+	\item Desarrollar el firmware del equipo desde cero, utilizando un sistema operativo de tiempo real y un diseño modular que permita escalar las funcionalidades del equipo.
+\end{enumerate}
 
-\begin{lstlisting}
-@INBOOK{BOOK:2,
-    AUTHOR="John Doe",
-    TITLE="The Book without Title",
-    PUBLISHER="Dummy Publisher",
-    YEAR="2100",
-    PAGES="100-200",
-}
-\end{lstlisting}
+El resultado esperado es entonces un prototipo totalmente funcional del equipo, que incorpore las mejoras ya mencionadas acompañado de la siguiente documentación:
 
-
-\begin{lstlisting}
-@MISC{WEBSITE:1,
-    HOWPUBLISHED = "\url{http://example.com}",
-    AUTHOR = "Intel",
-    TITLE = "Example Website",
-    MONTH = "12",
-    YEAR = "1988",
-    URLDATE = {2012-11-26}
-}
-\end{lstlisting}
-
-Se debe notar que los nombres \emph{ARTICLE:1}, \emph{BOOK:1}, \emph{BOOK:2} y \emph{WEBSITE:1} son nombres de fantasía que le sirve al autor del documento para indentificar la entrada. En este sentido, se podrían reemplazar por cualquier otro nombre.  Tampoco es necesario poner : seguido de un número, en los ejemplos sólo se incluye como un posible estilo para identificar las entradas.
-
-La entradas se citan en el documento con el comando: 
-
-\begin{verbatim}
-\citep{nombre_de_la_entrada}
-\end{verbatim}
-
-Y cuando se usan, se muestran así: \citep{ARTICLE:1}, \citep{BOOK:1}, \citep{BOOK:2}, \citep{WEBSITE:1}.  Notar cómo se conforma la sección Bibliografía al final del documento. 
+\begin{enumerate}
+	\item Diagrama esquemático del equipo con en el programa KiCad.
+	\item Diseño de la placa electrónica realizada en el programa KiCad.
+	\item Documento con la especificación de requisitos del firmware según el estandar IEEE-830.
+	\item Documento con la arquitectura y el diseño detallado del firmware modelado utilizando diagramas UML.
+	\item Documento con las pruebas de aceptación para validar el correcto funcionamiento del equipo escritas en metalenguaje Gherkin. 
+	\item Código fuente del firmware para el control del equipo con documentación y comentarios adecuados que faciliten la compresión del mismo.
+\end{enumerate}

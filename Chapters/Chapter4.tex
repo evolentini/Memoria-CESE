@@ -1,14 +1,83 @@
 % Chapter Template
 
 \chapter{Ensayos y Resultados} % Main chapter title
+\label{Chapter4}
 
-\label{Chapter4} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
-
-%----------------------------------------------------------------------------------------
-%	SECTION 1
-%----------------------------------------------------------------------------------------
+Párrafo introductorio.
 
 \section{Pruebas funcionales del hardware}
 \label{sec:pruebasHW}
 
-La idea de esta sección es explicar cómo se hicieron los ensayos, qué resultados se obtuvieron y analizarlos.
+\section{Prototipo del hardware}
+\label{sec:PruebasPrototipo}
+
+Mediciones y verificaciones en el prototipo, se detallan las mediciones y ensayos realizados sobre la placa del prototipo para determinar su correcto funcionamiento
+
+Correcciones en el prototipo: Se detallan los errores encontrados en el diseño y las correcciones efectuadas a partir de los ensayos funcionales en la placa del prototipo"
+
+\begin{figure}[ht]
+	\centering
+	%	\includegraphics[scale=.3]{./Figures/cuadradoAzul.png}
+	\caption{Imagen con el error en la definición del encapsulado del reloj de tiempo real}
+	\label{fig:ErrorEncapsulado}
+\end{figure}
+
+\begin{figure}[ht]
+	\centering
+	%	\includegraphics[scale=.3]{./Figures/cuadradoAzul.png}
+	\caption{Imagen con la corrección efectuada en la placa de prototipo}
+	\label{fig:ImagenCorreccion}
+\end{figure}
+
+\section{Pruebas en el firmware}
+\label{sec:PruebasFirmware}
+
+\subsection{Pruebas unitarias}
+
+Se describen las pruebas unitarias implementadas y los resultados obtenidos
+
+\subsection{Pruebas de integración}
+
+Se describen las pruebas de integración implementadas y los resultados obtenidos
+
+\subsection{Resultados de las pruebas de aceptación del equipo}
+
+Se analizan los resultados obtenidos al ejecutar las pruebas de aceptación definidas al inicio del proyecto
+
+\section{Resultados}
+\label{sec:Resultados}
+
+Métricas del firmware desarrollado: se presentan métricas para evaluar la calidad del software desarrollado
+
+\begin{table}[h]
+	\centering
+	\caption{Tabla resumen con las métricas de calidad obtenidas para el firmware desarrollado}
+	\begin{tabular}{l c}    
+		\toprule
+		\textbf{Equipo} 	 & \textbf{Valor}\\
+		\midrule
+		Punku 				 & \$ 3.000\\
+		\bottomrule
+		\hline
+	\end{tabular}
+	\label{tab:MetricasFirmware}
+\end{table}
+
+
+Comparaciones con productos existentes: se repite la comparación de las prestaciones de los equipos existentes con el equipo anterior y con el nuevo equipo desarrollado en función de los resultados obtenidos
+
+\begin{table}[h]
+	\centering
+	\caption{Cuadro comparativo del equipo actual con el anterior y con otros equipos del mercado}
+	\begin{tabular}{l c}    
+		\toprule
+		\textbf{Equipo} 	 & \textbf{Valor}\\
+		\midrule
+		Punku 				 & \$ 3.000\\
+		\bottomrule
+		\hline
+	\end{tabular}
+	\label{tab:ComparacionNuevo}
+\end{table}
+
+Comparaciones de los riesgos planificados con el resultado del proyecto: se analizan los resultados obtenidos por las acciones destinadas a mitigar los riesgos identificados en la planificación del proyecto

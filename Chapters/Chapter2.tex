@@ -1,27 +1,29 @@
-\chapter{Introducción Específica} % Main chapter title
+% !TeX encoding = UTF-8
+% !TeX spellcheck = es_ES
 
+\chapter{Introducción Específica}
 \label{Chapter2}
 
-En el presente capitulo se presentan en mayor profundidad las distintas tecnologías utilizadas en el equipo. A continuación se detallan los requisitos y casos de uso relevados, junto a las pruebas de aceptación definidas para validar el correcto funcionamiento del prototipo. Finalmente se presenta brevemente la planificación del proyecto efectuada oportunamente.
+En el presente capítulo se abordan en mayor profundidad las distintas tecnologías utilizadas en el equipo. A continuación se detallan los requisitos y casos de uso relevados, junto a las pruebas de aceptación definidas para validar el correcto funcionamiento del prototipo. Por último se presenta en forma abreviada la planificación del proyecto efectuada oportunamente.
 
 \section{Tarjetas de proximidad}
 \label{sec:tarjetas}
 
-La identificación por radiofrecuencia o \emph{Radio Frecuency Identification (RFID)} es una tecnología que permite el intercambio de información sin contacto entre un equipo lector y un dispositivo de almacenamiento denominado transpondedor. También denominadas etiquetas RFID, estos dispositivos pueden ser activos si cuentan con alimentación propia, o pasivos si se alimentan del campo electromagnético generado por el equipo lector. 
+La identificación por radiofrecuencia o \emph{Radio Frecuency Identification (RFID)} es una tecnología que permite el intercambio de información sin contacto entre un equipo lector y un dispositivo de almacenamiento denominado transpondedor. También denominados etiquetas RFID, estos dispositivos pueden ser activos si cuentan con alimentación propia, o pasivos si se alimentan del campo electromagnético generado por el equipo lector. 
 
-En el ámbito de las sistemas para el control de accesos la mayoría de las etiquetas RFID son pasivas y adoptan la forma de una tarjeta plástica, un llavero o una etiqueta autoadhesiva que contiene el chip electrónico junto con la bobina que cumple la función de antena receptora y transmisora. Las distancias de lectura generalmente son del orden de los 10 cm pero pueden extenderse hasta las 15 metros en los sistemas desarrollados para control de vehículos. En el mercado actual de Argentina podemos encontrar, principalmente, cuatro tipos de tarjetas de proximidad:
+En el ámbito de los sistemas para el control de accesos, la mayoría de las etiquetas RFID son pasivas y adoptan la forma de una tarjeta plástica, un llavero o una etiqueta autoadhesiva que contiene el chip electrónico junto con la bobina que cumple la función de antena receptora y transmisora. Las distancias de lectura generalmente son del orden de los 10 centímetros, pero pueden extenderse hasta los 15 metros en los sistemas desarrollados para control de vehículos. En el mercado actual de Argentina podemos encontrar, principalmente, cuatro tipos de tarjetas de proximidad:
 
 \begin{itemize}
-	\item Tarjetas EM4100: son las más económicas y muy difundidas en el control de accesos. Desarrolladas originalmente por la empresa E\&M Marine fueron ampliamente copiadas por los fabricantes chinos. Estas tarjetas operan con una portadora de 125 KHz, la que modulan en amplitud para transmitir una trama fija de 64 bits, que transmite un número de serie prefijado en el fabricación de 24 bits.
+	\item Tarjetas EM4100: son las más económicas y muy difundidas en el control de accesos. Desarrolladas originalmente por la empresa E\&M Marine, fueron ampliamente copiadas por los fabricantes chinos. Estas tarjetas operan con una portadora de 125 KHz, la que modulan en amplitud para transmitir una trama fija de 64 bits, que encapsula un número de serie de 24 bits prefijado durante la fabricación.
 	
-	\item Tarjetas HID: son el grupo menos difundido en nuestro país, principalmente por el costo y dificultad para adquirir las mismas. Estas tarjetas operan también con una portadora de 125 KHz, pero la modulan en frecuencia. Existen tres variantes en las tramas transmitidas que  serie prefijado en el fabricación de 24 o de 36 bits según la versión de tarjeta.
+	\item Tarjetas HID: son el grupo menos difundido en nuestro país, principalmente por el costo y dificultad para adquirirlas. Estas tarjetas operan también con una portadora de 125 KHz, pero la modulan en frecuencia. Tambien transmiten una trama fija que encapsula un número de serie definido en el proceso de fabricación, pero en este caso existen tres variantes de longitud: 24, 36 o 37 bits.
 	
 	\item Tarjetas MIFARE: son las utilizadas por los sistemas de monederos electrónicos y pagos de pasajes en el transporte público de pasajeros. Fueron desarrolladas originalmente por la empresa Philips Semiconductors y hoy son mantenidas por NXP Semiconductors. Estas tarjetas tienen la capacidad de proteger la memoria en base a un par de claves criptográficas para impedir la lectura o escritura por parte de equipos no autorizados. Se encuentran comprendidas dentro de la norma emitida por la Organización Internacional de Normalización (ISO) para regular la operación de tarjetas de proximidad (ISO 14443).
 	
-	\item Tarjetas UHF: son las utilizadas en los sistema de telepeaje y sistemas para control vehiculares, porque pueden alcanzar distancias de lecturas de hasta 15 metros. Estas tarjetas también tienen la capacidad de proteger la memoria utilizando criptografía para impedir la lectura o escritura por parte de equipos no autorizados. Se encuentran normalizadas por la Organización Internacional de Normalización (ISO) para regular la operación de tarjetas de sin contacto de largo alcance (ISO 18000-6C).
+	\item Tarjetas UHF: son las utilizadas en los sistemas de telepeaje y para control vehicular, porque pueden alcanzar distancias de lecturas de hasta 15 metros. Estas tarjetas también tienen la capacidad de proteger la memoria utilizando criptografía para impedir la lectura o escritura por parte de equipos no autorizados. Se encuentran normalizadas por la Organización Internacional de Normalización (ISO) para regular la operación de tarjetas sin contacto de largo alcance (ISO 18000-6C).
 \end{itemize}
 
-En la tabla \ref{tab:TarjetasUsadas} se puede observar un cuadro comparativo entre los distintos tipos de tarjetas de proximidad utilizadas en los sistemas para control de accesos. De estas opciones de decidió que el nuevo opere con el estándar MIFARE, lo que permite utilizar todas las tarjetas de pago electrónico para el transporte publico como medio de identificación y acceso, disminuyendo de esta forma la inversión inicial de la instalación.
+En la tabla \ref{tab:TarjetasUsadas} se puede observar la comparación entre los distintos tipos de tarjetas de proximidad utilizadas en los sistemas para control de accesos. De estas opciones se decidió que el nuevo opere con el estándar MIFARE, lo que permite utilizar todas las tarjetas de pago electrónico para el transporte público como medio de identificación y acceso, disminuyendo de esta forma la inversión inicial de la instalación.
 
 \begin{table}[ht]
 	\centering
@@ -60,21 +62,21 @@ En la tabla \ref{tab:TarjetasUsadas} se puede observar un cuadro comparativo ent
 	\label{tab:TarjetasUsadas}
 \end{table}
 
-\section{Protocolos inalámbricas}
+\section{Protocolos inalámbricos}
 
-El aumento del uso de dispositivos móviles con un poder de computo cada vez mayor por parte del publico en general abre la puerta a nuevas aplicaciones para estos equipos. En particular para el trabajo desarrollado, la intención es utilizar un dispositivo móvil como un teléfono inteligente o una tableta, para gestionar y configurar el equipo para control de accesos. Para esto es necesario que la interfaz de comunicaciones implementada sea del tipo inalámbrica, ya que si bien es técnicamente posible utilizar una interfaz USB cableada para conectarse a la mayoría de teléfono o tabletas, esta opción no resultaría cómoda ni comercialmente atractiva. En la actualidad dos protocolos de comunicación inalámbricos dominan el mercado:
+El aumento del uso de dispositivos móviles con un poder de cómputo cada vez mayor por parte del público abre la puerta a nuevas aplicaciones para estos equipos. En particular para el trabajo desarrollado, la intención es utilizar un dispositivo móvil como un teléfono inteligente o una tableta, con el fin de gestionar y configurar el equipo para control de accesos. Para esto es necesario que la interfaz de comunicaciones implementada sea del tipo inalámbrico, ya que si bien es técnicamente posible utilizar una interfaz USB cableada para conectarse a la mayoría de los teléfonos o tabletas, esta opción no resultaría cómoda ni comercialmente atractiva. En la actualidad dos protocolos de comunicación inalámbricos dominan el mercado:
 
 \begin{itemize}
-	\item Bluetooth: es un protocolo diseñado para una red de área personal, con un alcance típico de 10 metros, con bajas tasas de transferencias y optimizado para extender la duración de las baterías. Existen dos versiones principales de este protocolo: la versión 2 y la 4, las cuales no son compatibles entre si. La mayoría de los dispositivos móviles actuales soportan ambas versiones del protocolo, excepto todos los equipos móviles de la firma Apple, que solo soportan la versión 4 de bajo consumo. En este protocolo la conexión se realiza entre un maestro y un esclavo, y si bien teóricamente se pueden generar redes de dispositivos en la practica esto nunca se implementa.
+	\item Bluetooth: es un protocolo diseñado para una red de área personal, con un alcance típico de 10 metros, con bajas tasas de transferencias y optimizado para extender la duración de las baterías. Existen dos versiones principales de este protocolo: la versión 2 y la 4, las cuales no son compatibles entre sí. La mayoría de los dispositivos móviles actuales soportan ambas versiones del protocolo, excepto todos los equipos móviles de la firma Apple, que solo soportan la versión 4 de bajo consumo. En este protocolo la conexión se realiza entre un maestro y un esclavo, y si bien teóricamente se pueden generar redes de dispositivos, en la práctica esto nunca se implementa.
 	
-	\item WiFi: es un protocolo diseñado para una red de área local, con un alcance típico de 100 metros y altas tasas de transferencias. Existen varias versiones de este protocolo, las cuales se pueden agrupar en dos familias: las que utilizan una portadora de 2.4 GHz y las de 5 GHz. Las versiones mas nuevas pueden utilizar ambas frecuencias simultáneamente para aumentar aun más el ancho de banda. En este protocolo la conexión se realiza generalmente entre un dispositivo y un punto de acceso, que normalmente brinda conexión con una red mayor y eventualmente con Internet.
+	\item WiFi: es un protocolo diseñado para una red de área local, con un alcance típico de 100 metros y altas tasas de transferencias. Existen varias versiones de este protocolo, las cuales se pueden agrupar en dos familias: las que utilizan una portadora de 2.4 GHz y las de 5 GHz. Las versiones más nuevas pueden utilizar ambas frecuencias simultáneamente para aumentar aún más el ancho de banda. En este protocolo la conexión se realiza generalmente entre un dispositivo y un punto de acceso, que normalmente brinda conexión con una red mayor y eventualmente con Internet.
 \end{itemize}
 
-En la tabla \ref{tab:WifiBluetooth} se puede ver un resumen con las características mas importantes de las diferentes variantes de ambos protocolos de comunicación. Para el desarrollo del equipo se decidió utilizar WiFi, de esta forma resulta igual de sencillo establecer una conexión punto a punto entre dispositivo móvil y el equipo que se quiere gestionar, como conectarlo a la red existente en el lugar y gestionarlo desde cualquier ubicación que tenga conexión con dicha red. Incluso permite en un futuro el acceso a Internet del equipo, lo que permitiría la gestión del mismo desde cualquier lugar del mundo.
+En la tabla \ref{tab:WifiBluetooth} se puede ver un resumen con las características más importantes de las diferentes variantes de ambos protocolos de comunicación. Para el desarrollo del equipo se decidió utilizar WiFi, de esta forma resulta igual de sencillo establecer una conexión punto a punto entre el dispositivo móvil y el equipo que se quiere gestionar, como conectarlo a la red existente en el lugar y gestionarlo desde cualquier ubicación que tenga conexión con dicha red. Incluso permite en un futuro el acceso del equipo a Internet, lo que permitiría su gestión desde cualquier lugar del mundo.
 
 \begin{table}[ht]
 	\centering
-	\caption[Comparación entre los protocolos Bluetooth y Wifi]{Cuadro comparativo entre las diferentes variantes de los protocolos Wifi y Bluetooth}
+	\caption[Comparación entre los protocolos Bluetooth y WiFi]{Cuadro comparativo entre las diferentes variantes de los protocolos WiFi y Bluetooth}
 	\begin{tabular}{c c c c}
 		\toprule
 		\textbf{Nombre}	
@@ -119,41 +121,41 @@ En la tabla \ref{tab:WifiBluetooth} se puede ver un resumen con las característ
 	\label{tab:WifiBluetooth}
 \end{table}
 
-La utilización de la interfaz WiFi implica casi inevitablemente el uso del conjunto de protocolos TPC/IP, lo que permite disponer de una serie de opciones estandarizadas para la capa de aplicación del protocolo de gestión y configuración del equipo. De estas opciones disponibles se decidió implementar una interfaz Full REST Api utilizando el protocolo HTTP. El motivo de esta elección fue simplificar la comunicación con aplicaciones híbridas para celulares, como se explica en la sección \ref{sec:AplicacionesMoviles} y paginas WEB, lo que también permitirá en un futuro la gestión del equipo desde Internet
+La utilización de la interfaz WiFi implica casi inevitablemente el uso del conjunto de protocolos TPC/IP, lo que permite disponer de una serie de opciones estandarizadas para la capa de aplicación del protocolo de gestión y configuración del equipo. De estas opciones disponibles se decidió implementar una interfaz Full REST Api utilizando el protocolo HTTP. El motivo de esta elección fue simplificar la comunicación con aplicaciones híbridas para celulares, como se explica en la sección \ref{sec:AplicacionesMoviles} y páginas WEB, lo que también permitirá en un futuro la gestión del equipo desde Internet.
 
 \section{Aplicaciones para dispositivos móviles}
 \label{sec:AplicacionesMoviles}
 
-El mercado de los dispositivos móviles se encuentra polarizado en dos sistemas operativos: Android e iOS. Lamentablemente las herramientas de desarrollo e incluso los lenguajes utilizados por cada plataforma son totalmente incompatibles, esto significa que para desarrollar una aplicación que se encuentre disponible para ambas plataformas requiere el doble de esfuerzo. 
+El mercado de los dispositivos móviles se encuentra polarizado en dos sistemas operativos: Android e iOS. Lamentablemente las herramientas de desarrollo e incluso los lenguajes utilizados por cada plataforma son totalmente incompatibles, esto significa que desarrollar una aplicación que se encuentre disponible para ambas plataformas requiere el doble de esfuerzo. 
 
-Una solución a este problema son las denominada aplicaciones híbridas, las cuales en realidad son paginas WEB encapsuladas en una con el correspondiente navegador de cada plataforma en una aplicación nativa. Estas aplicaciones se desarrollan entonces en JavaScript y uno de los entornos de desarrollo más difundidos para este tipo de aplicaciones es el conjunto Ionic Cordoba, el cual permite desarrollar una aplicación para móviles utilizando exclusivamente tecnología web. 
+Una solución a este problema son las denominadas aplicaciones híbridas, las cuales en realidad son páginas WEB encapsuladas con el correspondiente navegador de cada plataforma en una aplicación nativa. Estas aplicaciones se desarrollan entonces en JavaScript y uno de los entornos más difundidos para construir este tipo de aplicaciones es el conjunto Ionic Cordoba, el cual permite desarrollar una aplicación para móviles utilizando exclusivamente tecnología web. 
 
-Dado que en realidad estas aplicaciones son paginas web tienen una serie de restricciones, principalmente en las comunicaciones que pueden realizar y en la interacción con los dispositivos del equipo móvil como la cámara o el GPS. Algunas de estas restricciones son resueltas utilizando \emph{plugins}, fragmentos de código nativo escrito para cada plataforma que funcionan a modo de adaptador para que la pagina web pueda acceder a estos servicios.
+Dado que en realidad estas aplicaciones son páginas web tienen una serie de restricciones, principalmente en las comunicaciones que pueden realizar y en la interacción con los dispositivos del equipo móvil como la cámara o el GPS. Algunas de estas restricciones son resueltas utilizando \emph{plugins}, fragmentos de código nativo escrito para cada plataforma que funcionan a modo de adaptador para que la página web pueda acceder a estos servicios.
 
-La forma más natural de comunicación para este tipo de aplicaciones es utilizando conexiones HTTP para enviar o recuperar objetos codificados según el estándar JSON. Por esta razón, y aun cuando el desarrollo de la aplicación de gestión para el dispositivo móvil esta fuera de los alcances del trabajo, se decidió implementar toda la gestión del equipo utilizando esta tecnología.
+La forma más natural de comunicación para este tipo de aplicaciones es utilizando conexiones HTTP para enviar o recuperar objetos codificados según el estándar JSON. Por esta razón, y aun cuando el desarrollo de la aplicación de gestión para el dispositivo móvil está fuera de los alcances del trabajo, se decidió implementar toda la gestión del equipo utilizando esta tecnología.
 
 \section{Características del equipo}
 \label{sec:Caracteristicas}
 
-Dado que el objetivo del trabajo fue el diseño de un equipo comercial se planteó la necesidad de permitir que el mismo pueda adaptarse a diferentes instalaciones. La primera de las opciones de instalación corresponde al tipo de dispositivo que se utiliza para impedir la apertura de la puerta. En este apartado podemos encontrar dos opciones:
+Dado que el objetivo del trabajo fue el diseño de un equipo comercial, se planteó la necesidad de permitir que pueda adaptarse a diferentes instalaciones. La primera de las opciones de instalación corresponde al tipo de dispositivo que se utiliza para impedir la apertura de la puerta. En este apartado podemos encontrar dos opciones:
 
 \begin{itemize}
-	\item Destraba pestillo eléctrico: es un sistema mecánico que actúa como traba para el pestillo de la puerta. Este se libera al energizar una bobina y que por la acción de un resorte vuelve a bloquearse automáticamente cuando se retira la energía eléctrica. De esta forma mientras el mismo permanece energizado es posible abrir la puerta.
+	\item Destraba pestillo eléctrico: es un sistema mecánico que actúa como traba para el pestillo de la puerta. Este se libera al energizar una bobina y que por la acción de un resorte vuelve a bloquearse automáticamente cuando se retira la energía eléctrica. De esta forma, mientras el mismo permanece energizado, es posible abrir la puerta.
 	
-	\item Cerradura electromagnética: es simplemente un electroimán que cuando permanece alimentado ejerce una fuerza que impide la apertura de la puerta. En este caso la puerta puede abrirse únicamente cuando la cerradura permanece sin alimentación
+	\item Cerradura electromagnética: es simplemente un electroimán que cuando permanece alimentado ejerce una fuerza que impide la apertura de la puerta. En este caso, la puerta puede abrirse únicamente cuando la cerradura permanece sin alimentación.
 	
-	\item Cerradura motorizada: en este caso el sistema mecánico de bloqueo es accionado por un motor en lugar de por una bobina. Para liberar la puerta es necesario alimentar el motor con una determinada polaridad por un tiempo determinado, o hasta que acciona un sensor que detecta el final del recorrido del mecanismo. En este caso la puerta permanece liberada hasta que se alimenta el motor con la polaridad contraria durante un tiempo determinado, o hasta que se acciona un nuevo sensor que detecta el final del recorrido en el sentido contrario al inicial
+	\item Cerradura motorizada: en este caso el sistema mecánico de bloqueo es accionado por un motor en lugar de por una bobina. Para liberar la puerta es necesario alimentar el motor con una determinada polaridad por un cierto tiempo, o hasta que acciona un sensor que detecta el final del recorrido del mecanismo. La puerta permanece liberada hasta que se alimenta el motor con la polaridad contraria durante un tiempo determinado, o hasta que se acciona un nuevo sensor que detecta el final del recorrido en el sentido contrario al inicial.
 \end{itemize}
 
-Como se puede deducir de la descripción anterior cada tipo de cerradura requiere una señal de control diferente. En particular la mayor diferencia esta dada entre los sistemas electromecánicos y los motorizados, debido a la necesidad de una inversión en la alimentación para efectuar el bloque de la puerta. 
+Como se puede deducir de la descripción anterior, cada tipo de cerradura requiere una señal de control diferente. En particular la mayor diferencia está dada entre los sistemas electromecánicos y los motorizados, debido a la necesidad de una inversión en la alimentación para efectuar el bloqueo de la puerta. 
 
-La otra opción de instalación que podrá definir el usuario final corresponde al uso de un sensor para detectar la apertura de la puerta. En el diseño del equipo se contempla la posibilidad de utilizar este sensor para poder determinar si una persona autorizada ingresa al espacio controlado, y para ademas informar mediante una señal de alarma cuando la puerta permanece abierta por mas tiempo del adecuado. De una análisis rápido resulta claro que el comportamiento del equipo debe ser diferente cuando el usuario decide no instalar el sensor para determinar la apertura de la puerta.  
+La otra opción de instalación que podrá definir el usuario final corresponde al uso de un sensor para detectar la apertura de la puerta. En el diseño del equipo se contempla la posibilidad de utilizar este sensor para poder determinar si una persona autorizada ingresa al espacio controlado, y para además informar mediante una señal de alarma cuando la puerta permanece abierta por más tiempo que el adecuado. De un análisis rápido resulta claro que el comportamiento del equipo debe ser diferente cuando el usuario decide no instalar el sensor para determinar la apertura de la puerta.  
 
 La combinación de las dos opciones antes analizadas determina cuatro modos de funcionamiento principales, los cuales se resumen en la tabla \ref{tab:ModosOperacion}.
 
 \begin{table}[ht]
 	\centering
-	\caption[Resumen de los modos de funcionamiento del equipo]{Resumen de los modos de funcionamiento del equipo en función la cerradura y la  instalación del sensor de puerta.}
+	\caption[Resumen de los modos de funcionamiento del equipo]{Resumen de los modos de funcionamiento del equipo en función la cerradura y la instalación del sensor de puerta.}
 	\begin{tabular}{c c L{80mm}}
 		\toprule
 		\textbf{Cerradura} 	& 
@@ -162,263 +164,350 @@ La combinación de las dos opciones antes analizadas determina cuatro modos de f
 		\midrule
 		Electromagnética &
 		Sin instalar &
-		Se libera la cerradura, cambiando el estado de la alimentación, por un tiempo predefinido. Al finalizar el mismo se bloquea la cerradura volviendo la alimentación al estado inicial. \\
+		Se libera la cerradura, cambiando el estado de la alimentación, por un tiempo predefinido. Al finalizar este, se bloquea la cerradura volviendo la alimentación al estado inicial.\\
 		Electromagnética &
 		Instalado &
-		Se libera la cerradura, cambiando el estado de la alimentación, hasta detectar la apertura de la puerta sin exceder un tiempo máximo predefinido. Se supervisa que la puerta no permanezca abierta por mas de tiempo máximo \\
+		Se libera la cerradura, cambiando el estado de la alimentación, hasta detectar la apertura de la puerta sin exceder un tiempo máximo predefinido. Se supervisa que la puerta no permanezca abierta por más de cierto tiempo.\\
 		Motorizada &
 		Sin instalar &
-		Se libera la cerradura alimentando el motor por un tiempo predefinido. Al finalizar el mismo la puerta permanece liberada por un tiempo máximo. Al terminar el mismo se bloquea la cerradura alimentando el motor con polaridad inversa durante el mismo tiempo que al inicio. \\
+		Se libera la cerradura alimentando el motor por un cierto tiempo. Al finalizar el mismo la puerta permanece liberada por un tiempo máximo. Finalmente se bloquea la cerradura alimentando el motor con polaridad inversa durante un cierto tiempo.\\
 		Motorizada &
 		Instalado &
-		Se libera la cerradura alimentando el motor por un tiempo predefinido. Al finalizar se supervisa la apertura y cierre de la puerta. Al detectar la apertura de la puerta, o exceder un tiempo máximo, se bloquea la cerradura alimentando el motor con polaridad inversa durante el mismo tiempo que al inicio. \\
+		Se libera la cerradura alimentando el motor por un cierto tiempo. Al finalizar se supervisa la apertura y cierre de la puerta. Al detectar la apertura de la puerta, o al superar un tiempo máximo de espera, se bloquea nuevamente la cerradura, alimentando el motor con polaridad inversa durante un cierto tiempo.\\
 		\bottomrule
 		\hline
 	\end{tabular}
 	\label{tab:ModosOperacion}
 \end{table}
 
-\subsection{Requisitos del equipo}
+\subsection{Requisitos específicos}
+\label{sub:Requisitos}
 
-Uno de los primeros puntos que detalla el estándar IEE-830 para especificación de requisitos son las interfaces externas de la aplicación. Dado que el desarrollo analizado corresponde al firmware de un sistema embebido las interfaces del software tienen relación directa con las entradas y salidas de la placa electrónica. En la tabla \ref{tab:ListaInterfaces} se detallan las interfaces de entradas y salidas que debe implementar el nuevo equipo, y que por lo tanto constituyen las interfaces de firmware del mismo.
+Uno de los primeros puntos que detalla el estándar IEE-830 para especificación de requisitos son las interfaces externas de la aplicación. Dado que el desarrollo analizado corresponde al firmware de un sistema embebido, las interfaces del software tienen relación directa con las entradas y salidas de la placa electrónica. A continuación se listan los puertos de conexiones que debe implementar el nuevo equipo, incluyendo el identificador asignado a cada uno y una breve descripción del mismo.
 
-\begin{table}[ht]
-	\centering
-	\caption{Lista de entradas y salidas del requeridas en el equipo}
-	\begin{tabular}{l C{40mm} L{65mm}}    
-		\toprule
-		\textbf{Nombre} & 
-		\textbf{Tipo} & 
-		\textbf{Descripción} \\
-		\midrule
-		PNK-ES001 & 
-		Puerto SPI &
-		Circuito integrado del lector RFID \\
-		PNK-ES002 & 
-		Entrada digital opto-aislada &
-		Sensor de puerta abierta \\
-		PNK-ES003 & 
-		Salida digital con inversión de polaridad &
-		Actuador de la cerradura de puerta \\
-		PNK-ES004 & 
-		Entrada digital sin aislación &
-		Sensor de cerradura liberada \\
-		PNK-ES005 & 
-		Entrada digital sin aislación &
-		Sensor de cerradura bloqueada \\
-		PNK-ES006 & 
-		Entrada digital opto-aislada &
-		Pulsador para apertura manual \\
-		PNK-ES007 & 
-		Salida digital de contacto seco &
-		Salida de alarma \\
-		PNK-ES008 & 
-		Salida modulada en frecuencia &
-		Indicador sonoro para el usuario \\
-		PNK-ES009 & 
-		Salida digital con inversión de polaridad &		
-		Indicador luminoso para el usuario \\
-		\bottomrule
-		\hline
-	\end{tabular}
-	\label{tab:ListaInterfaces}
-\end{table}
+\begin{itemize}
+	\item PNK-ES001: puerto SPI, utilizado para la comunicación con el circuito integrado del lector RFID.
+	\item PNK-ES002: entrada digital opto-aislada, utilizada para conectar el sensor de puerta abierta.
+	\item PNK-ES003: salida digital con inversión de polaridad, utilizada para conectar el actuador de la cerradura.
+	\item PNK-ES004: entrada digital sin aislación, utilizada para conectar el sensor de cerradura liberada.
+	\item PNK-ES005: entrada digital sin aislación, utilizada para conectar el sensor de cerradura bloqueada.
+	\item PNK-ES006: entrada digital opto-aislada, utilizada para conectar un pulsador para liberación manual de la puerta.
+	\item PNK-ES007: salida digital de contacto seco, utilizada generar una señal de alarma.
+	\item PNK-ES008: salida modulada en frecuencia, utilizada para conectar un indicador sonoro para el usuario.
+	\item PNK-ES009: salida digital con inversión de polaridad, utilizada para conectar un indicador luminoso para el usuario.
+\end{itemize}
 
-Como se explicó en el inicio de la sección \ref{sec:Caracteristicas} uno de los requerimientos importantes del equipo es poder configurar el comportamiento del mismo para adaptarlo a diferentes tipos de instalaciones. Por esta razón se decidió identificar cada uno los parámetros de configuración requeridos para lograr la capacidad de personalización desea. La lista de parámetros definidos puede verse en la tabla \ref{tab:ListaParametros}.
+Como se explicó en el inicio de la sección \ref{sec:Caracteristicas} uno de los requerimientos importantes del equipo es poder configurar el comportamiento del mismo para adaptarlo a diferentes tipos de instalaciones. Por esta razón se decidió definir claramente cada uno los parámetros de configuración requeridos para lograr la capacidad de personalización deseada. A continuación se listan los parámetros de configuración que debe implementar el nuevo equipo, incluyendo el identificador asignado a cada uno y la descripción formal del mismo.
 
-\begin{table}[ht]
-	\centering
-	\caption[Lista de parámetros para configuración del equipo]{Lista de parámetros para configurar el comportamiento del equipo según las opciones de instalación}
-	\begin{tabular}{c c L{70mm}}    
-		\toprule
-		\textbf{Nombre} &
-		\textbf{Tipo y Rango} &
-		\textbf{Descripción} \\
-		\midrule
-		PNK-PO001 &
-		Númerico \newline100ms a 2.500ms &
-		Tiempo de accionamiento del indicador luminoso PNK-ES009 cuando se produce la lectura de una tarjeta \\
-		PNK-PO002 &
-		100ms a 2.500ms &
-		Tiempo de accionamiento del indicador sonoro PNK-ES008 cuando se concede el acceso a una tarjeta \\
-		PNK-PO003 &
-		100ms a 2.500ms &
-		Tiempo de accionamiento del indicador sonoro PNK-ES008 cuando se deniega el acceso a una tarjeta \\
-		PNK-PO004 &
-		1s a 10s &
-		Tiempo máximo que la puerta permanece liberara para permitir la apertura de la misma \\
-		PNK-PO005 &
-		100ms a 2.500ms &
-		Tiempo máximo de accionamiento del motor en cerraduras motorizadas\\
-		PNK-PO006 &
-		1s a 60s &
-		Tiempo máximo que la puerta puede permanece abierta antes de generar una señal de alarma\\
-		PNK-PO007 &
-		0 ó 1 &
-		El sensor de puerta abierta se encuentra conectado\\
-		PNK-PO008 &
-		0 ó 1 &
-		El sistema de liberación de la puerta requiere inversión de polaridad \\
-		PNK-PO009 &
-		0 ó 1 &
-		El sistema de liberación de la puerta dispone de sensor para indicar el estado del mismo \\
-		\bottomrule
-		\hline
-	\end{tabular}
-	\label{tab:ListaParametros}
-\end{table}
+\begin{itemize}
+	\item PNK-PO001: valor numérico en el rango de 100 ms a 2.500 ms, corresponde al tiempo de accionamiento del indicador luminoso PNK-ES009 cuando se produce la lectura de una tarjeta .
+	\item PNK-PO002: valor numérico en el rango de 100 ms a 2.500 ms, corresponde al tiempo de accionamiento del indicador sonoro PNK-ES008 cuando se concede el acceso a una tarjeta .
+	\item PNK-PO003: valor numérico en el rango de 100 ms a 2.500 ms, corresponde al tiempo de accionamiento del indicador sonoro PNK-ES008 cuando se deniega el acceso a una tarjeta .
+	\item PNK-PO004: valor numérico en el rango de 1s a 60s, corresponde al tiempo máximo que la puerta permanece liberada para permitir la apertura de la misma .
+	\item PNK-PO005: valor numérico en el rango de 100 ms a 2.500 ms, corresponde al tiempo máximo de accionamiento del motor en cerraduras motorizadas.
+	\item PNK-PO006: valor numérico en el rango de 1s a 60s, corresponde al tiempo máximo que la puerta puede permanece abierta antes de generar una señal de alarma.
+	\item PNK-PO007: valor lógico que indica si el sensor de puerta abierta se encuentra conectado.
+	\item PNK-PO008: valor lógico que indica si el sistema de liberación de la puerta requiere inversión de polaridad.
+	\item PNK-PO009: valor lógico que indica si el sistema de liberación de la puerta dispone de sensor para verificar el estado del mismo.
+\end{itemize}
 
+Finalmente en lo que respecta a los requisitos funcionales del equipo se los dividió en tres grupos para simplificar la interpretación de los mismos. EL primero corresponde al comportamiento del equipo para el control de acceso, el segundo a las señales de salida que debe generar en función de la configuración y el tercero grupo describe como se realizará la gestión. A continuación se listan los requisitos funciones que debe implementar el nuevo equipo, incluyendo el identificador asignado a cada uno y la descripción formal del mismo.
 
+\begin{itemize}
+	\item Requisitos funcionales para el control de accesos
+	
+	\begin{itemize}
+		\item PNK-RS001: el software debe recuperar el número de serie de la tarjeta MIFARE presentada ante el lector.
 
-\begin{table}[ht]
-	\centering
-	\caption{Requisitos funcionales para el control de accesos}
-	\begin{tabular}{l c}    
-		\toprule
-		\textbf{Nombre} 	& \textbf{Característica}	\\
-		\midrule
-		Elemento 			& Valor	\\
-		\bottomrule
-		\hline
-	\end{tabular}
-	\label{tab:RequisitosAcceso}
-\end{table}
+		\item PNK-RS002: el software debe indicar la lectura de una tarjeta cambiando el color indicador luminoso durante un tiempo PNK-PO001. Para ello debe activar la salida PNK-ES009 con polaridad inversa.
 
-\begin{table}[ht]
-	\centering
-	\caption{Requisitos funcionales para el accionamiento de los actuadores}
-	\begin{tabular}{l c}    
-		\toprule
-		\textbf{Nombre} 	& \textbf{Característica}	\\
-		\midrule
-		Elemento 			& Valor	\\
-		\bottomrule
-		\hline
-	\end{tabular}
-	\label{tab:RequisitosActuadores}
-\end{table}
+		\item PNK-RS003: el software debe determinar si la tarjeta leída esta incluida en una lista de personas autorizadas y conceder el acceso, o denegarlo si la misma no está incluida.
 
-\begin{table}[ht]
-	\centering
-	\caption{Requisitos funcionales para la gestión del equipo}
-	\begin{tabular}{l c}    
-		\toprule
-		\textbf{Nombre} 	& \textbf{Característica}	\\
-		\midrule
-		Elemento 			& Valor	\\
-		\bottomrule
-		\hline
-	\end{tabular}
-	\label{tab:RequisitosGestion}
-\end{table}
+		\item PNK-RS004: el software debe indicar si se concede el acceso al usuario mediante un sonido. Para ello debe generar una señal cuadrada en la interface PNK-ES008 durante un tiempo PNK-PO002. La frecuencia de la misma deberá estar comprendida entre 400 Hz y 800 Hz.
 
-Se detallan las restricciones impuestas por el cliente el proceso de desarrollo, materiales y características del equipo a desarrollar
+		\item PNK-RS005: el software debe indicar si no se concede el acceso al usuario mediante un sonido. Para ello debe generar una señal cuadrada en la interface PNK-ES008 durante un tiempo PNK-PO003. La frecuencia de la misma deberá estar comprendida entre 200 Hz y 400 Hz.
 
-\begin{table}[ht]
-	\centering
-	\caption{Restricciones impuestas por el cliente en el desarrollo de hardware}
-	\begin{tabular}{l c}    
-		\toprule
-		\textbf{Nombre} 	& \textbf{Característica}	\\
-		\midrule
-		Elemento 			& Valor	\\
-		\bottomrule
-		\hline
-	\end{tabular}
-	\label{tab:RestriccionesHardware}
-\end{table}
+		\item PNK-RS006: cuando concede el acceso a un usuario el software debe accionar el actuador de la puerta para liberarla, esperar la apertura de la puerta o el tiempo máximo de espera fijado por el parámetro PNK-PO004, y al ocurrir cualquiera de los dos eventos debe volver a accionar el actuador de la puerta para bloquearla.
 
-\begin{table}[ht]
-	\centering
-	\caption{Restricciones impuestas por el cliente en el desarrollo de firmware}
-	\begin{tabular}{l c}    
-		\toprule
-		\textbf{Nombre} 	& \textbf{Característica}	\\
-		\midrule
-		Elemento 			& Valor	\\
-		\bottomrule
-		\hline
-	\end{tabular}
-	\label{tab:RestriccionesFirmware}
-\end{table}
+		\item PNK-RS007: cuando un usuario abre la puerta después de un acceso autorizado el software debe supervisar que el cierre de la misma, y si esto no ocurre antes del tiempo máximo de espera fijado por el parámetro PNK-PO006, entonces el software debe generar una señal de alarma hasta que ocurra el cierre de a misma. Para ello debe activar la salida PNK-PO007 en forma permanente hasta que finalice la alarma.
+
+		\item PNK-RS008: el software debe supervisar permanentemente el estado de la puerta para detectar una apertura no autorizada, y debe generar una señal de alarma hasta que ocurra el cierre de a misma. Para ello debe activar la salida PNK-PO007 en forma permanente hasta que finalice la alarma \\
+	
+		\item PNK-RS009: cuando se activa el pulsador de ingreso conectado a la entrada PNK-ES006 el software debe conceder el acceso siguiendo el mismo comportamiento que para una tarjeta autorizada.
+
+	\end{itemize}
+
+	\item Requisitos funcionales para las señales generadas a los actuadores
+
+	\begin{itemize}
+		\item PNK-RS010: si el equipo esta configurado para operar sin sensor de puerta (PNK-PO007 = 0) y con un destraba pestillo eléctrico (PNK-PO008 = 0), cuando se concede el acceso, el software debe activar la salida PNK-ES003 con polaridad directa durante el tiempo máximo de accionamiento de puerta PNK-PO004. Al finalizar este tiempo de espera el software debe apagar la salida PNK-ES003.
+
+		\item PNK-RS011: si el equipo esta configurado para operar con sensor de puerta (PNK-PO007 = 1) y con un destraba pestillo eléctrico (PNK-PO008 = 0), cuando se concede el acceso, el software debe activar la salida PNK-ES003 con polaridad directa hasta que se activa el sensor de puerta abierta PNK-ES002 o hasta que se cumple el tiempo máximo de accionamiento de puerta PNK-PO004. Al finalizar este tiempo de espera el software debe apagar la salida PNK-ES003.
+		
+		\item PNK-RS012: si el equipo esta configurado para operar sin sensor de puerta (PNK-PO007 = 0), con un motor como actuador (PNK-PO008 = 1) y sin sensores en el mecanismo del motor (PNK-PO008 = 0), cuando se concede el acceso, el software debe activar la salida PNK-ES003 con polaridad directa durante el tiempo máximo de accionamiento del motor PNK-PO005. Al finalizar este tiempo el software debe esperar el tiempo de apertura de la puerta PNK-PO004 y al finalizar el software activar la salida PNK-ES003 con polaridad inversa durante la misma cantidad de tiempo PNK-PO005. Al finalizar este tiempo el software debe apagar la salida PNK-ES003.
+		
+		\item PNK-RS013: si el equipo esta configurado para operar sin sensor de puerta (PNK-PO007 = 0), con un motor como actuador (PNK-PO008 = 1) y con sensores en el mecanismo del motor (PNK-PO008 = 0), cuando se concede el acceso, el software debe activar la salida PNK-ES003 con polaridad directa hasta que el se activa el sensor PNK-ES004 que indica que el mecanismo está liberado. Después el software debe esperar el tiempo de apertura de la puerta PNK-PO004 y al finalizar el software activar la salida PNK-ES003 con polaridad inversa hasta que se activa el sensor PNK-ES005 que indica que el mecanismo está bloqueado. Al finalizar este tiempo el software debe apagar la salida PNK-ES003. Sí el tiempo que permanece activa la salida PNK-ES003 supera el tiempo máximo PNK-PO004 el software debe apagar la salida y registrar una condición de error.
+		
+		\item PNK-RS014: si el equipo esta configurado para operar con sensor de puerta (PNK-PO007 = 1), con un motor como actuador (PNK-PO008 = 1) y sin sensores en el mecanismo del motor (PNK-PO008 = 0), cuando se concede el acceso, el software debe activar la salida PNK-ES003 con polaridad directa durante el tiempo máximo de accionamiento del motor PNK-PO005. Al finalizar este tiempo el software debe esperar hasta que se activa el sensor de puerta abierta PKN-ES002 o hasta que se cumple el tiempo máximo de accionamiento de puerta PNK-PO004. Después el software debe activar la salida PNK-ES003 con polaridad inversa durante la misma cantidad de tiempo PNK-PO005. Al finalizar este tiempo el software debe apagar la salida PNK-ES003.
+		
+		\item PNK-RS015: si el equipo esta configurado para operar con sensor de puerta (PNK-PO007 = 1), con un motor como actuador (PNK-PO008 = 1) y con sensores en el mecanismo del motor (PNK-PO008 = 0), cuando se concede el acceso el software debe activar la salida PNK-ES003 con polaridad directa hasta que el se activa el sensor PNK-ES004 que indica que el mecanismo está liberado. Después el software debe esperar hasta que se activa el sensor de puerta abierta PNK-ES002 o hasta que se cumple el tiempo máximo para la apertura de puerta PNK-PO004. Después el software debe activar la salida PNK-ES003 con polaridad inversa hasta que se activa el sensor PNK-ES005 que indica que el mecanismo está bloqueado. Al finalizar este tiempo el software debe apagar la salida PNK-ES003. Sí el tiempo que permanece activa la salida PNK-ES003 supera el tiempo máximo PNK-PO004 el software debe apagar la salida y registrar una condición de error.
+	\end{itemize}			
+
+	\item Requisitos funcionales para la gestión del equipo
+
+	\begin{itemize}
+	
+		\item PNK-RS016: en cada lectura de tarjeta el software debe registrar en una bitácora la fecha y la hora, el número de la tarjeta leída, si se concedió o no el acceso, si se abrió o no la puerta y si se volvió a cerrar dentro del tiempo establecido.
+	
+		\item PNK-RS017: en cada acceso por pulsador el software debe registrar en una bitácora la fecha y la hora del acceso, si se abrió o no la puerta, si se volvió a cerrar dentro del tiempo establecido.
+	
+		\item PNK-RS018: el software debe permitir agregar o eliminar una tarjeta a la lista de personas autorizadas mediante un protocolo de comunicación que utilice la red WiFi como medio de transporte.
+	
+		\item PNK-RS019: el software debe permitir borrar completamente la lista de personas autorizadas mediante un protocolo de comunicación que utilice la red WiFi como medio de transporte.
+	
+		\item PNK-RS020: el software debe permitir recuperar todos los eventos de la bitácora, posteriores a una fecha especifica mediante un protocolo de comunicación que utilice la red WiFi como medio de transporte.
+	
+		\item PNK-RS021: el software debe permitir cambiar los valores de todos los parámetros operativos mediante un protocolo de comunicación que utilice la red WiFi como medio de transporte. 
+	\end{itemize}		
+\end{itemize}
 
 \subsection{Casos de uso}
+\label{sub:CasosDeUso}
 
-Se describen los casos de uso principales del equipo
+Siguiendo las recomendaciones de la ingeniería de software, se documentaron los casos de uso del equipo como parte integral de la especificación de requisitos del software del equipo a desarrollar. En las tablas \ref{tab:CasoPulsador}, \ref{tab:CasoTarjeta}, \ref{tab:CasoConfiguracion}, \ref{tab:CasoAutorizacion} y \ref{tab:CasoBitacora} se detallan los cinco casos de uso identificados durante el análisis de requisitos.
 
-\begin{table}[ht]
+\begin{table}[h!]
 	\centering
-	\caption{Caso de uso Acceso por pulsador}
-	\begin{tabular}{l c}    
+	\caption{Caso de uso acceso por pulsador}
+	\begin{tabular}{L{28mm} L{100mm}}
 		\toprule
-		\textbf{Nombre} 	& \textbf{Característica}	\\
+		\textbf{Titulo} &
+		\textbf{Descripción} \\
 		\midrule
-		Elemento 			& Valor	\\
+		Identificador &
+		PKN-CU001 \\
+		Nombre &
+		Acceso por pulsador \\ 
+		Descripción	&
+		Acceso de una persona utilizando un pulsador \\
+		Actor principal &
+		Usuario \\
+		Disparadores &
+		El usuario presiona el pulsador de salida \\
+		\multirow[t]{9}{*}{Flujo básico} 
+			& 1. El usuario presiona el pulsador de salida \\
+			& 2. El software informa que concederá el acceso emitiendo un sonido corto y agudo \\
+			& 3. El software acciona el mecanismo para permitir la apertura de la puerta \\
+			& 4. El software espera el tiempo accionamiento de cerradura PNK-PO004 \\
+			& 5. El usuario abre la puerta antes de que se complete el tiempo de cerradura \\
+			& 6. El software acciona el mecanismo para impedir una nueva apertura de la puerta \\
+			& 7. El software espera el tiempo de puerta abierta PNK-PO006 \\
+			& 8. El usuario cierra la puerta antes de que se complete el tiempo de puerta abierta \\
+			& 9. El software registra el acceso en la bitácora de novedades \\
+		\multirow[t]{3}{*}[5mm]{Flujo alternativo} 
+			& 5. El usuario no abre la puerta antes de que se complete el tiempo PNK-PO004 \\
+			& 5.1. El software acciona el mecanismo para impedir una nueva apertura de la puerta \\
+			& 5.2. El software registra en la bitácora de novedades que el usuario no ingresó \\
+		\multirow[t]{6}{*}[5mm]{Flujo alternativo} 
+			& 8. El usuario no cierra la puerta antes de que se complete el tiempo PNK-PO006 \\
+			& 8.1. El software informa el error de puerta abierta con un sonido continuo \\
+			& 8.2. El software espera el cierre de la puerta \\
+			& 8.3. El usuario cierra la puerta \\
+			& 8.4. El software deja de emitir el sonido \\
+			& 8.5. El software registra en la bitácora de novedades que el usuario dejo la puerta abierta \\
+		Precondiciones &
+		La puerta debe estar cerrada \\
+		Postcondiciones &
+		La puerta debe estar cerrada \\
 		\bottomrule
 		\hline
 	\end{tabular}
 	\label{tab:CasoPulsador}
 \end{table}
 
-\begin{table}[ht]
+\begin{table}[h!]
 	\centering
-	\caption{Caso de uso Acceso por tarjeta de proximidad}
-	\begin{tabular}{l c}    
+	\caption{Caso de uso acceso por tarjeta de proximidad}
+	\begin{tabular}{L{28mm} L{100mm}}
 		\toprule
-		\textbf{Nombre} 	& \textbf{Característica}	\\
+		\textbf{Titulo} &
+		\textbf{Descripción} \\
 		\midrule
-		Elemento 			& Valor	\\
+		Identificador &
+		PKN-CU002 \\
+		Nombre &
+		Acceso por tarjeta \\ 
+		Descripción	&
+		Acceso de una persona autorizada utilizando una tarjeta de proximidad \\
+		Actor principal &
+		Usuario con tarjeta de proximidad \\
+		Disparadores &
+		El usuario presenta la tarjeta delante del lector \\
+		\multirow[t]{9}{*}{Flujo básico}
+			& 1. El usuario presenta la tarjeta delante del lector \\
+			& 2. El software verifica que la tarjeta leída esta incluida en la lista de tarjetas autorizadas \\
+			& 3. El software informa que concederá el acceso emitiendo un sonido corto y agudo \\
+			& 4. El software acciona el mecanismo para permitir la apertura de la puerta \\
+			& 5. El software espera el tiempo accionamiento de cerradura PNK-PO004 \\
+			& 6. El usuario abre la puerta antes de que se complete el tiempo de cerradura \\
+			& 7. El software acciona el mecanismo para impedir una nueva apertura de la puerta \\
+			& 8. El software espera el tiempo de puerta abierta PNK-PO006 \\
+			& 9. El usuario cierra la puerta antes de que se complete el tiempo de puerta abierta \\
+			& 10. El software registra el acceso en la bitácora de novedades \\
+		\multirow[t]{3}{*}[5mm]{Flujo alternativo} 
+			& 2. El software determina que la tarjeta leída no está incluida en la lista de tarjetas autorizadas \\
+			& 2.1. El software informa que no concederá acceso emitiendo un sonido largo y grave \\
+			& 2.2. El software registra en la bitácora de novedades que no se concedió el acceso al usuario \\
+		\multirow[t]{3}{*}[5mm]{Flujo alternativo} 
+			& 6. El usuario no abre la puerta antes de que se complete el tiempo PNK-PO004 \\
+			& 6.1. El software acciona el mecanismo para impedir una nueva apertura de la puerta \\
+			& 6.2. El software registra en la bitácora de novedades que el usuario no ingresó \\
+		\multirow[t]{6}{*}[5mm]{Flujo alternativo} 
+			& 9. El usuario no cierra la puerta antes de que se complete el tiempo PNK-PO006 \\
+			& 9.1. El software informa el error de puerta abierta con un sonido continuo \\
+			& 9.2. El software espera el cierre de la puerta \\
+			& 9.3. El usuario cierra la puerta \\
+			& 9.4. El software deja de emitir el sonido \\
+			& 9.5. El software registra en la bitácora de novedades que el usuario dejo la puerta abierta \\
+		Precondiciones &
+		La puerta debe estar cerrada \\
+		Postcondiciones &
+		La puerta debe estar cerrada \\
 		\bottomrule
 		\hline
 	\end{tabular}
 	\label{tab:CasoTarjeta}
 \end{table}
 
-\begin{table}[ht]
+\begin{table}[h!]
 	\centering
-	\caption{Caso de uso Configuración del equipo}
-	\begin{tabular}{l c}    
+	\caption{Caso de uso configuración del equipo}
+	\begin{tabular}{L{28mm} L{100mm}}
 		\toprule
-		\textbf{Nombre} 	& \textbf{Característica}	\\
+		\textbf{Titulo} &
+		\textbf{Descripción} \\
 		\midrule
-		Elemento 			& Valor	\\
+		Identificador &
+		PKN-CU003 \\
+		Nombre &
+		Configuración del equipo \\ 
+		Descripción	&
+		Configuración del equipo desde un teléfono celular o una computadora \\
+		Actor principal &
+		Software de gestión \\
+		Disparadores &
+		Recepción de un comando de configuración \\
+		\multirow[t]{5}{*}[2mm]{Flujo básico} 
+			& 1. El software recibe un comando para actualizar la configuración \\
+			& 2. El software recibe los nuevos parámetros de configuración \\
+			& 3. El software valida los nuevos parámetros de configuración \\
+			& 4. El software aplica los nuevos parámetros de configuración \\
+			& 5. El software envía una confirmación informando que los parámetros se aplicaron correctamente \\
+		\multirow[t]{2}{*}[5mm]{Flujo alternativo} 
+			& 3. Los parámetros recibidos son incorrectos \\
+			& 3.1. El software envía una notificación de error informando que los parámetros son incorrectos \\
+		Precondiciones &
+		Ninguna \\
+		Postcondiciones &
+		Ninguna \\
 		\bottomrule
 		\hline
 	\end{tabular}
 	\label{tab:CasoConfiguracion}
 \end{table}
 
-\begin{table}[ht]
+\begin{table}[h!]
 	\centering
-	\caption{Caso de uso Gestión de las personas autorizadas}
-	\begin{tabular}{l c}    
+	\caption{Caso de uso gestión de las personas autorizadas}
+	\begin{tabular}{L{28mm} L{100mm}}
 		\toprule
-		\textbf{Nombre} 	& \textbf{Característica}	\\
+		\textbf{Titulo} &
+		\textbf{Descripción} \\
 		\midrule
-		Elemento 			& Valor	\\
+		Identificador &
+		PKN-CU004 \\
+		Nombre &
+		Gestión de las personas autorizadas \\ 
+		Descripción	&
+		Configuración de la lista de tarjetas autorizadas desde un teléfono celular o una computadora \\
+		Actor principal &
+		Software de gestión \\
+		Disparadores &
+		Recepción de un comando para actualización de la lista de tarjetas autorizadas \\
+		\multirow[t]{5}{*}[2mm]{Flujo básico} 
+			& 1. El software recibe un comando para actualizar la lista de tarjetas autorizadas \\
+			& 2. El software recibe la nueva lista de tarjetas autorizadas \\
+			& 3. El software valida la lista de tarjetas autorizadas recibida \\
+			& 4. El software reemplaza la lista de tarjetas autorizadas actual por la recibida \\
+			& 5. El software envía una confirmación informando que se actualizó la lista de tarjetas autorizadas \\
+		\multirow[t]{2}{*}[5mm]{Flujo alternativo} 
+			& 3. La lista de tarjetas autorizadas no es válida \\
+			& 3.1. El software envía una notificación de error informando que la lista de tarjetas no es válida \\
+		Precondiciones &
+		Ninguna \\
+		Postcondiciones &
+		Ninguna \\
 		\bottomrule
 		\hline
 	\end{tabular}
 	\label{tab:CasoAutorizacion}
 \end{table}
 
-\begin{table}[ht]
+\FloatBarrier
+
+\begin{table}[h!]
 	\centering
-	\caption{Caso de uso Consulta de la bitácora de accesos}
-	\begin{tabular}{l c}    
+	\caption{Caso de uso consulta de la bitácora de accesos}
+	\begin{tabular}{L{28mm} L{100mm}}
 		\toprule
-		\textbf{Nombre} 	& \textbf{Característica}	\\
+		\textbf{Titulo} &
+		\textbf{Descripción} \\
 		\midrule
-		Elemento 			& Valor	\\
+		Identificador &
+		PKN-CU005 \\
+		Nombre &
+		Acceso a la bitácora del equipo \\ 
+		Descripción	&
+		Consulta de la bitácora del equipo desde un teléfono celular o una computadora \\
+		Actor principal &
+		Software de gestión \\
+		Disparadores &
+		Recepción de un comando de consulta de la bitácora \\
+		\multirow[t]{2}{*}{Flujo básico} 
+			& 1. El software recibe un comando para recuperar la bitácora de novedades \\
+			& 2. El software envía la bitácora de eventos \\
+		Flujo alternativo &
+		Ninguno \\
+		Precondiciones &
+		Ninguna \\
+		Postcondiciones &
+		Ninguna \\
 		\bottomrule
 		\hline
 	\end{tabular}
 	\label{tab:CasoBitacora}
 \end{table}
 
-\subsection{Pruebas de aceptación del equipo}
 
-Se detallan las pruebas a ejecutar una vez terminado el equipo para considerar el desarrollo del mismo como completo
+\subsection{Pruebas de aceptación}
+
+El último paso de la especificación de requisitos consistió en la definición de las pruebas de aceptación del equipo, las servirán para validar el cumplimiento de los requisitos ya listados. Para formalizar las pruebas se siguieron los lineamientos de la metodología de desarrollo de software \emph{Behaviour Driven Development} (BDD). Esta propone utilizar un meta lenguaje denominado Gherkin para escribir las pruebas en forma de un guion en lenguaje natural, de forma tal que puedan ser validadas por el cliente. Para organizar la estructura de este guion el lenguaje define los siguientes elementos:
+
+\begin{itemize}
+	\item Característica: corresponde al conjunto de pruebas para validar un comportamiento especifico del equipo. Cada archivo de pruebas contiene una sola característica que se nombra con una frase corta. A continuación se debe detallar quien pide esa característica, que acciones espera poder realizar y que beneficio le otorga. Cada característica esta formada por un conjunto de escenarios que definen las pruebas necesarias para validarla. 
+	\item Escenario: corresponde a cada una de las pruebas que se efectúan para validar una característica en particular. El escenario se nombre con una frase corta que lo describa y está formado por una serie de sentencias que comienzan con las palabras dado, cuando y entonces. Existe también la posibilidad de agrupar escenarios similares utilizado una tabla de ejemplos y definiendo el esquema de una prueba que se repite para cada ejemplo de la tabla.
+	\item Dado: corresponde a las sentencias que definen los condiciones iniciales para poder ejecutar la prueba descrita en el escenario. Normalmente se utilizan al principio del guion.
+	\item Cuando: corresponde a las sentencias que definen las acciones que se efectúan para completar la prueba.
+	\item Entonces: corresponde a las sentencias que describen el comportamiento esperado del equipo como resultado de efectuar una acción sobre el mismo.
+\end{itemize}
+
+A continuación se detallan las pruebas de aceptación definidas para el equipo siguiendo la metodología propuesta.
+
+\lstinputlisting[firstline=4,language=gherkin,caption=Prueba de aceptación para la validar la detección de puerta abierta.]{Features/alarma.feature}
+
+\begin{center}
+	{\Large\color{red} Pendiente de redacción}
+\end{center}
 
 \section{Planificación}
 
@@ -426,7 +515,7 @@ Análisis inicial del proyecto
 
 Se listan las tareas que se deben desarrollar para completar el proyecto con una breve descripción para cada una
 
-\begin{table}[ht]
+\begin{table}[h!]
 	\centering
 	\caption{Lista del desglose de tareas del proyecto}
 	\begin{tabular}{l c}    
@@ -442,7 +531,7 @@ Se listan las tareas que se deben desarrollar para completar el proyecto con una
 
 Se listan los recursos necesarios y los periodos de tiempo en los cuales los mismos deberán estar disponibles para el desarrollo del equipo
 
-\begin{table}[ht]
+\begin{table}[h!]
 	\centering
 	\caption{Lista de recursos requeridos por el proyecto}
 	\begin{tabular}{l c}    
@@ -487,10 +576,3 @@ Se presenta la planificación realizada al iniciar el desarrollo del equipo
 	\caption{Fotografía del equipo actual}
 	\label{fig:DiagramaGantt}
 \end{figure}
-
-
-% ---------------------------------- Aviso fin de avance ------------------------------------
-\begin{center}
-	{\Large\color{red} De aquí en adelante solo esta la estructura del documento}
-\end{center}
-% -------------------------------------------------------------------------------------------

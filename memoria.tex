@@ -53,7 +53,8 @@ headsepline, % Uncomment to get a line under the header
 
 \usepackage{caption}
 \usepackage{subcaption}
-
+\usepackage{todonotes}
+\usepackage{multirow}
 %------------------------
 \usepackage{listings}
 
@@ -67,6 +68,7 @@ headsepline, % Uncomment to get a line under the header
 
 \usepackage{color}
 
+\usepackage{enumitem}
 %
 %----------------------------------------------------------------------------------------
 %	MARGIN SETTINGS
@@ -82,9 +84,93 @@ headsepline, % Uncomment to get a line under the header
 	%showframe,% show how the type block is set on the page
 }
 
+\usepackage{float}
+\usepackage{placeins}
+
+%----------------------------------------------------------------------------------------
+%	ESTILO DE LOS BLOQUES DE CODIGO
+%----------------------------------------------------------------------------------------
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstdefinelanguage{gherkin} {
+	% list of keywords
+	keywords={
+		Caracter{\'i}stica,
+		Caracter\'istica,
+		Caracteristica,
+		Como,
+		Quiero,
+		Para,
+		Antecedentes,
+		Escenario,
+		Esquema de escenario,
+		Ejemplos,
+		Dado,
+		Dada,
+		Dados,
+		Dadas,
+		Cuando,
+		Entonces,
+		Y,
+		Pero,
+	},
+	morekeywords={
+		Caracter{\'i}stica,
+		Caracter\'istica,
+	},
+	sensitive=True, % keywords are not case-sensitive
+}
+
+\lstset{ %
+	backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+	basicstyle=\small\ttfamily,
+	breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+	breaklines=true,                 % sets automatic line breaking
+	captionpos=b,                    % sets the caption-position to bottom
+	commentstyle=\color{mygreen},    % comment style
+	deletekeywords={...},            % if you want to delete keywords from the given language
+	%escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+	%extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+	%frame=single,	                   % adds a frame around the code
+	keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+	keywordstyle=\color{blue},       % keyword style
+	language=[ANSI]C,					% the language of the code
+	%otherkeywords={*,...},           % if you want to add more keywords to the set
+	numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+	numbersep=5pt,                   % how far the line-numbers are from the code
+	numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+	rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+	showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+	showstringspaces=false,          % underline spaces within strings only
+	showtabs=false,                  % show tabs within strings adding particular underscores
+	stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+	stringstyle=\color{mymauve},     % string literal style
+	tabsize=2,	                   % sets default tabsize to 2 spaces
+	title=\lstname,                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+	morecomment=[s]{/*}{*/},
+    inputencoding=utf8,
+	extendedchars=true,
+	literate=        
+		{á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+		{Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+		{à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+		{À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+		{ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+		{Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+		{â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+		{Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+		{œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+		{ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+		{ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+		{€}{{\EUR}}1 {£}{{\pounds}}1
+}
+
 %----------------------------------------------------------------------------------------
 %	INFORMACIÓN DE LA MEMORIA
-%----------------------------------------------------------------------------------------
+%---------------------------------------------------------------------------------------
 
 \thesistitle{Punku, control de accesos} % El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
 \degree{Especialista en Sistemas Embebidos } % Nombre del grado, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \degreename
@@ -179,7 +265,7 @@ Jurados:\\
 %The Thesis Abstract is written here (and usually kept to just this page). The page is kept centered vertically so can expand into the blank space above the title too\ldots
 \centering
 
-El presente documento describe el desarrollo de Punku, un equipo destinado a controlar el acceso en una puerta utilizando tarjetas de proximidad. Surge por la necesidad la empresa EQUISER de renovar un equipo existente que hoy resulta obsoleto por los avances de la tecnología. Se espera que el producto desarrollado que brinde más funcionalidad con un costo de fabricación menor al del equipo actual.
+El presente documento describe el desarrollo de Punku, un equipo destinado a controlar el acceso en una puerta utilizando tarjetas de proximidad. Surge por la necesidad de la empresa EQUISER de renovar un equipo existente que hoy resulta obsoleto por los avances de la tecnología. Se espera que el producto desarrollado brinde más funcionalidad con un costo de fabricación menor al del equipo actual.
 
 El proyecto de desarrollo incluyó la especificación de requisitos, la definición de las pruebas de aceptación, el diseño del hardware contemplando la producción en escala y el desarrollo del firmware utilizando un sistema operativo de tiempo real. Para verificar el correcto funcionamiento del equipo se realizaron pruebas unitarias y de integración automatizadas.				
 

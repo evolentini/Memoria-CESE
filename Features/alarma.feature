@@ -1,9 +1,10 @@
 # language: es
 # encoding: utf-8
+# version: 2020-03-30 
 
 Caracteristica: Informar si la puerta permanece abierta
   Como responsable de la seguridad del ambiente controlado
-  Quiero que saber cuando la puerta esta abierta indebidamente
+  Quiero saber cuando la puerta esta abierta indebidamente
   Para tomar las acciones correctivas pertinentes
 
 Escenario: Estado inicial del equipo
@@ -11,7 +12,8 @@ Escenario: Estado inicial del equipo
   Entonces la salida de alarma del equipo está en reposo
 
 Escenario: Apertura forzada breve de la puerta
-  Dado un equipo con el sensor de puerta abierta instalado
+  Dado un equipo con una cerradura electromagnetica
+  Y con el sensor de puerta abierta instalado y configurado
   Y configurado con el tiempo minimo de alarma en 5 segundos
   Cuando el sensor informa la apertura de la puerta
   Entonces la salida de alarma del equipo está activa
@@ -24,7 +26,8 @@ Escenario: Apertura forzada breve de la puerta
   Entonces la salida de alarma del equipo está en reposo
 
 Escenario: Apertura forzada prolongada de la puerta
-  Dado un equipo con el sensor de puerta abierta instalado
+  Dado un equipo con una cerradura electromagnetica
+  Y con el sensor de puerta abierta instalado y configurado
   Y con el tiempo minimo de alarma configurado en 3 segundos
   Cuando el sensor informa la apertura de la puerta
   Entonces la salida de alarma del equipo está activa
@@ -35,7 +38,8 @@ Escenario: Apertura forzada prolongada de la puerta
   Entonces la salida de alarma del equipo está en reposo
 
 Escenario: Apertura por pulsador sin cierre de la puerta
-  Dado un equipo con el sensor de puerta abierta instalado
+  Dado un equipo con una cerradura electromagnetica
+  Y con el sensor de puerta abierta instalado y configurado
   Y con el tiempo de apertura configurado en 4 segundos
   Y con el tiempo de cierre configurado en 8 segundos
   Cuando se activa la entrada para el pulsador de apertura

@@ -9,21 +9,21 @@ En el presente capítulo se abordan en mayor profundidad las distintas tecnolog�
 \section{Tarjetas de proximidad}
 \label{sec:tarjetas}
 
-La identificación por radiofrecuencia o \emph{Radio Frecuency Identification (RFID)} es una tecnología que permite el intercambio de información sin contacto entre un equipo lector y un dispositivo de almacenamiento denominado transpondedor. También denominados etiquetas RFID, estos dispositivos pueden ser activos si cuentan con alimentación propia, o pasivos si se alimentan del campo electromagnético generado por el equipo lector. 
+La identificación por radiofrecuencia o RFID (\emph{Radio Frecuency Identification}) es una tecnología que permite el intercambio de información sin contacto entre un equipo lector y un dispositivo de almacenamiento denominado transpondedor. También denominados etiquetas RFID, estos dispositivos pueden ser activos si cuentan con alimentación propia, o pasivos si se alimentan del campo electromagnético generado por el equipo lector. 
 
 En el ámbito de los sistemas para el control de accesos, la mayoría de las etiquetas RFID son pasivas y adoptan la forma de una tarjeta plástica, un llavero o una etiqueta autoadhesiva que contiene el chip electrónico junto con la bobina que cumple la función de antena receptora y transmisora. Las distancias de lectura generalmente son del orden de los 10 centímetros, pero pueden extenderse hasta los 15 metros en los sistemas desarrollados para control de vehículos. En el mercado actual de Argentina podemos encontrar, principalmente, cuatro tipos de tarjetas de proximidad:
 
 \begin{itemize}
 	\item Tarjetas EM4100: son las más económicas y muy difundidas en el control de accesos. Desarrolladas originalmente por la empresa E\&M Marine, fueron ampliamente copiadas por los fabricantes chinos. Estas tarjetas operan con una portadora de 125 KHz, la que modulan en amplitud para transmitir una trama fija de 64 bits, que encapsula un número de serie de 24 bits prefijado durante la fabricación.
 	
-	\item Tarjetas HID: son el grupo menos difundido en nuestro país, principalmente por el costo y dificultad para adquirirlas. Estas tarjetas operan también con una portadora de 125 KHz, pero la modulan en frecuencia. Tambien transmiten una trama fija que encapsula un número de serie definido en el proceso de fabricación, pero en este caso existen tres variantes de longitud: 24, 36 o 37 bits.
+	\item Tarjetas HID: son el grupo menos difundido en nuestro país, principalmente por el costo y dificultad para adquirirlas. Estas tarjetas operan también con una portadora de 125 KHz, pero la modulan en frecuencia. También transmiten una trama fija que encapsula un número de serie definido en el proceso de fabricación, pero en este caso existen tres variantes de longitud: 24, 36 o 37 bits.
 	
-	\item Tarjetas MIFARE: son las utilizadas por los sistemas de monederos electrónicos y pagos de pasajes en el transporte público de pasajeros. Fueron desarrolladas originalmente por la empresa Philips Semiconductors y hoy son mantenidas por NXP Semiconductors. Estas tarjetas tienen la capacidad de proteger la memoria en base a un par de claves criptográficas para impedir la lectura o escritura por parte de equipos no autorizados. Se encuentran comprendidas dentro de la norma emitida por la Organización Internacional de Normalización (ISO) para regular la operación de tarjetas de proximidad (ISO 14443).
+	\item Tarjetas MIFARE: son las utilizadas por los sistemas de monederos electrónicos y pagos de pasajes en el transporte público de pasajeros. Fueron desarrolladas originalmente por la empresa Philips Semiconductors y hoy son mantenidas por NXP Semiconductors. Estas tarjetas tienen la capacidad de proteger la memoria utilizando un par de claves criptográficas, de esta manera pueden impedir la lectura o escritura por parte de equipos no autorizados. Se encuentran comprendidas dentro de la norma emitida por la ISO (\emph{Organización Internacional de Normalización}) para regular la operación de tarjetas de proximidad ISO 14443.
 	
-	\item Tarjetas UHF: son las utilizadas en los sistemas de telepeaje y para control vehicular, porque pueden alcanzar distancias de lecturas de hasta 15 metros. Estas tarjetas también tienen la capacidad de proteger la memoria utilizando criptografía para impedir la lectura o escritura por parte de equipos no autorizados. Se encuentran normalizadas por la Organización Internacional de Normalización (ISO) para regular la operación de tarjetas sin contacto de largo alcance (ISO 18000-6C).
+	\item Tarjetas UHF: son las utilizadas en los sistemas de telepeaje y para control vehicular, porque pueden alcanzar distancias de lecturas de hasta 15 metros. Estas tarjetas también tienen la capacidad de proteger la memoria utilizando criptografía para impedir la lectura o escritura por parte de equipos no autorizados. Se encuentran normalizadas por la ISO para regular la operación de tarjetas sin contacto de largo alcance en la norma ISO 18000-6C.
 \end{itemize}
 
-En la tabla \ref{tab:TarjetasUsadas} se puede observar la comparación entre los distintos tipos de tarjetas de proximidad utilizadas en los sistemas para control de accesos. De estas opciones se decidió que el nuevo opere con el estándar MIFARE, lo que permite utilizar todas las tarjetas de pago electrónico para el transporte público como medio de identificación y acceso, disminuyendo de esta forma la inversión inicial de la instalación.
+En la tabla \ref{tab:TarjetasUsadas} se puede observar la comparación entre los distintos tipos de tarjetas de proximidad utilizadas en los sistemas para control de accesos. De estas opciones se decidió que el nuevo equipo opere con el estándar MIFARE, lo que permite utilizar todas las tarjetas de pago electrónico para el transporte público como medio de identificación y acceso, disminuyendo de esta forma la inversión inicial de la instalación.
 
 \begin{table}[ht]
 	\centering
@@ -62,9 +62,23 @@ En la tabla \ref{tab:TarjetasUsadas} se puede observar la comparación entre los
 	\label{tab:TarjetasUsadas}
 \end{table}
 
+\section{Aplicaciones para dispositivos móviles}
+\label{sec:AplicacionesMoviles}
+La elección del modelo de comunicación que se utilizará para la gestión del equipo tiene gran impacto en las herramientas y complejidad de la aplicación del dispositivo móvil. Por eso, aunque el desarrollo de la misma está fuera de los alcances del trabajo, es importante realizar un análisis de las posibles estrategias de implementación.
+
+El mercado de los dispositivos móviles se encuentra polarizado en dos sistemas operativos: Android e iOS. Lamentablemente las herramientas de desarrollo e incluso los lenguajes utilizados por cada plataforma son totalmente incompatibles, esto significa que desarrollar una aplicación que se encuentre disponible para ambas plataformas requiere el doble de esfuerzo. 
+
+Una solución a este problema son las denominadas aplicaciones híbridas, las cuales en realidad son páginas WEB encapsuladas con el correspondiente navegador de cada plataforma en una aplicación nativa. Estas aplicaciones se desarrollan entonces en JavaScript y uno de los entornos más difundidos para construir este tipo de aplicaciones es el conjunto Ionic Cordoba, el cual permite desarrollar una aplicación para móviles utilizando exclusivamente tecnología WEB. 
+
+Dado que en realidad estas aplicaciones son páginas WEB tienen una serie de restricciones, principalmente en las comunicaciones que pueden realizar y en la interacción con los dispositivos integrados en el equipo móvil, como la cámara de fotos o el micrófono. Algunas de estas restricciones son resueltas utilizando \emph{plugins}, fragmentos de código nativo escrito para cada plataforma que funcionan a modo de adaptador para que la página WEB pueda acceder a estos servicios.
+
+La forma más natural de comunicación para este tipo de aplicaciones es utilizando el protocolo HTTP (\emph{HyperText Transfer Protocol}). Este define un conjunto de peticiones, que permiten al cliente efectuar operaciones sobre recursos del servidor. Originalmente el protocolo HTTP operaba sobre archivos almacenados en el servidor, pero con el tiempo, el concepto de recurso se fue extendiendo. En la actualidad este protocolo se utiliza ampliamente para crear, modificar, consultar y eliminar objetos virtuales como la configuración de un equipo o, en nuestro caso, la lista de personas autorizadas. 
+
+Se denomina API (\emph{Application Programming Interface}) al conjunto de funciones y procedimientos que una biblioteca pone a disposición para que otro programa puede operar sobre ella. En el caso de este equipo, sería el conjunto de funciones que el firmware pone a disposición de la aplicación móvil para gestionarlo. Esta interfaz se denomina API REST (\emph{REpresentational State Transfer}) cuando se encuentra desarrollada como un conjunto de recursos que pueden ser accedidos utilizando el protocolo HTTP. En estas interfaces la transferencia de información se realiza utilizando el formato JSON(\emph{JavaScript Object Notation}), que es una forma simple de codificar información en cadenas de texto.
+
 \section{Protocolos inalámbricos}
 
-El aumento del uso de dispositivos móviles con un poder de cómputo cada vez mayor por parte del público abre la puerta a nuevas aplicaciones para estos equipos. En particular para el trabajo desarrollado, la intención es utilizar un dispositivo móvil como un teléfono inteligente o una tableta, con el fin de gestionar y configurar el equipo para control de accesos. Para esto es necesario que la interfaz de comunicaciones implementada sea del tipo inalámbrico, ya que si bien es técnicamente posible utilizar una interfaz USB cableada para conectarse a la mayoría de los teléfonos o tabletas, esta opción no resultaría cómoda ni comercialmente atractiva. En la actualidad dos protocolos de comunicación inalámbricos dominan el mercado:
+El aumento del uso de dispositivos móviles con un poder de cómputo cada vez mayor por parte del público abre la puerta a nuevas aplicaciones para estos equipos. En particular para este trabajo, la intención es utilizar un dispositivo móvil como un teléfono inteligente o una tableta, con el fin de gestionar y configurar el equipo para control de accesos. Por esta razón es necesario que la interfaz de comunicaciones implementada sea del tipo inalámbrico, ya que si bien es técnicamente posible utilizar una interfaz USB cableada para conectarse a la mayoría de los teléfonos o tabletas, esta opción no resultaría cómoda ni comercialmente atractiva. En la actualidad existen dos protocolos de comunicación inalámbricos que dominan el mercado:
 
 \begin{itemize}
 	\item Bluetooth: es un protocolo diseñado para una red de área personal, con un alcance típico de 10 metros, con bajas tasas de transferencias y optimizado para extender la duración de las baterías. Existen dos versiones principales de este protocolo: la versión 2 y la 4, las cuales no son compatibles entre sí. La mayoría de los dispositivos móviles actuales soportan ambas versiones del protocolo, excepto todos los equipos móviles de la firma Apple, que solo soportan la versión 4 de bajo consumo. En este protocolo la conexión se realiza entre un maestro y un esclavo, y si bien teóricamente se pueden generar redes de dispositivos, en la práctica esto nunca se implementa.
@@ -72,7 +86,7 @@ El aumento del uso de dispositivos móviles con un poder de cómputo cada vez ma
 	\item WiFi: es un protocolo diseñado para una red de área local, con un alcance típico de 100 metros y altas tasas de transferencias. Existen varias versiones de este protocolo, las cuales se pueden agrupar en dos familias: las que utilizan una portadora de 2.4 GHz y las de 5 GHz. Las versiones más nuevas pueden utilizar ambas frecuencias simultáneamente para aumentar aún más el ancho de banda. En este protocolo la conexión se realiza generalmente entre un dispositivo y un punto de acceso, que normalmente brinda conexión con una red mayor y eventualmente con Internet.
 \end{itemize}
 
-En la tabla \ref{tab:WifiBluetooth} se puede ver un resumen con las características más importantes de las diferentes variantes de ambos protocolos de comunicación. Para el desarrollo del equipo se decidió utilizar WiFi, de esta forma resulta igual de sencillo establecer una conexión punto a punto entre el dispositivo móvil y el equipo que se quiere gestionar, como conectarlo a la red existente en el lugar y gestionarlo desde cualquier ubicación que tenga conexión con dicha red. Incluso permite en un futuro el acceso del equipo a Internet, lo que permitiría su gestión desde cualquier lugar del mundo.
+En la tabla \ref{tab:WifiBluetooth} se puede ver un resumen con las características más importantes de las diferentes variantes de ambos protocolos de comunicación. Para el desarrollo del equipo se decidió utilizar WiFi, porque resulta igual de sencillo establecer una conexión punto a punto entre el dispositivo móvil y el equipo que se quiere gestionar, como conectarlo a la red existente en el lugar y gestionarlo desde cualquier ubicación que tenga conexión con dicha red. Incluso es posible, en un futuro, el acceso del equipo a Internet, lo que permitiría su gestión desde cualquier lugar del mundo.
 
 \begin{table}[ht]
 	\centering
@@ -121,18 +135,7 @@ En la tabla \ref{tab:WifiBluetooth} se puede ver un resumen con las característ
 	\label{tab:WifiBluetooth}
 \end{table}
 
-La utilización de la interfaz WiFi implica casi inevitablemente el uso del conjunto de protocolos TPC/IP, lo que permite disponer de una serie de opciones estandarizadas para la capa de aplicación del protocolo de gestión y configuración del equipo. De estas opciones disponibles se decidió implementar una interfaz Full REST Api utilizando el protocolo HTTP. El motivo de esta elección fue simplificar la comunicación con aplicaciones híbridas para celulares, como se explica en la sección \ref{sec:AplicacionesMoviles} y páginas WEB, lo que también permitirá en un futuro la gestión del equipo desde Internet.
-
-\section{Aplicaciones para dispositivos móviles}
-\label{sec:AplicacionesMoviles}
-
-El mercado de los dispositivos móviles se encuentra polarizado en dos sistemas operativos: Android e iOS. Lamentablemente las herramientas de desarrollo e incluso los lenguajes utilizados por cada plataforma son totalmente incompatibles, esto significa que desarrollar una aplicación que se encuentre disponible para ambas plataformas requiere el doble de esfuerzo. 
-
-Una solución a este problema son las denominadas aplicaciones híbridas, las cuales en realidad son páginas WEB encapsuladas con el correspondiente navegador de cada plataforma en una aplicación nativa. Estas aplicaciones se desarrollan entonces en JavaScript y uno de los entornos más difundidos para construir este tipo de aplicaciones es el conjunto Ionic Cordoba, el cual permite desarrollar una aplicación para móviles utilizando exclusivamente tecnología web. 
-
-Dado que en realidad estas aplicaciones son páginas web tienen una serie de restricciones, principalmente en las comunicaciones que pueden realizar y en la interacción con los dispositivos del equipo móvil como la cámara o el GPS. Algunas de estas restricciones son resueltas utilizando \emph{plugins}, fragmentos de código nativo escrito para cada plataforma que funcionan a modo de adaptador para que la página web pueda acceder a estos servicios.
-
-La forma más natural de comunicación para este tipo de aplicaciones es utilizando conexiones HTTP para enviar o recuperar objetos codificados según el estándar JSON. Por esta razón, y aun cuando el desarrollo de la aplicación de gestión para el dispositivo móvil está fuera de los alcances del trabajo, se decidió implementar toda la gestión del equipo utilizando esta tecnología.
+La utilización de WiFi resulta más conveniente ya que facilita el uso del conjunto de protocolos TPC/IP y disponer de un servidor HTTP estándar. De esta forma se puede implementar una API REST que, como se explicó en la sección \ref{sec:AplicacionesMoviles}, simplificará la comunicación con aplicaciones híbridas para celulares y páginas WEB. Esta elección también permite que, en un futuro, el equipo se conecte directamente a Internet, y de esta forma gestionarlo desde cualquier lugar del mundo.
 
 \section{Características del equipo}
 \label{sec:Caracteristicas}
@@ -142,14 +145,14 @@ Dado que el objetivo del trabajo fue el diseño de un equipo comercial, se plant
 \begin{itemize}
 	\item Destraba pestillo eléctrico: es un sistema mecánico que actúa como traba para el pestillo de la puerta. Este se libera al energizar una bobina y que por la acción de un resorte vuelve a bloquearse automáticamente cuando se retira la energía eléctrica. De esta forma, mientras el mismo permanece energizado, es posible abrir la puerta.
 	
-	\item Cerradura electromagnética: es simplemente un electroimán que cuando permanece alimentado ejerce una fuerza que impide la apertura de la puerta. En este caso, la puerta puede abrirse únicamente cuando la cerradura permanece sin alimentación.
+	\item Cerradura electromagnética: es simplemente un electroimán que al ser alimentado ejerce una fuerza que impide la apertura de la puerta. En este caso, la puerta puede abrirse únicamente cuando la cerradura permanece sin alimentación.
 	
-	\item Cerradura motorizada: en este caso el sistema mecánico de bloqueo es accionado por un motor en lugar de por una bobina. Para liberar la puerta es necesario alimentar el motor con una determinada polaridad por un cierto tiempo, o hasta que acciona un sensor que detecta el final del recorrido del mecanismo. La puerta permanece liberada hasta que se alimenta el motor con la polaridad contraria durante un tiempo determinado, o hasta que se acciona un nuevo sensor que detecta el final del recorrido en el sentido contrario al inicial.
+	\item Cerradura motorizada: en este caso el sistema mecánico de bloqueo es accionado por un motor en lugar de una bobina. Para liberar la puerta es necesario alimentar el motor con una determinada polaridad por un cierto tiempo, o hasta que acciona un sensor que detecta el final del recorrido del mecanismo. La puerta permanece liberada hasta que se alimenta el motor con la polaridad contraria durante un tiempo determinado, o hasta que se acciona un nuevo sensor que detecta el final del recorrido en el sentido contrario al inicial.
 \end{itemize}
 
 Como se puede deducir de la descripción anterior, cada tipo de cerradura requiere una señal de control diferente. En particular la mayor diferencia está dada entre los sistemas electromecánicos y los motorizados, debido a la necesidad de una inversión en la alimentación para efectuar el bloqueo de la puerta. 
 
-La otra opción de instalación que podrá definir el usuario final corresponde al uso de un sensor para detectar la apertura de la puerta. En el diseño del equipo se contempla la posibilidad de utilizar este sensor para poder determinar si una persona autorizada ingresa al espacio controlado, y para además informar mediante una señal de alarma cuando la puerta permanece abierta por más tiempo que el adecuado. De un análisis rápido resulta claro que el comportamiento del equipo debe ser diferente cuando el usuario decide no instalar el sensor para determinar la apertura de la puerta.  
+La otra opción de instalación que podrá definir el usuario final corresponde al uso de un sensor para detectar la apertura de la puerta. En el diseño del equipo se contempla la posibilidad de utilizar este sensor para poder determinar si una persona autorizada ingresa al espacio controlado, y además informar mediante una señal de alarma cuando la puerta permanece abierta más tiempo del adecuado. Un análisis rápido muestra claramente que el comportamiento del equipo debe ser diferente cuando el usuario decide no instalar el sensor para determinar la apertura de la puerta.  
 
 La combinación de las dos opciones antes analizadas determina cuatro modos de funcionamiento principales, los cuales se resumen en la tabla \ref{tab:ModosOperacion}.
 
@@ -165,12 +168,15 @@ La combinación de las dos opciones antes analizadas determina cuatro modos de f
 		Electromagnética &
 		Sin instalar &
 		Se libera la cerradura, cambiando el estado de la alimentación, por un tiempo predefinido. Al finalizar este, se bloquea la cerradura volviendo la alimentación al estado inicial.\\
+		\midrule
 		Electromagnética &
 		Instalado &
 		Se libera la cerradura, cambiando el estado de la alimentación, hasta detectar la apertura de la puerta sin exceder un tiempo máximo predefinido. Se supervisa que la puerta no permanezca abierta por más de cierto tiempo.\\
+		\midrule
 		Motorizada &
 		Sin instalar &
 		Se libera la cerradura alimentando el motor por un cierto tiempo. Al finalizar el mismo la puerta permanece liberada por un tiempo máximo. Finalmente se bloquea la cerradura alimentando el motor con polaridad inversa durante un cierto tiempo.\\
+		\midrule
 		Motorizada &
 		Instalado &
 		Se libera la cerradura alimentando el motor por un cierto tiempo. Al finalizar se supervisa la apertura y cierre de la puerta. Al detectar la apertura de la puerta, o al superar un tiempo máximo de espera, se bloquea nuevamente la cerradura, alimentando el motor con polaridad inversa durante un cierto tiempo.\\
@@ -223,9 +229,9 @@ Finalmente en lo que respecta a los requisitos funcionales del equipo se los div
 
 		\item PNK-RS003: el software debe determinar si la tarjeta leída esta incluida en una lista de personas autorizadas y conceder el acceso, o denegarlo si la misma no está incluida.
 
-		\item PNK-RS004: el software debe indicar si se concede el acceso al usuario mediante un sonido. Para ello debe generar una señal cuadrada en la interface PNK-ES008 durante un tiempo PNK-PO002. La frecuencia de la misma deberá estar comprendida entre 400 Hz y 800 Hz.
+		\item PNK-RS004: el software debe indicar si se concede el acceso al usuario mediante una melodía de tres tonos ascendentes correspondientes a las frecuencias de 523 Hz, 659 Hz y 784 Hz, todas con una duracción de 100 ms. Para ello debe generar de una señal cuadrada en la interface @ref PNK-ES008 de la frecuencia especificada para cada nota.
 
-		\item PNK-RS005: el software debe indicar si no se concede el acceso al usuario mediante un sonido. Para ello debe generar una señal cuadrada en la interface PNK-ES008 durante un tiempo PNK-PO003. La frecuencia de la misma deberá estar comprendida entre 200 Hz y 400 Hz.
+		\item PNK-RS005: el software debe indicar si no se concede el acceso al usuario mediante una melodía de tres tonos descendentes correspondientes a las frecuencias de 784 Hz, 659 Hz y 523 Hz, todas con una duracción de 100 ms. Para ello debe generar de una señal cuadrada en la interface @ref PNK-ES008 de la frecuencia especificada para cada nota.
 
 		\item PNK-RS006: cuando concede el acceso a un usuario el software debe accionar el actuador de la puerta para liberarla, esperar la apertura de la puerta o el tiempo máximo de espera fijado por el parámetro PNK-PO004, y al ocurrir cualquiera de los dos eventos debe volver a accionar el actuador de la puerta para bloquearla.
 
@@ -314,7 +320,7 @@ Siguiendo las recomendaciones de la ingeniería de software, se documentaron los
 			& 8.2. El software espera el cierre de la puerta \\
 			& 8.3. El usuario cierra la puerta \\
 			& 8.4. El software deja de emitir el sonido \\
-			& 8.5. El software registra en la bitácora de novedades que el usuario dejo la puerta abierta \\
+			& 8.5. El software registra en la bitácora de novedades que el usuario dejó la puerta abierta \\
 		Precondiciones &
 		La puerta debe estar cerrada \\
 		Postcondiciones &
@@ -368,7 +374,7 @@ Siguiendo las recomendaciones de la ingeniería de software, se documentaron los
 			& 9.2. El software espera el cierre de la puerta \\
 			& 9.3. El usuario cierra la puerta \\
 			& 9.4. El software deja de emitir el sonido \\
-			& 9.5. El software registra en la bitácora de novedades que el usuario dejo la puerta abierta \\
+			& 9.5. El software registra en la bitácora de novedades que el usuario dejó la puerta abierta \\
 		Precondiciones &
 		La puerta debe estar cerrada \\
 		Postcondiciones &
@@ -490,89 +496,35 @@ Siguiendo las recomendaciones de la ingeniería de software, se documentaron los
 
 
 \subsection{Pruebas de aceptación}
+\label{sub:PruebasAceptacion}
 
-El último paso de la especificación de requisitos consistió en la definición de las pruebas de aceptación del equipo, las servirán para validar el cumplimiento de los requisitos ya listados. Para formalizar las pruebas se siguieron los lineamientos de la metodología de desarrollo de software \emph{Behaviour Driven Development} (BDD). Esta propone utilizar un meta lenguaje denominado Gherkin para escribir las pruebas en forma de un guion en lenguaje natural, de forma tal que puedan ser validadas por el cliente. Para organizar la estructura de este guion el lenguaje define los siguientes elementos:
+El último paso de la especificación de requisitos consistió en la definición de las pruebas de aceptación del equipo, las que servirán para validar el cumplimiento de los requisitos ya listados. Para formalizar las pruebas se siguieron los lineamientos definidos por la metodología BDD (\emph{Behaviour Driven Development}) para el desarrollo de software. Esta propone utilizar un metalenguaje denominado Gherkin para escribir las pruebas en forma de un guión en lenguaje natural, de forma tal que puedan ser validadas por el cliente. Para organizar la estructura de este, el lenguaje define los siguientes elementos:
 
 \begin{itemize}
-	\item Característica: corresponde al conjunto de pruebas para validar un comportamiento especifico del equipo. Cada archivo de pruebas contiene una sola característica que se nombra con una frase corta. A continuación se debe detallar quien pide esa característica, que acciones espera poder realizar y que beneficio le otorga. Cada característica esta formada por un conjunto de escenarios que definen las pruebas necesarias para validarla. 
-	\item Escenario: corresponde a cada una de las pruebas que se efectúan para validar una característica en particular. El escenario se nombre con una frase corta que lo describa y está formado por una serie de sentencias que comienzan con las palabras dado, cuando y entonces. Existe también la posibilidad de agrupar escenarios similares utilizado una tabla de ejemplos y definiendo el esquema de una prueba que se repite para cada ejemplo de la tabla.
+	\item Característica: corresponde al conjunto de pruebas para validar un comportamiento especifico del equipo. Cada archivo de pruebas contiene una sola característica que se nombra con una frase corta. A continuación se debe detallar quién pide esa característica, qué acciones espera poder realizar y qué beneficio le otorga. Cada característica está formada por un conjunto de escenarios que definen las pruebas necesarias para validarla. 
+	\item Escenario: corresponde a cada una de las pruebas que se efectúan para validar una característica en particular. El escenario se nombra con una frase corta que lo describa y está formado por una serie de sentencias que comienzan con las palabras dado, cuando y entonces. Existe también la posibilidad de agrupar escenarios similares utilizado una tabla de ejemplos y definiendo el esquema de una prueba que se repite para cada ejemplo de la tabla.
 	\item Dado: corresponde a las sentencias que definen los condiciones iniciales para poder ejecutar la prueba descrita en el escenario. Normalmente se utilizan al principio del guion.
 	\item Cuando: corresponde a las sentencias que definen las acciones que se efectúan para completar la prueba.
-	\item Entonces: corresponde a las sentencias que describen el comportamiento esperado del equipo como resultado de efectuar una acción sobre el mismo.
+	\item Entonces: corresponde a las sentencias que describen el comportamiento esperado del equipo como resultado de efectuar una acción sobre él.
 \end{itemize}
 
 A continuación se detallan las pruebas de aceptación definidas para el equipo siguiendo la metodología propuesta.
 
-\lstinputlisting[firstline=4,language=gherkin,caption=Prueba de aceptación para la validar la detección de puerta abierta.]{Features/alarma.feature}
+\vspace{4mm}
 
-\begin{center}
-	{\Large\color{red} Pendiente de redacción}
-\end{center}
+\lstinputlisting[firstline=5,language=gherkin,caption=Prueba de aceptación para la validar la apertura por pulsador.]{Features/pulsador.feature}
 
-\section{Planificación}
+\vspace{8mm}
 
-Análisis inicial del proyecto
+\lstinputlisting[firstline=5,language=gherkin,caption=Prueba de aceptación para la validar la apertura por tarjeta de proximidad.]{Features/tarjeta.feature}
 
-Se listan las tareas que se deben desarrollar para completar el proyecto con una breve descripción para cada una
+\newpage
 
-\begin{table}[h!]
-	\centering
-	\caption{Lista del desglose de tareas del proyecto}
-	\begin{tabular}{l c}    
-		\toprule
-		\textbf{Nombre} 	& \textbf{Característica}	\\
-		\midrule
-		Elemento 			& Valor	\\
-		\bottomrule
-		\hline
-	\end{tabular}
-	\label{tab:ListaTareas}
-\end{table}
+\lstinputlisting[firstline=5,language=gherkin,caption=Prueba de aceptación para la validar la detección de puerta abierta.]{Features/alarma.feature}
 
-Se listan los recursos necesarios y los periodos de tiempo en los cuales los mismos deberán estar disponibles para el desarrollo del equipo
+\lstinputlisting[firstline=5,language=gherkin,caption=Prueba de aceptación para la validar la gestion de tarjetas autorizadas.]{Features/autorizacion.feature}
 
-\begin{table}[h!]
-	\centering
-	\caption{Lista de recursos requeridos por el proyecto}
-	\begin{tabular}{l c}    
-		\toprule
-		\textbf{Nombre} 	& \textbf{Característica}	\\
-		\midrule
-		Elemento 			& Valor	\\
-		\bottomrule
-		\hline
-	\end{tabular}
-	\label{tab:ListaRecursos}
-\end{table}
+\newpage
 
-Se presenta el análisis de riesgos efectuado al iniciar el proyecto
+\lstinputlisting[firstline=5,language=gherkin,caption=Prueba de aceptación para la validar el registro de los eventos de acceso y alarma.]{Features/bitacora.feature}
 
-\begin{table}[ht]
-	\centering
-	\caption{Tabla de riesgos mitigados del proyecto}
-	\begin{tabular}{l c}    
-		\toprule
-		\textbf{Nombre} 	& \textbf{Característica}	\\
-		\midrule
-		Elemento 			& Valor	\\
-		\bottomrule
-		\hline
-	\end{tabular}
-	\label{tab:ListaRiesgos}
-\end{table}
-
-Se presenta la planificación realizada al iniciar el desarrollo del equipo
-
-\begin{figure}[ht]
-	\centering
-	%	\includegraphics[scale=.3]{./Figures/cuadradoAzul.png}
-	\caption{Fotografía del equipo actual}
-	\label{fig:DiagramaAON}
-\end{figure}
-
-\begin{figure}[ht]
-	\centering
-	%	\includegraphics[scale=.3]{./Figures/cuadradoAzul.png}
-	\caption{Fotografía del equipo actual}
-	\label{fig:DiagramaGantt}
-\end{figure}

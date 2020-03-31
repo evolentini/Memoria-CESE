@@ -11,15 +11,15 @@
 \label{Chapter1}
 \label{IntroGeneral}
 
-En el presente capítulo se presentan brevemente los diferentes equipos para control de accesos, las tecnologías de identificación utilizadas por los mismos, los motivos que condujeron al desarrollo del trabajo junto con los objetivos y alcances del mismo.
+En el presente capítulo se presentan brevemente diferentes equipos para control de accesos, las tecnologías de identificación utilizadas por los mismos, los motivos que condujeron al desarrollo del trabajo junto con los objetivos y alcances del mismo.
 
 \section{Descripción del problema}
 \label{sec:descripcion}
 
-El control de las personas que acceden a un ambiente es una de las aplicaciones que se benefician desde hace largo tiempo con los avances de la electrónica. El cambio de las cerraduras mecánicas y sus correspondientes llaves por sistemas electrónicos lleva más de 30 años, y continúa en plena expansión. Actualmente existe en el mercado una oferta muy amplia y variada de equipos, que utilizan diferente medios para identificar a las personas que intentan acceder. Los métodos de identificación más difundidos en la actualidad son:
+El control de las personas que acceden a un ambiente es una de las aplicaciones que más se beneficiaron con los avances de la electrónica. El cambio de las cerraduras mecánicas, y sus correspondientes llaves, por sistemas electrónicos lleva más de 30 años y continúa en plena expansión. Actualmente existe en el mercado una oferta muy amplia y variada de equipos, que utilizan diferente medios para identificar a las personas que intentan acceder. Los métodos de identificación más difundidos en la actualidad son:
 
 \begin{itemize}
-	\item Clave numérica: para la identificación del usuario se le asigna una clave numérica que se ingresa mediante un teclado que forma parte del equipo. Este esquema es el más económico pero también el más inseguro, ya que la clave puede fácilmente darse a conocer a personas no autorizadas. 
+	\item Clave numérica: para la identificación de cada usuario se le asigna una clave numérica que se debe ingresar mediante un teclado que forma parte del equipo. Este esquema es el más económico pero también el más inseguro, ya que la clave puede fácilmente darse a conocer a personas no autorizadas. 
 	\item Tarjetas de proximidad: para la identificación del portador se utilizan unos sistemas electrónicos que se alimentan al aproximarlos a un lector y transmiten información. Las tarjetas en realidad pueden adoptar otros formatos como llaveros o etiquetas autoadhesivas. Este esquema resulta más costoso pero también más seguro que el anterior ya que las tarjetas no pueden replicarse fácilmente, aunque sí es posible prestarlas a personas no autorizadas.
 	\item Reconocimiento de huella digital: para la identificación se toma una imagen de un dedo del usuario y se reconoce la geometría de las huellas digitales. Este esquema es el más costos y seguro de todos, ya que duplicar una huella digital es una tarea realmente compleja.
 \end{itemize}
@@ -37,7 +37,7 @@ Como se desprende del análisis anterior, resulta muy difícil encontrar un equi
 \section{Motivación}
 \label{sec:motivacion}
 
-Punku nace como una propuesta de la firma EQUISER para resolver el problema del control de accesos en hogares, pequeñas oficinas, consorcios de departamentos y cocheras. Las características más importantes de este mercado son la poca cantidad de puertas controladas, falta de personal técnico para la gestión del equipo, y en el caso de los consorcios y cocheras, frecuentes cambios en la lista de personas autorizadas. Para lograr la mejor relación entre seguridad, precio y facilidad de gestión, el equipo puede funcionar con tarjetas de proximidad o con controles remotos. Además utiliza una interfaz Bluetooth que permite gestionarlo desde un dispositivo móvil, ya sea una computadora portátil, un teléfono celular inteligente o una tableta. También incorpora una entrada para un sensor que permite detectar la apertura de la puerta, y una salida de alarma para informar cuando permanece abierta por más tiempo del adecuado. 
+Punku nace como una propuesta de la firma EQUISER para resolver el problema del control de accesos en hogares, pequeñas oficinas, consorcios de departamentos y cocheras. Las características más importantes de este mercado son la poca cantidad de puertas controladas, falta de personal técnico para la gestión del equipo, y en el caso de los consorcios y cocheras, frecuentes cambios en la lista de personas autorizadas. Para lograr la mejor relación entre seguridad, precio y facilidad de gestión, el equipo puede funcionar con tarjetas de proximidad o con controles remotos. Además utiliza una interfaz Bluetooth que permite gestionarlo desde un dispositivo móvil, ya sea una computadora portátil, un teléfono celular inteligente o una tableta. También incorpora una entrada para un sensor que permite detectar la apertura de la puerta, y una salida de alarma para informar cuando permanece abierta más tiempo del especificado. 
 
 En la figura \ref{fig:BloquesActual} se presenta el diagrama de bloques del equipo, donde se pueden observar dos unidades funcionales:
 
@@ -63,7 +63,7 @@ Como puede notarse en figura \ref{fig:EquipoActual}, donde puede ver una imagen 
 	\label{fig:EquipoActual}
 \end{figure}
 
-En la tabla \ref{tab:ComparacionActual} se puede ver un cuadro comparativo del producto actual con otros equipos existentes en el mercado. Como se puede observar, la oferta se polariza en dos tipos de equipos: totalmente autónomos gestionados mediante un teclado numérico muy limitado o equipos con conexiones cableadas (ethernet o usb) que solo pueden ser gestionados desde computadoras de escritorio o portátiles. En el mercado internacional sí existen equipos que se pueden gestionar desde un dispositivo móvil, pero tampoco en este escenario la oferta es abundante. Por estas razones Punku constituye una solución atractiva que busca imponerse principalmente por la facilidad de manejo por parte del usuario final. 
+En la tabla \ref{tab:ComparacionActual} se puede ver un cuadro comparativo del producto actual con otros equipos existentes en el mercado. Como se puede observar, la oferta se polariza en dos tipos de equipos: totalmente autónomos gestionados mediante un teclado numérico muy limitado o equipos con conexiones cableadas (ethernet o usb) que solo pueden ser gestionados desde computadoras de escritorio o portátiles. En el mercado internacional sí existen equipos que se pueden gestionar desde un dispositivo móvil, pero tampoco en este escenario la oferta es abundante. Por estas razones Punku constituye una solución atractiva que busca imponerse en el mercado principalmente gracias a la facilidad de manejo por parte del usuario final. 
 
 \begin{table}[ht]
 	\centering
@@ -77,22 +77,24 @@ En la tabla \ref{tab:ComparacionActual} se puede ver un cuadro comparativo del p
 		\midrule
 		EQUISER \newline Punku 
 			& Proximidad y remotos RF
-			& Gestionado desde un \newline celular usando bluetooth
+			& Gestionado desde un \newline celular usando Bluetooth
 			& \$ 3.000\\
+		\midrule
 		Tebas \newline 208NW \cite{TEBAS}
 			& Proximidad
 			& Teclado numérico \newline integrado en el equipo
 			& \$ 4.000\\
+		\midrule
 		ZK \newline MA300IS \cite{ZK}
 			& Proximidad \newline y huellas
-			& Computadora conectada \newline mediante ethernet
+			& Computadora conectada \newline mediante Ethernet
 			& \$ 10.000\\
+		\midrule
 		ANVIZ \newline T5 Pro \cite{ANVIZ}
 			& Proximidad \newline y huellas
-			& Computadora conectada \newline mediante ethernet o usb
+			& Computadora conectada \newline mediante Ethernet o USB
 			& \$ 8.000\\
 		\bottomrule
-		
 		\hline
 	\end{tabular}
 	\label{tab:ComparacionActual}
@@ -105,9 +107,9 @@ La versión de Punku que se produce actualmente cubre adecuadamente las necesida
 	
 	\item Cambio de la interfaz de comunicaciones: el equipo actual utiliza para la comunicación una interfaz Bluetooth 2. Poco tiempo después del desarrollo se aprobó la versión 4 de este protocolo, la que fue rápidamente adoptado por la firma Apple. Esta nueva versión del protocolo no es compatible con la anterior, y si bien algunos equipos pueden funcionar en ambos modos de trabajo, este no es el caso de los equipos \emph{iPhone}, donde para privilegiar la duración de la batería solo pueden operar con Bluetooth 4.
 	
-	\item Incorporación de un reloj: al comercializar las primeras unidades surgió el requerimiento de algunos clientes para disponer de un registro de acceso con fecha y hora de cada evento. El equipo actual no dispone de un \emph{Real Time Clock} (RTC) que le permita mantener la fecha y hora cuando no dispone de alimentación eléctrica. De esta forma, si bien el equipo registra los eventos con fecha y hora, se vuelve a una fecha inicial preestablecida cada vez que se reinicia, y es necesaria una comunicación desde el celular para reajustar el reloj interno. El resultado es que la mayoría de los registros de accesos no tienen una fecha y hora válidas.
+	\item Incorporación de un reloj: al comercializar las primeras unidades surgió el requerimiento de algunos clientes para disponer de un registro de acceso con fecha y hora de cada evento. El equipo actual no dispone de un RTC (\emph{Real Time Clock}) que le permita mantener la fecha y hora cuando no dispone de alimentación eléctrica. De esta forma, si bien el equipo registra los eventos con fecha y hora, se vuelve a una fecha inicial preestablecida cada vez que se reinicia, y es necesaria una comunicación desde el celular para reajustar el reloj interno. El resultado es que la mayoría de los registros de accesos no tienen una fecha y hora válidas.
 	
-	\item Soporte para cerraduras motorizadas: uno de los principales obstáculos en la instalación de equipos para el control de accesos en el mercado al cual está destinado Punku son los cortes de alimentación eléctrica. Según el tipo de cerradura que se utilice, ante una falla de energía la puerta quedará cerrada y no se podrá acceder, o peor aún, quedará abierta en forma permanente. Una solución a este problema es combinar una cerradura con llave y un sistema motorizado que permita la liberación y el bloqueo de la puerta por cualquiera de los medios. Para esto el equipo debe poder invertir la alimentación en la salida que controla al motor, y de esta forma liberar o bloquear el mecanismo en función del sentido de giro de este.
+	\item Soporte para cerraduras motorizadas: uno de los principales obstáculos en la instalación de equipos para el control de accesos en el mercado al cual está destinado Punku, son los cortes de alimentación eléctrica. Según el tipo de cerradura que se utilice, ante una falla de energía la puerta quedará cerrada y no se podrá acceder, o peor aún, quedará abierta en forma permanente. Una solución a este problema es combinar una cerradura con llave y un sistema motorizado que permita la liberación y el bloqueo de la puerta por cualquiera de los medios. Para esto el equipo debe poder invertir la alimentación en la salida que controla al motor, y de esta forma liberar o bloquear el mecanismo en función del sentido de giro de este.
 	
 	\item Gestión desde la nube: con el avance en la conectividad a Internet se volvió más común disponer de equipos que pueden ser gestionados en forma remota. En el caso de un control de accesos siempre resulta atractiva la posibilidad de cambiar el permiso de acceso de una persona en forma inmediata sin necesidad de estar cerca del equipo. El uso de Bluetooth como interfaz de comunicaciones resulta un obstáculo para esta funcionalidad por su corto alcance y porque nunca se popularizaron equipos equivalentes a los \emph{routers} de WiFi que permitan el acceso a Internet utilizando Bluetooth.
 \end{itemize}
@@ -115,12 +117,14 @@ La versión de Punku que se produce actualmente cubre adecuadamente las necesida
 \section{Objetivos y alcance}
 \label{sec:objetivos}
 
-El objetivo general del trabajo desarrollado fue el diseño y la implementación de un prototipo de una nueva versión del equipo para control de accesos Punku que resolviera los problemas mencionados en la sección \ref{sec:motivacion}. Los objetivos particulares definidos para este fueron:
+El objetivo general del trabajo desarrollado fue el diseño y la implementación del prototipo de una nueva versión del equipo para control de accesos Punku que resolviera los problemas mencionados en la sección \ref{sec:motivacion}. 
+
+Los objetivos particulares definidos para este fueron:
 
 \begin{enumerate}
 	\item Diseñar el nuevo equipo utilizando un módulo de la familia ESP-32 del fabricante Espressif, el cual incorpora interfaces de comunicación WiFi y Bluetooth en las versiones 2 y 4.
 	
-	\item Agregar al nuevo equipo un circuito integrado RTC con respaldo de batería que le permita mantener la fecha y hora válidas cuando se producen interrupciones en el suministro de energía eléctrica.
+	\item Agregar al nuevo equipo un circuito integrado RTC con respaldo de batería que le permita mantener la fecha y hora válidas, aun cuando se produzcan interrupciones en el suministro de energía eléctrica.
 	
 	\item Agregar al nuevo equipo la posibilidad de invertir la polaridad de alimentación en la salida que libera la cerradura de forma tal que se pueda utilizar un sistema motorizado para destrabar la puerta.
 	
@@ -129,13 +133,13 @@ El objetivo general del trabajo desarrollado fue el diseño y la implementación
 	\item Desarrollar el firmware del equipo desde cero, utilizando un sistema operativo de tiempo real y un diseño modular que permita escalar las funcionalidades del equipo.
 \end{enumerate}
 
-El resultado esperado es entonces un prototipo totalmente funcional del equipo, que incorpore las mejoras ya mencionadas acompañado de la siguiente documentación:
+El resultado esperado es entonces un prototipo totalmente funcional, que incorpore las mejoras ya mencionadas, acompañado de la siguiente documentación:
 
 \begin{enumerate}
 	\item Diagrama esquemático del equipo en el programa KiCad.
 	\item Diseño de la placa electrónica realizada en el programa KiCad.
-	\item Documento con la especificación de requisitos del firmware según el estándar IEEE-830.
-	\item Documento con la arquitectura y el diseño detallado del firmware modelado utilizando diagramas UML.
-	\item Documento con las pruebas de aceptación para validar el correcto funcionamiento del equipo escritas en metalenguaje Gherkin. 
+	\item Especificación de requisitos del firmware según el estándar IEEE-830.
+	\item Arquitectura y el diseño detallado del firmware modelado utilizando diagramas UML.
+	\item Pruebas de aceptación para validar el correcto funcionamiento del equipo escritas en metalenguaje Gherkin. 
 	\item Código fuente del firmware para el control del equipo con documentación y comentarios adecuados que faciliten su compresión.
 \end{enumerate}

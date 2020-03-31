@@ -1,10 +1,73 @@
 \chapter{Conclusiones}
 \label{Chapter5}
 
+En el presente capítulo se resumen las conclusiones obtenidas al completar el trabajo y se presentan los posibles pasos a seguir.
+
 \section{Resultados Obtenidos}
 
-Se presentan brevemente los objetivos del proyecto y las características esperadas del equipo y se contrastan con los resultados obtenidos
+Si se contrastan los objetivos planteados en la sección \ref{sec:objetivos} con el desarrollo expuesto en capítulo \ref{Chapter3} se obtienen las siguientes conclusiones:
+
+\begin{enumerate}
+	\item El primer objetivo se cumplió, ya que el equipo desarrollado utiliza un microcontrolador ESP-32 que incorpora interfaces de comunicación WiFi y Bluetooth.
+	
+	\item El segundo objetivo también se cumplió, dado que el diseño actual incorpora un RTC con respaldo de batería, que le permite mantener la fecha y hora válidas aun cuando se produzcan interrupciones en el suministro de energía eléctrica.
+	
+	\item El nuevo equipo está diseñado para controlar indistintamente cerraduras electromagnéticas o motorizadas, por lo tanto el tercer objetivo también está cumplido.
+	
+	\item El nuevo equipo mantiene las características generales el diseño original, pero al utilizar una API REST sobre HTTP, resulta más simple de gestionar. Además gracias al cambio de procesador y a la unificación de las unidades funcionales, resulta más económico que el equipo original. Esto permite afirmar que el cuarto objetivo también está cumplido.
+	
+	\item El diseño y la codificación orientados a objetos utilizados para el desarrollo del firmware permite ampliar fácilmente las capacidades del equipo. Las pruebas automatizadas implementadas disminuyen la posibilidad de introducir errores al hacer cambios en el código. Todo esto constituye una plataforma modular que permite escalar las funcionalidades del equipo, por lo que se puede afirmar que también el quinto objetivo está cumplido.
+\end{enumerate}
+
+En la tabla \ref{tab:ComparacionActual} se repite el análisis de los equipos para control de acceso existentes en el mercado, incluyendo ahora al equipo desarrollado. Como puede observarse este último ofrece mayor cantidad de funcionalidades a un precio muy competitivo.
+
+\begin{table}[H]
+	\centering
+	\caption{Cuadro comparativo con otros equipos del mercado}
+	\begin{tabular}{C{25mm} C{25mm} C{50mm} C{20mm}}    
+		\toprule
+		\textbf{Equipo}  
+		& \textbf{Tecnología} 
+		& \textbf{Forma de gestión}
+		& \textbf{Valor}  \\
+		\midrule
+		EQUISER \newline Punku (Original)
+		& Proximidad y remotos RF
+		& Gestionado desde un \newline celular usando Bluetooth
+		& \$ 3.000\\
+		\midrule
+		Tebas \newline 208NW \cite{TEBAS}
+		& Proximidad
+		& Teclado numérico \newline integrado en el equipo
+		& \$ 4.000\\
+		\midrule
+		ZK \newline MA300IS \cite{ZK}
+		& Proximidad \newline y huellas
+		& Computadora conectada \newline mediante Ethernet
+		& \$ 10.000\\
+		\midrule
+		ANVIZ \newline T5 Pro \cite{ANVIZ}
+		& Proximidad \newline y huellas
+		& Computadora conectada \newline mediante Ethernet o USB
+		& \$ 8.000\\
+		\midrule
+		EQUISER \newline Punku (Nuevo)
+		& Proximidad (Mifare)
+		& Gestionado desde un celular o una computadora \newline usando WiFi o Internet
+		& \$ 3.000\\
+		\bottomrule
+		
+		\hline
+	\end{tabular}
+	\label{tab:ComparacionActual}
+\end{table}
+
+Estos resultados permiten afirmar que el equipo desarrollado cumple con todos los objetivos planteados, y que brinda a la empresa EQUISER una nueva opción más competitiva para participar en el mercado de los sistemas para control de accesos. El esfuerzo invertido, principalmente en el desarrollo del firmware, generó una plataforma confiable y flexible que permite, además, ampliar esta oferta en un futuro con muy poco esfuerzo.
 
 \section{Trabajo Futuro}
 
-Se presentan las ampliaciones en la funcionalidad del equipo en un futuro cercano
+En lo que respecta al equipo desarrollado el próximo paso es, naturalmente, la fabricación de un segundo prototipo de la placa electrónica que incluya todas las correcciones efectuadas como parte de este trabajo. Este equipo debería ser sometido a pruebas de campo con clientes reales para validar el correcto funcionamiento en las condiciones normales de operación.
+
+También es imprescindible el desarrollo de un software de gestión para dispositivos móviles que permita al cliente final operar con el equipo. La versión actual de Punku se gestiona con un software desarrollado en Java que solo funciona en dispositivos Android, la intención es reemplazarlo por una aplicación híbrida que pueda ejecutarse tanto en iOS con en Android, utilizando el mismo código. 
+
+Desde el punto de vista académico se plantea también un trabajo derivado que puede resultar muy interesante: la automatización total de las pruebas del equipo. En este sentido el \emph{plugin} desarrollado para permitir la ejecución automatizada de las pruebas de integración que utilizan FreeRTOS es un paso importante, pero que no se pudo explotar completamente por falta de tiempo. Un desafío interesante es aplicar los conceptos de integración continua en este proyecto, incluyendo las pruebas de aceptación que involucran el uso de hardware especifico para simular la iteración de los usuarios con el equipo.

@@ -8,7 +8,7 @@ En este capítulo se detallan las pruebas efectuadas sobre el hardware y el firm
 \section{Pruebas de concepto}
 \label{sec:PruebasConcepto}
 
-Para determinar la factibilidad de los objetivos planteados en la sección \ref{sec:objetivos} y poder, al mismo tiempo, cumplir con los requerimientos funcionales detallados en la sección \ref{sub:Requisitos}, se implementó en la primera etapa del proyecto un modelo destinado validar todas las suposiciones efectuadas en el diseño preliminar. Para esto se utilizó una placa de evaluación ESP32-DEVKITC-32D-F ofrecida por la firma Expressif, pensada para facilitar este tipo de procesos. Usando esta placa como núcleo, se construyó en forma cableada una maqueta de lo que sería el equipo definitivo. Una versión de este montaje puede observase en la figura \ref{fig:Demostrador}.
+Para determinar la factibilidad de los objetivos planteados en la sección \ref{sec:objetivos} y poder, al mismo tiempo, cumplir con los requerimientos funcionales detallados en la sección \ref{sub:Requisitos}, se implementó en la primera etapa del proyecto un modelo destinado validar todas las suposiciones efectuadas en el diseño preliminar. Para esto se utilizó una placa de evaluación ESP32-DEVKITC-32D-F\cite{noauthor_esp32-devkitc_nodate} ofrecida por la firma Expressif, pensada para facilitar este tipo de procesos. Usando esta placa como núcleo, se construyó en forma cableada una maqueta de lo que sería el equipo definitivo. Una versión de este montaje puede observase en la figura \ref{fig:Demostrador}.
 
 \begin{figure}[ht]
 	\centering
@@ -17,7 +17,7 @@ Para determinar la factibilidad de los objetivos planteados en la sección \ref{
 	\label{fig:Demostrador}
 \end{figure}
 
-De forma similar, utilizando los ejemplos de software provisto por el fabricante en el ESP-IDF, se empezaron a estudiar y probar las bibliotecas de software que se utilizarían en el desarrollo. Así se pudo validar cada uno de los bloques del código, para empezar a integrarlos en lo que sería la primera versión del firmware definitivo. 
+De forma similar, utilizando los ejemplos de software provisto por el fabricante en el ESP-IDF\cite{noauthor_esp-idf_nodate}\cite{noauthor_espressifesp-idf_2020}, se empezaron a estudiar y probar las bibliotecas de software que se utilizarían en el desarrollo. Así se pudo validar cada uno de los bloques del código, para empezar a integrarlos en lo que sería la primera versión del firmware definitivo. 
 
 Como resultado de este proceso se obtuvo una primera versión del equipo que podía leer una tarjeta de proximidad, determinar la fecha y hora mediante un RTC, escribir en una tarjeta de memoria microSD el identificador de la etiqueta RFID leída junto con la fecha y hora del evento, y transmitir esta información mediante WiFi a una computadora.
 
@@ -44,7 +44,7 @@ La fabricación del prototipo de hardware se dividió en dos etapas: primero se 
 	
 	\item Para verificar la comunicación con el circuito integrado responsable de la lectura de las tarjetas de proximidad se utilizó directamente la maqueta del firmware desarrollada en las pruebas de concepto. Tampoco se encontraron inconvenientes en la comunicación con la lectora de proximidad en el prototipo de hardware.
 	
-	\item Para verificar el funcionamiento del RTC también se recurrió a la maqueta del firmware utilizada en las pruebas del apartado anterior. En este caso se encontró un error importante en las conexiones del circuito integrado, originado por un error en la numeración de los terminales al definir el componente en Kicad, el programa donde se realizó el diseño de toda la placa electrónica. Este error se puede apreciar en la figura \ref{fig:ErrorRTC}, al comparar la información correspondiente a la hoja de datos, en la mitad izquierda de la figura, con la definición del componente, ubicada en la mitad derecha, vemos que todos los terminales del lado derecho se encuentran invertidos. En la figura \label{fig:ErroresPrototipo} se pueden observar las correcciones efectuadas sobre el prototipo para subsanar este problema.
+	\item Para verificar el funcionamiento del RTC también se recurrió a la maqueta del firmware utilizada en las pruebas del apartado anterior. En este caso se encontró un error importante en las conexiones del circuito integrado, originado por un error en la numeración de los terminales al definir el componente en Kicad, el programa donde se realizó el diseño de toda la placa electrónica. Este error se puede apreciar en la figura \ref{fig:ErrorRTC}, al comparar la información correspondiente a la hoja de datos\cite{noauthor_mcp7940n_nodate}, en la mitad izquierda de la figura, con la definición del componente, ubicada en la mitad derecha, vemos que todos los terminales del lado derecho se encuentran invertidos. En la figura \label{fig:ErroresPrototipo} se pueden observar las correcciones efectuadas sobre el prototipo para subsanar este problema.
 	
 \begin{figure}[ht]
 	\centering
@@ -98,7 +98,7 @@ Para dimensionar el esfuerzo realizado en la documentación y pruebas del códig
 \section{Resultado de las pruebas}
 \label{sec:PruebasFirmware}
 
-Los resultados de las pruebas efectuadas sobre la placa electrónica, despues de efectuar las correcciones mencionadas en las secciones \ref{sec:hardware} y \ref{sec:pruebasHW}, muestran un buen comportamiento del diseño, el cual se mostró estable durante todas las pruebas del firmware. En lo que respecta al firmware, por haber sido desarrollado utilizando la metodología TDD, el mismo cumplió con el comportamiento esperado sin necesidad de efectuar cambios. 
+Los resultados de las pruebas en la placa electrónica, después de efectuar las correcciones mencionadas en las secciones \ref{sec:hardware} y \ref{sec:pruebasHW}, muestran un buen comportamiento del diseño, el cual se mostró estable durante todas las pruebas del firmware. En lo que respecta al firmware, por haber sido desarrollado utilizando la metodología TDD, el mismo cumplió con el comportamiento esperado sin necesidad de efectuar cambios. 
 
 Es importante aclarar que las pruebas de aceptación del equipo no se ejecutaron en forma automática, ya que para ello es necesario el desarrollo de hardware específico que genere los estímulos y verifique las reacciones de la placa bajo prueba. Por esta razón estas pruebas se ejecutaron manualmente, siguiendo los guiones escritos en Gherkin que se mostraron en la sección \ref{sub:PruebasAceptacion}, y todas fueron completadas en forma exitosa por el equipo desarrollado. 
 

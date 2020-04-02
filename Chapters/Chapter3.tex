@@ -8,7 +8,7 @@ En este capítulo se presentan y fundamentan las decisiones adoptadas durante el
 
 Un aspecto muy importante que se tuvo en cuenta desde el momento mismo de seleccionar los componentes que se utilizaron en el diseño del equipo es la realidad del medio en el que fabricará y comercializará el producto. EQUISER es una microempresa que comercializa actualmente, en promedio, dos unidades al mes. Esto determina que la fabricación se efectúe en lotes de entre diez y veinte unidades, que representan cantidades muy pequeñas para el estándar de la industria electrónica. Si bien la firma tiene capacidad para importar componentes del exterior, los constantes cambios en las políticas aduaneras del país y la incidencia del costo de los fletes en compras pequeñas llevaron a  minimizar la dependencia de proveedores extranjeros.
 
-En este contexto, y como una solución de compromiso entre la disponibilidad local, la facilidad de montaje, el costo y las prestaciones, se adoptó como procesador principal del equipo el módulo ESP-WROOM-32D de la empresa Espressif. Basado en un procesador de doble núcleo Xtensa de 32bits, que puede operar con una frecuencia de hasta 240 MHz, este microcontrolador dispone de 520 kB de memoria RAM interna y se integra en el módulo 4 MB de memoria flash. Implementa entradas y salidas tanto digitales como analógicas, y puertos de comunicaciones con los protocolos SPI, I2C y UART. Para la comunicación inalámbrica están disponibles una interfaz Bluetooth que puede funcionar con las versiones 2 y 4 del protocolo, y una interfaz WiFi que opera en 2.4 GHz que cumple con las variantes b, g y n del estándar IEEE802.11.
+En este contexto, y como una solución de compromiso entre la disponibilidad local, la facilidad de montaje, el costo y las prestaciones, se adoptó como procesador principal del equipo el módulo ESP-WROOM-32D\cite{ESP32WROOM} de la empresa Espressif. Basado en un procesador de doble núcleo Xtensa de 32bits, que puede operar con una frecuencia de hasta 240 MHz, este microcontrolador dispone de 520 kB de memoria RAM interna y se integra en el módulo 4 MB de memoria flash. Implementa entradas y salidas tanto digitales como analógicas, y puertos de comunicaciones con los protocolos SPI, I2C y UART. Para la comunicación inalámbrica están disponibles una interfaz Bluetooth que puede funcionar con las versiones 2 y 4 del protocolo, y una interfaz WiFi que opera en 2.4 GHz que cumple con las variantes b, g y n del estándar IEEE802.11.
 
 Este módulo se presenta como el sucesor del ESP8266, un diseño pensado originalmente como interfaz WiFi de bajo costo para pequeños microcontroladores, que ganó una cuota importante del mercado cuando el fabricante puso a disposición del público las herramientas para desarrollar versiones propias del firmware. Esto permitió integrar la aplicación directamente dentro del módulo y convertirlo de esta forma en el procesador principal del sistema. Uno de los factores clave del éxito de esta propuesta es el costo y la relativa facilidad de montaje del módulo, características que se mantienen en el ESP-WROM-32D, la versión seleccionada para este diseño. 
 
@@ -53,7 +53,7 @@ La construcción del prototipo se efectuó en forma manual, y durante el proceso
 	\label{fig:ProblemasMascara}
 \end{figure}
 
-Para resolver este problema se removieron varios componentes del prototipo, y se recurrió al uso de abundantes cantidades \emph{flux} para volver a soldarlos evitando los cortocircuitos. Este proceso demandó mucho más tiempo de montaje, por lo que también se corrigió el diseño de la placa para aumentar el valor de guarda en los planos de masa, y evitar este problema en las siguientes placas. \todo{revisar}
+Para resolver este problema se removieron varios componentes del prototipo, y se recurrió al uso de abundantes cantidades \emph{flux} para volver a soldarlos evitando los cortocircuitos. Este proceso demandó mucho más tiempo de montaje, por lo que también se corrigió el diseño de la placa para aumentar el valor de guarda en los planos de masa, y evitar este problema en las siguientes placas.
 
 \section{Diseño del firmware}
 \label{sec:firmware}
@@ -66,7 +66,7 @@ Uno de los objetivos planteados para el trabajo en la sección \ref{sec:objetivo
 \begin{itemize}
 	\item ESP-IDF: corresponde al conjunto de funciones provistas por el fabricante para facilitar el desarrollo en la plataforma. Allí se incluyen los controladores para los puertos GPIO, SPI, I2C y PWM. También se incluye la implementación del sistema de archivos FAT para tarjetas SD y de un servidor HTTP completo.
 
-	\item Plataforma: implementa una capa de abstracción del hardware, también conocida como HAL (\emph{Hardware Abstraction Layer}), que permite independizar el resto del código desarrollado de la plataforma provista por el fabricante. Esta capa facilita la reutilización del resto de los componentes en proyectos similares y la eventual migración del firmware a otra plataforma.
+	\item Plataforma: implementa una capa de abstracción del hardware, también conocida como HAL (\emph{Hardware Abstraction Layer})\cite{noauthor_hardware_2020}, que permite independizar el resto del código desarrollado de la plataforma provista por el fabricante. Esta capa facilita la reutilización del resto de los componentes en proyectos similares y la eventual migración del firmware a otra plataforma.
 
 	\item Controladores: implementa una serie de clases que se pueden reutilizar en otros proyectos fácilmente ya que no dependen del hardware ni de la aplicación.
 
@@ -111,7 +111,7 @@ Esta capa contiene una colección de clases que encapsulan las funcionalidades d
 Las clases que componen esta capa son independientes de la plataforma y de la aplicación, y por lo tanto son fácilmente reutilizables en otros proyectos. Para lograr este objetivo, la mayoría de ellas no utilizan  los servicios del sistema operativo, e implementan mecanismos de eventos para  extraer el código dependiente de la aplicación en otro componente. Las clases que pertenecen a esta capa son:
 
 \begin{itemize}
-	\item Puertas: encapsula toda la gestión de la puerta. Permite configurar el tipo de cerradura, habilitar o ignorar el sensor de puerta abierta y definir los tiempos correspondientes de liberación, apertura y cierre. Puede generar eventos cuando se completa un ciclo de apertura. Esta clase tiene una especial importancia en el sistema, ya que la misma implementa aproximadamente el 30\% de los requisitos funcionales definidos en la sección \ref{sec:Requisitos}. Para la implementación se optó por utilizar cuatro maquinas de estado finitos independientes, una para cada modo de funcionamiento descrito en la tabla \ref{tab:ModosOperacion}. Para modelar las mismas se utilizaron diagramas de estado UML, los cuales se pueden ver en las figuras \ref{fig:ControlSinSin}, \ref{fig:ControlSinCon}, \ref{fig:ControlConSin} y \ref{fig:ControlConCon}
+	\item Puertas: encapsula toda la gestión de la puerta. Permite configurar el tipo de cerradura, habilitar o ignorar el sensor de puerta abierta y definir los tiempos correspondientes de liberación, apertura y cierre. Puede generar eventos cuando se completa un ciclo de apertura. Esta clase tiene una especial importancia en el sistema, ya que la misma implementa aproximadamente el 30\% de los requisitos funcionales definidos en la sección \ref{sec:Requisitos}. Para la implementación se optó por utilizar cuatro maquinas de estado finitos independientes, una para cada modo de funcionamiento descrito en la tabla \ref{tab:ModosOperacion}. Para modelar las mismas se utilizaron diagramas para máquinas de estado UML\cite{noauthor_lenguaje_2020}\cite{noauthor_uml_2012}, los cuales se pueden ver en las figuras \ref{fig:ControlSinSin}, \ref{fig:ControlSinCon}, \ref{fig:ControlConSin} y \ref{fig:ControlConCon}
 
 \begin{figure}[H]
 	\centering
@@ -142,9 +142,9 @@ Las clases que componen esta capa son independientes de la plataforma y de la ap
 	\label{fig:ControlConCon}
 \end{figure}
 	
-	\item ArbolB: encapsula toda la gestión de un índice utilizando la estructura de datos denominada ArbolB  o \emph{BTree}. Permite aprovechar las transferencias de bloques en los almacenamientos secundarios, como la tarjeta microSD, para disminuir el tiempo de búsqueda y actualización de una lista ordenada. Tanto la clase Editor, que se explica a continuación, como esta son también componentes críticos del sistema, ya que cualquier error en ellas se traduce en que personas autorizadas no puedan ingresar, o peor aún, en accesos de personas no autorizadas. Pero a diferencia de la clase Puertas, en estas el aspecto crítico está en la implementación y no en el diseño, ya que los algoritmos que se utilizan son ampliamente conocidos.
+	\item ArbolB: encapsula toda la gestión de un índice utilizando la estructura de datos denominada ArbolB o \emph{BTree}\cite{noauthor_arbol-b_2019}. Permite aprovechar las transferencias de bloques en los almacenamientos secundarios, como la tarjeta microSD, para disminuir el tiempo de búsqueda y actualización de una lista ordenada. Tanto la clase Editor, que se explica a continuación, como esta son también componentes críticos del sistema, ya que cualquier error en ellas se traduce en que personas autorizadas no puedan ingresar, o peor aún, en accesos de personas no autorizadas. Pero a diferencia de la clase Puertas, en estas el aspecto crítico está en la implementación y no en el diseño, ya que los algoritmos que se utilizan son ampliamente conocidos.
 		
-	\item Editor: encapsula toda la gestión de una actualización que involucra múltiples escrituras en un archivo. Permite asegurar que el contenido del índice de tarjetas autorizadas no resultará corrupto por una modificación incompleta. Esta clase utiliza el concepto de transacción ACID (\emph{Atomicity, Consistency, Isolation and Durability)} muy común en las bases de datos relacionales, que en nuestro caso se puede resumir en que cualquier cambio al índice se realiza siempre de manera completa, o de lo contrario, no efectúa absolutamente ningún cambio. Para la implementación se utilizó un archivo de transacciones donde se registran las escrituras de los sectores que se van actualizando en el índice. Al completar la modificación, esta se confirma en el mismo archivo de transacciones, y a partir de este punto se comienzan a aplicar los cambios en el archivo de datos. Si ocurre una interrupción del proceso, por ejemplo por un reinicio del sistema, primero se buscan transacciones confirmadas para aplicar los cambios nuevamente y recién entonces se comienza la operación del sistema.
+	\item Editor: encapsula toda la gestión de una actualización que involucra múltiples escrituras en un archivo. Permite asegurar que el contenido del índice de tarjetas autorizadas no resultará corrupto por una modificación incompleta. Esta clase utiliza el concepto de transacción\cite{noauthor_transaccion_2019} ACID (\emph{Atomicity, Consistency, Isolation and Durability)}\cite{noauthor_acid_2019} muy común en las bases de datos relacionales, que en nuestro caso se puede resumir en que cualquier cambio al índice se realiza siempre de manera completa, o de lo contrario, no efectúa absolutamente ningún cambio. Para la implementación se utilizó un archivo de transacciones donde se registran las escrituras de los sectores que se van actualizando en el índice. Al completar la modificación, esta se confirma en el mismo archivo de transacciones, y a partir de este punto se comienzan a aplicar los cambios en el archivo de datos. Si ocurre una interrupción del proceso, por ejemplo por un reinicio del sistema, primero se buscan transacciones confirmadas para aplicar los cambios nuevamente y recién entonces se comienza la operación del sistema.
 
 \FloatBarrier
 
@@ -173,37 +173,53 @@ En esta capa se encuentran las clases que implementan directamente la lógica de
 	
 \end{itemize}
 
-De la descripción anterior se desprende que la correcta interacción entre las clases de esta capa resulta clave para lograr el funcionamiento esperado del equipo. La ingeniería de software nos brinda una herramienta para poder representar estas interacciones entre los componentes de un programa: los diagramas de secuencia UML. En estos se representan las llamadas a métodos de las diferentes clases siguiendo los casos de uso analizados en la subsección \ref{sub:CasosDeUso}. Los diagramas más importantes pueden verse en las figuras \ref{fig:SecuanciaPulsador}, \ref{fig:SecuenciaTarjeta}, \ref{fig:SecuenciaForzada} y \ref{fig:SecuenciaConfiguracion}.
+De la descripción anterior se desprende que la correcta interacción entre las clases de esta capa resulta clave para lograr el funcionamiento esperado del equipo. La ingeniería de software nos brinda una herramienta para poder representar estas interacciones entre los componentes de un programa: los diagramas de secuencia UML\cite{noauthor_diagrama_2019}. En estos se representan las llamadas a métodos de las diferentes clases siguiendo los casos de uso analizados en la subsección \ref{sub:CasosDeUso}. En la figura \ref{fig:AperturaSinSensor} se presenta el diagrama de secuencia correspondiente la liberación por pulsador en una puerta con cerradura electromagnética y sin sensor de apertura.
 
-\begin{figure}[ht]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{Figures/PNK-DS001.pdf}
-	\caption[Apertura por pulsador con cerradura electromagnética y sin sensor]{Diagrama de secuencia para la liberación por pulsador de una puerta, sin sensor de apertura y con liberación electromagnética.}
-	\label{fig:SecuanciaPulsador}
+	\caption[Apertura por pulsador con cerradura electromagnética y sin sensor]{Diagrama de secuencia correspondiente a la apertura por pulsador en una puerta con cerradura electromagnética y sin sensor de apertura.}
+	\label{fig:AperturaSinSensor}
 \end{figure}
+
+\FloatBarrier
+
+A continuación se desarrolla el mismo diagrama para el caso de una puerta con cerradura electromagnética pero con sensor de apertura. En las figuras \ref{fig:LiberacionPulsador} \ref{fig:AperturaPulsador} se puede observar que en este caso el comportamiento del sistema resulta más complejo, aun cuando intervienen los mismos actores.
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=\textwidth]{Figures/PNK-DS002-A.pdf}
-	{\color{red} No es el diagrama correcto pero tiene la misma forma y extensión}
-	\caption[Apertura por tarjeta con cerradura electromagnética y sensor]{Diagrama de secuencia para la apertura y cierre por tarjeta de proximidad, con sensor de apertura y con liberación electromagnética.}
-	\label{fig:SecuenciaTarjeta}
+	\caption[Liberación por pulsador con cerradura electromagnética y sensor]{Primera parte del diagrama de secuencia correspondiente a la apertura por pulsador en una puerta con cerradura electromagnética y sensor de apertura.}
+	\label{fig:LiberacionPulsador}
 \end{figure}
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=\textwidth]{Figures/PNK-DS002-B.pdf}
-	{\color{red} No es el diagrama correcto pero tiene la misma forma y extensión}
-	\caption[Alarma por apertura forzada de la puerta]{Diagrama de secuencia para la activación de alarma por apertura forzada de la puerta.}
-	\label{fig:SecuenciaForzada}
+	\caption[Apertura por pulsador con cerradura electromagnética y sensor]{Continuación del diagrama de secuencia correspondiente a la apertura por pulsador en una puerta con cerradura electromagnética y sensor de apertura.}
+	\label{fig:AperturaPulsador}
 \end{figure}
+
+\FloatBarrier
+	
+En la figura \ref{fig:LiberacionTarjeta} se presenta el proceso de lectura y autorización de una tarjeta de proximidad. Estas secuencias reemplazan a la sección de liberación del caso base ya presentado, mientras que el resto de las secciones del diagrama se mantienen sin cambios.
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=\textwidth]{Figures/PNK-DS002-B.pdf}
-	{\color{red} No es el diagrama correcto pero tiene la misma forma y extensión}
-	\caption[Secuencia para el cambio de configuración]{Diagrama de secuencia para el cambio de configuración del equipo.}
-	\label{fig:SecuenciaConfiguracion}
+	\includegraphics[width=\textwidth]{Figures/PNK-DS003.pdf}
+	\caption[Liberación por lectura de una tarjeta de proximidad.]{Diagrama de secuencia correspondiente a la liberación por lectura de una tarjeta de proximidad.}
+	\label{fig:LiberacionTarjeta}
+\end{figure}
+
+\FloatBarrier
+
+Finalmente en la figura \ref{fig:SonidoBitacora} se muestra el detalle de la interacción entre las tareas Sonido y Bitácora con las clases Parlantes y Archivos, utilizando como ejemplo el caso de una tarjeta no autorizada.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\textwidth]{Figures/PNK-DS004.pdf}
+	\caption[Detalle de interacción clases Sonido y Bitacora.]{Diagrama de secuencia con detalle de la interacción de las tareas Sonido y Bitácora con las clases Parlantes y Archivos.}
+	\label{fig:SonidoBitacora}
 \end{figure}
 
 \FloatBarrier
@@ -213,23 +229,23 @@ De la descripción anterior se desprende que la correcta interacción entre las 
 
 \subsection{Entorno de desarrollo}
 
-Las metodologías de desarrollo propuestas por la ingeniería de software son lineamientos generales que deben ser ajustados a la realidad del equipo de desarrollo, y un proyecto que se inicia desde cero siempre es una buena oportunidad para adoptar nuevas metodologías. Por esta razón se decidió aplicar TDD (\emph{Test Driven Development}) para todo el proceso de codificación. Esta estrategia de trabajo plantea el desarrollo de una prueba unitaria que valida un requerimiento específico en primer lugar, y recién después el código de producción necesario para la implementación. Pero es un requisito indispensable disponer de una herramienta que compile y ejecute las pruebas unitarias en forma automática para poder implementar esta propuesta. La herramienta seleccionada para esta tarea fue Ceedling, un desarrollo en Ruby de código abierto pensado para implementar TDD en sistemas embebidos. Aunque realmente está formada por tres componentes que pueden ser utilizados en forma independiente, estos se acoplan perfectamente para funcionar como una solución integral. A estos se pueden sumar \emph{plugins}, propios o de terceros, que permiten agregar nuevas funcionalidades. Las componentes utilizadas en este trabajo fueron:
+Las metodologías de desarrollo propuestas por la ingeniería de software son lineamientos generales que deben ser ajustados a la realidad del equipo de desarrollo, y un proyecto que se inicia desde cero siempre es una buena oportunidad para adoptar nuevas metodologías. Por esta razón se decidió aplicar TDD (\emph{Test Driven Development})\cite{grenning_test-driven_2012} para todo el proceso de codificación. Esta estrategia de trabajo plantea el desarrollo de una prueba unitaria que valida un requerimiento específico en primer lugar, y recién después el código de producción necesario para la implementación. Pero es un requisito indispensable disponer de una herramienta que compile y ejecute las pruebas unitarias en forma automática para poder implementar esta propuesta. La herramienta seleccionada para esta tarea fue Ceedling\cite{noauthor_ceedling_nodate}, un desarrollo en Ruby de código abierto pensado para implementar TDD en sistemas embebidos. Aunque realmente está formada por tres componentes que pueden ser utilizados en forma independiente, estos se acoplan perfectamente para funcionar como una solución integral. A estos se pueden sumar \emph{plugins}, propios o de terceros, que permiten agregar nuevas funcionalidades. Las componentes utilizadas en este trabajo fueron:
 
 \begin{itemize}
-	\item Unity: provee una variedad de funciones para verificar los resultados esperados en las pruebas unitarias. Estas funciones pueden comparar diferentes tipos de datos, e informan las discrepancias cuando los valores no son los correctos.
+	\item Unity: provee una variedad de funciones para verificar los resultados esperados en las pruebas unitarias. Estas funciones pueden comparar diferentes tipos de datos, e informan las discrepancias cuando los valores no son los correctos\cite{noauthor_throwtheswitchunity_2020}.
 
-	\item Fake Function Framework: provee la capacidad de generar funciones Mock o Stub que permiten reemplazar las dependencias para poder implementar pruebas unitarias en clases que requieren código que no se desea probar.
+	\item Fake Function Framework: provee la capacidad de generar funciones Mock o Stub que permiten reemplazar las dependencias para poder implementar pruebas unitarias en clases que requieren código que no se desea probar\cite{long_meekrosoftfff_2020}\cite{noauthor_electronvectorfake_function_framework_2020}.
 	
-	\item Ceedling: provee la compilación, ejecución y consolidación de los resultados de las pruebas unitarias, en forma automática y con un mínimo esfuerzo de configuración.
+	\item Ceedling: provee la compilación, ejecución y consolidación de los resultados de las pruebas unitarias, en forma automática y con un mínimo esfuerzo de configuración\cite{noauthor_throwtheswitchceedling_2020}.
 	
-	\item GCOV: provee métricas con la cobertura de las pruebas ejecutadas, es decir la proporción de líneas de código fuente o de condiciones lógicas que fueron verificadas al ejecutar las pruebas unitarias.
+	\item GCOV: provee métricas con la cobertura de las pruebas ejecutadas, es decir la proporción de líneas de código fuente o de condiciones lógicas que fueron verificadas al ejecutar las pruebas unitarias\cite{noauthor_gcov_2019}.
 	
-	\item CLOC: provee métricas con la cantidad de comentarios y líneas de código fuente, para generar estadísticas que determinen la calidad del código.  
+	\item CLOC: provee métricas con la cantidad de comentarios y líneas de código fuente, para generar estadísticas que determinen la calidad del código\cite{aldanial_aldanialcloc_2020}.  
 \end{itemize}
 
-Otro de los aspectos que se buscó optimizar desde el inicio del proyecto fue la documentación, tanto del diseño general como del código en sí mismo. Para esto se seleccionaron dos herramientas también de código abierto que tienen la capacidad de trabajar en conjunto como si fueran una sola. Para la documentación del código se utilizó Doxygen, una programa que tiene la capacidad de generar la documentación de una biblioteca a partir de comentarios especiales ubicados en el código fuente. Para la escritura de los documentos de diseño se decidió utilizar la sintaxis Markdown y procesarlos también con Doxygen para unificar en un solo sitio WEB toda la información del desarrollo. Para los diagramas UML se utilizó PlantUML, una herramienta también de código abierto que puede funcionar en conjunto con Doxygen, y que permite generar los diagramas a partir de descripciones textuales muy simples y rápidas.
+Otro de los aspectos que se buscó optimizar desde el inicio del proyecto fue la documentación, tanto del diseño general como del código en sí mismo. Para esto se seleccionaron dos herramientas también de código abierto que tienen la capacidad de trabajar en conjunto como si fueran una sola. Para la documentación del código se utilizó Doxygen\cite{noauthor_doxygen_nodate}, una programa que tiene la capacidad de generar la documentación de una biblioteca a partir de comentarios especiales ubicados en el código fuente. Para la escritura de los documentos de diseño se decidió utilizar la sintaxis Markdown\cite{noauthor_markdown_2020} y procesarlos también con Doxygen para unificar en un solo sitio WEB toda la información del desarrollo. Para los diagramas UML se utilizó PlantUML\cite{noauthor_herramienta_nodate}, una herramienta también de código abierto que puede funcionar en conjunto con Doxygen, y que permite generar los diagramas a partir de descripciones textuales muy simples y rápidas.
 
-Finalmente, como entorno de desarrollo integrado se decidió utilizar Visual Studio Code, un editor de código abierto desarrollado por Microsoft, que funciona en las plataformas de Windows, Linux y MacOS indistintamente. Tiene además una extensa biblioteca de \emph{plugins} que le permiten extender la funcionalidad básica. De esta forma fue posible agregarle el reconocimiento de la sintaxis en el lenguaje C en los comentarios Doxygen, en los documentos Markdown y en los diagramas PlantUML. También se pudo disponer del procesamiento las advertencias por errores en la documentación devueltos por Doxygen, de la visualización de los diagramas UML generados por PlantUML, de la ejecución de las pruebas unitarias mediente Ceedling y de la gestión del repositorio GIT que almacenó el código. A estas herramientas debemos agregarles el ESP-IDF (\emph{Espressif IoT Development Framework}), el conjunto de bibliotecas y utilidades provistas por el fabricante del procesador para el desarrollo del software para los procesadores ESP32. De esta forma queda completo el entorno de desarrollo utilizado para el presente trabajo. En la tabla \ref{tab:HerramientasDesarrollo} se puede ver un resumen con el nombre de cada herramienta y una breve descripción de la función.
+Finalmente, como entorno de desarrollo integrado se decidió utilizar Visual Studio Code, un editor de código abierto desarrollado por Microsoft, que funciona en las plataformas de Windows, Linux y MacOS indistintamente. Tiene además una extensa biblioteca de \emph{plugins} que le permiten extender la funcionalidad básica. De esta forma fue posible agregarle el reconocimiento de la sintaxis en el lenguaje C en los comentarios Doxygen, en los documentos Markdown y en los diagramas PlantUML. También se pudo disponer del procesamiento las advertencias por errores en la documentación devueltos por Doxygen, de la visualización de los diagramas UML generados por PlantUML, de la ejecución de las pruebas unitarias mediente Ceedling y de la gestión del repositorio GIT que almacenó el código. A estas herramientas debemos agregarles el ESP-IDF (\emph{Espressif IoT Development Framework})\cite{noauthor_esp-idf_nodate}\cite{noauthor_espressifesp-idf_2020}, el conjunto de bibliotecas y utilidades provistas por el fabricante del procesador para el desarrollo del software para los procesadores ESP32. De esta forma queda completo el entorno de desarrollo utilizado para el presente trabajo. En la tabla \ref{tab:HerramientasDesarrollo} se puede ver un resumen con el nombre de cada herramienta y una breve descripción de la función.
 
 \begin{table}[ht]
 	\centering
@@ -267,13 +283,13 @@ Finalmente, como entorno de desarrollo integrado se decidió utilizar Visual Stu
 
 \subsection{Pruebas de integración en las tareas del sistema}
 
-La plataforma de desarrollo provista por el fabricante utiliza a FreeRTOS como sistema operativo de tiempo real, donde se ejecutan como tareas los servicios de comunicaciones como el protocolo TCP/IP y el servidor HTTP. Esta versión de FreeRTOS ha sido modificada por el fabricante para poder ejecutarse en un procesador de doble núcleo como es ESP32. Por estas razones, utilizar otro sistema operativo de tiempo real implicaría un esfuerzo de desarrollo muy importante, que excedería ampliamente los alcances del presente trabajo. 
+La plataforma de desarrollo provista por el fabricante utiliza a FreeRTOS\cite{noauthor_freertos_2019} como sistema operativo de tiempo real, donde se ejecutan como tareas los servicios de comunicaciones como el protocolo TCP/IP y el servidor HTTP. Esta versión de FreeRTOS ha sido modificada por el fabricante para poder ejecutarse en un procesador de doble núcleo como es ESP32\cite{noauthor_esp-idf_nodate-1}. Por estas razones, utilizar otro sistema operativo de tiempo real implicaría un esfuerzo de desarrollo muy importante, que excedería ampliamente los alcances del presente trabajo. 
 
-Lamentablemente FreeRTOS es un desarrollo complejo, que además de estar modularizado para facilitar la portación a diferentes arquitecturas, tiene un código que puede personalizarse utilizando el archivo FreeRTOSConfig.h. Todo esto hacen que sea imposible generar automáticamente funciones Stub o Mock que permitan implementar pruebas unitarias automatizadas en código que utiliza los servicios del sistema operativo. 
+Lamentablemente FreeRTOS es un desarrollo complejo, que además de estar modularizado para facilitar la portación a diferentes arquitecturas, tiene un código que puede personalizarse utilizando el archivo FreeRTOSConfig.h\cite{freertos_freertos_nodate}. Todo esto hacen que sea imposible generar automáticamente funciones Stub o Mock que permitan implementar pruebas unitarias automatizadas en código que utiliza los servicios del sistema operativo. 
 
 Una de las primeras estrategias para poder conciliar la idea de aplicar TDD con los problemas derivados de utilizar FreeRTOS fue dividir la aplicación en tres capas. De esta forma se buscó concentrar el código critico en los objetos de la capa de controladores, y como estos no utilizan los servicios del sistema operativo se pudieron desarrollar utilizando TDD. De todas formas esta solución no resultó totalmente satisfactoria, por lo que se siguió buscando una alternativa para poder ejecutar pruebas automatizadas sobre las tareas.
 
-La solución definitiva a este problema se obtuvo combinando la portabilidad de FreeRTOS y la capacidad de Ceedling de utilizar \emph{plugins}. Para esto se desarrolló un \emph{plugin} propio que analiza el código fuente del archivo de prueba para determinar si utiliza los servicios del sistema operativo. En este caso modifica el proceso de compilación y enlazado para incluir una versión FreeRTOS que ejecuta como una tarea dentro de un ambiente POSIX. También modifica el código generado para el \emph{runner} de la prueba para iniciar el sistema operativo, y mueve la secuencia de pruebas a una tarea de FreeRTOS que detiene el planificador como ultima operación.
+La solución definitiva a este problema se obtuvo combinando la portabilidad de FreeRTOS y la capacidad de Ceedling de utilizar \emph{plugins}. Para esto se desarrolló un \emph{plugin} propio que analiza el código fuente del archivo de prueba para determinar si utiliza los servicios del sistema operativo. En este caso modifica el proceso de compilación y enlazado para incluir una versión FreeRTOS que ejecuta como una tarea dentro de un ambiente POSIX\cite{noauthor_freertos_nodate}. También modifica el código generado para el \emph{runner} de la prueba para iniciar el sistema operativo, y mueve la secuencia de pruebas a una tarea de FreeRTOS que detiene el planificador como ultima operación.
 
 De esta forma, Ceedling puede generar un ejecutable que inicia el sistema operativo, ejecuta cada una de las pruebas en forma secuencial y termina una vez que se completaron las pruebas. Este comportamiento, que resulta natural en las pruebas automatizadas, es totalmente contrapuesto al uso normal de FreeRTOS, donde el sistema se inicia pero nunca se detiene. El resultado final de este desarrollo es la posibilidad de implementar pruebas automatizadas sobre las tareas de la capa de aplicación con las mismas herramientas utilizadas para el resto del desarrollo.
 
@@ -281,7 +297,7 @@ De esta forma, Ceedling puede generar un ejecutable que inicia el sistema operat
 
 Como ya se mencionó en la subsección \ref{sub:Arquitectura}, para el modelado del firmware se utilizó una metodología orientada a objetos. Uno de los inconvenientes de aplicar esta propuesta es que el lenguaje C, el más utilizado en el desarrollo de sistemas embebidos, no es un lenguaje orientado a objetos.
 
-Para resolver este problema existe una propuesta denominada ADT (\emph{Abstract Data Type}) que, explotando el uso de punteros a estructuras, permite emular muy fácilmente una programación orientada a objetos, utilizando el lenguaje C estándar. Esta técnica considera un archivo de cabeceras (.h) como la interfaz pública de la clase y el archivo de código fuente (.c) como la implementación privada, y  plantea el siguiente patrón de programación:
+Para resolver este problema existe una propuesta denominada ADT (\emph{Abstract Data Type})\cite{noauthor_tipo_2020}\cite{grenning_test-driven_2012} que, explotando el uso de punteros a estructuras, permite emular muy fácilmente una programación orientada a objetos, utilizando el lenguaje C estándar. Esta técnica considera un archivo de cabeceras (.h) como la interfaz pública de la clase y el archivo de código fuente (.c) como la implementación privada, y  plantea el siguiente patrón de programación:
 
 \begin{enumerate}
 	\item La declaración incompleta de una estructura de datos en el archivo de cabeceras, que define el nombre pero sin enumerar los miembros. La declaración de esta estructura se realiza en forma completa en el archivo de código, y cada uno de sus campos es equivalente a un atributo privado del objeto.

@@ -37,7 +37,7 @@ Como se desprende del análisis anterior, resulta muy difícil encontrar un equi
 \section{Motivación}
 \label{sec:motivacion}
 
-Punku nace como una propuesta de la firma EQUISER para resolver el problema del control de accesos en hogares, pequeñas oficinas, consorcios de departamentos y cocheras. Las características más importantes de este mercado son la poca cantidad de puertas controladas, falta de personal técnico para la gestión del equipo, y en el caso de los consorcios y cocheras, frecuentes cambios en la lista de personas autorizadas. Para lograr la mejor relación entre seguridad, precio y facilidad de gestión, el equipo puede funcionar con tarjetas de proximidad o con controles remotos. Además utiliza una interfaz Bluetooth que permite gestionarlo desde un dispositivo móvil, ya sea una computadora portátil, un teléfono celular inteligente o una tableta. También incorpora una entrada para un sensor que permite detectar la apertura de la puerta, y una salida de alarma para informar cuando permanece abierta más tiempo del especificado. 
+Punku nace como una propuesta de la firma EQUISER para resolver el problema del control de accesos en hogares, pequeñas oficinas, consorcios de departamentos y cocheras\cite{equiser_sistema_nodate}. Las características más importantes de este mercado son la poca cantidad de puertas controladas, falta de personal técnico para la gestión del equipo, y en el caso de los consorcios y cocheras, frecuentes cambios en la lista de personas autorizadas. Para lograr la mejor relación entre seguridad, precio y facilidad de gestión, el equipo puede funcionar con tarjetas de proximidad o con controles remotos. Además utiliza una interfaz Bluetooth que permite gestionarlo desde un dispositivo móvil, ya sea una computadora portátil, un teléfono celular inteligente o una tableta. También incorpora una entrada para un sensor que permite detectar la apertura de la puerta, y una salida de alarma para informar cuando permanece abierta más tiempo del especificado. 
 
 En la figura \ref{fig:BloquesActual} se presenta el diagrama de bloques del equipo, donde se pueden observar dos unidades funcionales:
 
@@ -78,19 +78,19 @@ En la tabla \ref{tab:ComparacionActual} se puede ver un cuadro comparativo del p
 		EQUISER \newline Punku 
 			& Proximidad y remotos RF
 			& Gestionado desde un \newline celular usando Bluetooth
-			& \$ 3.000\\
+			& \$ 15.000\\
 		\midrule
-		Tebas \newline 208NW \cite{TEBAS}
+		Tebas \newline 208NW \cite{noauthor_control_nodate}
 			& Proximidad
 			& Teclado numérico \newline integrado en el equipo
 			& \$ 4.000\\
 		\midrule
-		ZK \newline MA300IS \cite{ZK}
+		ZK \newline MA300IS \cite{noauthor_control_nodate-2}
 			& Proximidad \newline y huellas
 			& Computadora conectada \newline mediante Ethernet
 			& \$ 10.000\\
 		\midrule
-		ANVIZ \newline T5 Pro \cite{ANVIZ}
+		ANVIZ \newline T5 Pro \cite{noauthor_control_nodate-1}
 			& Proximidad \newline y huellas
 			& Computadora conectada \newline mediante Ethernet o USB
 			& \$ 8.000\\
@@ -103,7 +103,7 @@ En la tabla \ref{tab:ComparacionActual} se puede ver un cuadro comparativo del p
 La versión de Punku que se produce actualmente cubre adecuadamente las necesidades del mercado al cual está destinado. Sin embargo el diseño del equipo se remonta al año 2013, y los cambios en las tecnologías sumados a nuevas posibilidades de uso demandaban una actualización. Después de un análisis de las fortalezas y debilidades del equipo se determinó que era necesario realizar las siguientes mejoras:  
 
 \begin{itemize}
-	\item Cambio del procesador principal: para el desarrollo original se utilizó un microcontrolador producido por la empresa Freescale, perteneciente la familia \emph{ColdFire}. Con el avance de los procesadores \emph{Cortex} el fabricante fue dejando de lado el desarrollo de esta gama de productos, por lo que en este momento el microcontrolador utilizado resulta más costoso que un procesador más nuevo con mayores prestaciones. Lamentablemente no existe una oferta por parte del fabricante de un microcontrolador con una disposición de terminales pensada para efectuar un reemplazo directo del utilizado actualmente.
+	\item Cambio del procesador principal: para el desarrollo original se utilizó un microcontrolador producido por la empresa Freescale, perteneciente la familia \emph{ColdFire}\cite{noauthor_nxp_2019}. Con el avance de los procesadores \emph{Cortex} el fabricante fue dejando de lado el desarrollo de esta gama de productos, por lo que en este momento el microcontrolador utilizado resulta más costoso que un procesador más nuevo con mayores prestaciones. Lamentablemente no existe una oferta por parte del fabricante de un microcontrolador con una disposición de terminales pensada para efectuar un reemplazo directo del utilizado actualmente.
 	
 	\item Cambio de la interfaz de comunicaciones: el equipo actual utiliza para la comunicación una interfaz Bluetooth 2. Poco tiempo después del desarrollo se aprobó la versión 4 de este protocolo, la que fue rápidamente adoptado por la firma Apple. Esta nueva versión del protocolo no es compatible con la anterior, y si bien algunos equipos pueden funcionar en ambos modos de trabajo, este no es el caso de los equipos \emph{iPhone}, donde para privilegiar la duración de la batería solo pueden operar con Bluetooth 4.
 	
@@ -122,7 +122,7 @@ El objetivo general del trabajo desarrollado fue el diseño y la implementación
 Los objetivos particulares definidos para este fueron:
 
 \begin{enumerate}
-	\item Diseñar el nuevo equipo utilizando un módulo de la familia ESP-32 del fabricante Espressif, el cual incorpora interfaces de comunicación WiFi y Bluetooth en las versiones 2 y 4.
+	\item Diseñar el nuevo equipo utilizando un módulo de la familia ESP32 \cite{noauthor_esp32_2019} del fabricante Espressif, el cual incorpora interfaces de comunicación WiFi y Bluetooth en las versiones 2 y 4.
 	
 	\item Agregar al nuevo equipo un circuito integrado RTC con respaldo de batería que le permita mantener la fecha y hora válidas, aun cuando se produzcan interrupciones en el suministro de energía eléctrica.
 	
